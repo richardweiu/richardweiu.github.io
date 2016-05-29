@@ -3,6 +3,7 @@ layout: post
 title: Building Github Page by hexo
 date: 2016-05-23 09:59:44 +08:00
 tags: " blog "
+categories: " Blog  "
 toc: true
 ---
 
