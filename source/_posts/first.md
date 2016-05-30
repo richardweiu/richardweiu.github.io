@@ -85,7 +85,7 @@ nodejs -v
 　　安装好hexo只是在本地上的环境搭建，要让你的blog能online,不仅是为了别人能够看见,更重要的是自己无论在哪里都可以看到、翻阅那么服务器端将必不可少,使用github pages免费不仅节约成本,而且与github捆绑,在备份与版本控制方面非常的方便.关于github pages其[官网](https://pages.github.com/)上有很详细的介绍.
 (1)首先你必须要有一个Github的账号，没有点击这个就滚去[Github官网](https://github.com/)吧
 (2)然后新创建一个仓库,并且该仓库的名字必须是:你的github用户名．github．io。在后期使用的时候这就是通往你博客的链接,当然你也可以用自己的域名,做dns解析便是.如下图所示:
-![创建名称](http://7xu3tw.com1.z0.glb.clouddn.com/Selection_003.png)
+![creat_new_repo](http://7xu3tw.com1.z0.glb.clouddn.com/creat_new_repo.png)
 (3)图方便可以在本地做ssh,可以免密码登陆,省去每次都必须输入密码
 ### blog开始建立
 　　(1)首先我们得在本地找一个坑位作为blog相关文件的存放之地,并初始化
@@ -103,6 +103,10 @@ hexo init
 npm install 
 ＃若是之前你使用的sudo安装的，那么这里也必须得用sudo,否则会报错你没有权限，当然你用sudo来安装的话,注意你的所有的权限以及归属组属于root的
 ```
+看这就是初始化之后多的东西了
+![hexo-init](http://7xu3tw.com1.z0.glb.clouddn.com/run_hexo_init.png)
+
+
 (2)创建博文并预览
 >系统默认为你创建了一篇名为helloward的文章，里面是叫你如何使用hexo来创建新的博文和一些常用的命令
 
@@ -138,4 +142,7 @@ hexo clean
 hexo generate
 hexo deploy
 ```
+若是没有装hexo-deployer-git插件的下场就是这样
+![erro-deployer](http://7xu3tw.com1.z0.glb.clouddn.com/erro_deploy.png)
+
 上传成功之后我们变可以通过github名字.github.io来访问，看到我们的成果咯.hexo的主题修改放在下一篇文章来将了.第一次写太多不熟悉了．写了很久
