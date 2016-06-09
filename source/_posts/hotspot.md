@@ -1,8 +1,8 @@
 ---
 title: Add hotspot on Ubuntu
 date: 2016-06-08 22:56:08
-tags: " ubuntu "
-categories: " ubuntu "
+tags: " Ubuntu "
+categories: " Ubuntu "
 ---
 
 >** 前言 **
