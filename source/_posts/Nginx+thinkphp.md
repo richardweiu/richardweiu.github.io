@@ -34,7 +34,7 @@ apache有先天不支持多核心處理負載雞肋的缺點，建議使用nginx
 当时的最初的想法我们是一个展示类的网站,更多的是对静态文件的处理,加上经费也不多使用Nginx更加的轻量级。所以选用了Nginx
 
 ### 问题的原因 ###
-　　ThinkPHP支持通过PATHINFO和URL rewrite的方式来提供友好的URL，只需要在配置文件中设置 'URL_MODEL' => 2 即可。在Apache下只需要开启mod_rewrite模块就可以正常访问了，但是Nginx中默认是不支持PATHINFO的，所以nginx默认情况下是不支持thinkphp的。不过我们可以通过修改nginx的配置文件来让其支持thinkphp。
+　　ThinkPHP支持通过PATHINFO和URL rewrite的方式来提供友好的URL，只需要在配置文件中设置 'URL_MODEL' => 2 即可。在Apache下只需要开启mod_rewrite模块就可以正常访问了，但是Nginx中默认是不支持PATHINFO的，所以nginx默认情况下是不支持php的。不过我们可以通过修改nginx的配置文件来让其支持php。
 
 ### 问题的解决 ###
 #### 服务器的基础部署 ####
@@ -116,7 +116,7 @@ sudo service nginx restart
 ```
 　5.启动fastcgi php
 ```
-spown-fcgi -a 127.0.0.1 -p 9000 -C 10 -u www-data -f /usr/bin/php-cgi
+spawn-fcgi -a 127.0.0.1 -p 9000 -C 10 -u www-data -f /usr/bin/php-cgi
 #可以在/etc/rc.local中加入该命令使其开机自启动,以防忘记而出现错误
 ```
 >注意:
