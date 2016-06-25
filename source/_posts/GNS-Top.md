@@ -575,3 +575,4 @@ net 172.16.7.0 0.0.0.255 area 0
 default-information originate
 exit
 ```
+　　因为在Zone based Firewall与IPsec VPN的兼容上还有当初vrrp出现双master不知道是bug的时候话费了太多的时间，导致还有些许功能只是粗略的使用并没有太过完善。
