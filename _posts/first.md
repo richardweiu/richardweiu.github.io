@@ -96,11 +96,7 @@ cd Blogs
 #用hexo的命令初始化环境
 hexo init
 npm install (#在自己的家目录或者找个一个顺眼的地方
-mkdir Blogs
-cd Blogs
-#用hexo的命令初始化环境
-hexo init
-npm install 
+
 ＃若是之前你使用的sudo安装的，那么这里也必须得用sudo,否则会报错你没有权限，当然你用sudo来安装的话,注意你的所有的权限以及归属组属于root的
 ```
 看这就是初始化之后多的东西了
