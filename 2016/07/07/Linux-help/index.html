@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://dn-simplecloud.qbox.me/1135081467870301890-wm">
 <meta property="og:image" content="https://dn-simplecloud.qbox.me/1135081467871419660-wm">
 <meta property="og:image" content="https://dn-simplecloud.qbox.me/1135081467871829217-wm">
-<meta property="og:updated_time" content="2017-02-05T12:29:10.418Z">
+<meta property="og:updated_time" content="2017-05-01T09:04:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux_help">
 <meta name="twitter:description" content="前言　今天写了一门算是课程的文章，既然回顾了一下 Linux 中的帮助命令，也就一起转移上来吧。  内建命令与外部命令什么是内建命令，什么是外部命令呢？这和帮助命令又有什么关系呢？ 因为有一些查看帮助的工具在内建命令与外建命令上是有区别对待的。  内建命令实际上是 shell 程序的一部分，其中包含的是一些比较简单的 Linux 系统命令，这些命令是写在bash源码的builtins里面的，并由">
@@ -375,7 +375,7 @@
 <h4 id="man-命令"><a href="#man-命令" class="headerlink" title="man 命令"></a>man 命令</h4><p>你可以尝试下这个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man ls</div></pre></td></tr></table></figure></p>
 <p><img src="https://dn-simplecloud.qbox.me/1135081467871829217-wm" alt="实验楼"><br>得到的内容是不是比用 help 更多更详细，而且man没有种族歧视(没有内建与外部命令的区分)，因为 man 工具是显示系统手册页中的内容，也就是一本电子版的字典，这些内容大多数都是对命令的解释信息，还有一些相关的描述。通过查看系统文档中的 man 页可以得到程序的更多相关信息和 Linux 的更多特性。</p>
 <p>是不是好用许多，当然也不代表 help 就没有存在的必要，当你非常紧急只是忘记改用那个参数什么的时候，help 这种显示简单扼要的信息就特别使用，若是不太紧急的时候就可以用 man 这种详细描述的查询方式</p>
-<p>在尝试上面这个命令是我们会发现最左上角显示“LS（1）”，在这里，“LS”表示手册名称，而“（1）”表示该手册位于第一章节。这个章节又是什么呢？在 man 手册中一共有这么几个章节<br>参数 | 说明<br>—–|—–<br><code>1</code> | Standard commands （标准命令）<br><code>2</code> | System calls （系统调用）<br><code>3</code> | Library functions （库函数）<br><code>4</code> | Special devices （设备说明）<br><code>5</code> | File formats （文件格式）<br><code>6</code> | Games and toys （游戏和娱乐）<br><code>7</code> | Miscellaneous （杂项）<br><code>8</code> | Administrative Commands （管理员命令）<br><code>9</code> | 其他（Linux特定的）， 用来存放内核例行程序的文档。</p>
+<p>在尝试上面这个命令是我们会发现最左上角显示“LS（1）”，在这里，“LS”表示手册名称，而“（1）”表示该手册位于第一章节。这个章节又是什么呢？在 man 手册中一共有这么几个章节<br>|参数 | 说明<br>|—–|—–<br>|1 | Standard commands （标准命令）|<br>|2 | System calls （系统调用）|<br>|3 | Library functions （库函数）|<br>|4 | Special devices （设备说明）|<br>|5 | File formats （文件格式）|<br>|6 | Games and toys （游戏和娱乐）|<br>|7 | Miscellaneous （杂项）|<br>|8 | Administrative Commands （管理员命令）|<br>|9 | 其他（Linux特定的）， 用来存放内核例行程序的文档。|</p>
 <p>打开手册之后我们可以通过 pgup 与 pgdn 或者上下键来上下翻看，可以按 q 退出当前页面</p>
 <h4 id="info-命令"><a href="#info-命令" class="headerlink" title="info 命令"></a>info 命令</h4><p>要是你觉得man显示的信息都还不够，满足不了你的需求，那只好放大招了，试试这个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#该命令与help一样，zsh没有，bash有。在本地尝试</div><div class="line">info ls</div></pre></td></tr></table></figure></p>
 <p><img src="" alt="Info_for_ls"><br>得到的信息是不是比 man 还要多了，info 来自自由软件基金会的 GNU 项目，是 GNU 的超文本帮助系统，能够更完整的显示出 GNU 信息。所以得到的信息当然更多拉</p>
