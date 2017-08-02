@@ -1,8 +1,8 @@
 ---
-title: Nginx遇Thinkphp的水土不服
+title: Nginx 遇 Thinkphp 的水土不服
 date: 2016-06-09 12:20:35
-tags: ["Nginx","Thinkphp"]
-categories: "运维"
+tags: " Nginx "
+categories: " 运维 "
 ---
 
 >** 前言 **
