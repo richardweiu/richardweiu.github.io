@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=" ssh ," />
+  <meta name="keywords" content=" pptp ," />
 
 
 
@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
-<meta name="keywords" content=" ssh ">
+<meta name="description" content="前言 　工作一年了一直没有写博客的习惯，一共有两个原因：  感觉写博客太花时间的，因为每次都要查很多资料，准备的很充分，想写的很详细； 偷懒一两次之后需要总结的内容就越堆越多，后来写总想补之前的，但是太多了就放弃了； 太懒了。　今天又开始写博客是因为被同事问到一个曾经遇到过的问题，但是忘记怎么解决了，查资料又半天没有查到，所以又决定开始写。无论大、小问题，简单记录即可   PPTP">
+<meta name="keywords" content=" pptp ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH僵死">
-<meta property="og:url" content="http://richardweiu.github.io/2016/07/05/ssh-disconnect/index.html">
+<meta property="og:title" content="pptp 启动失败">
+<meta property="og:url" content="http://richardweiu.github.io/2017/08/02/pptp-启动失败/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
-<meta property="og:updated_time" content="2017-08-02T10:24:57.000Z">
+<meta property="og:description" content="前言 　工作一年了一直没有写博客的习惯，一共有两个原因：  感觉写博客太花时间的，因为每次都要查很多资料，准备的很充分，想写的很详细； 偷懒一两次之后需要总结的内容就越堆越多，后来写总想补之前的，但是太多了就放弃了； 太懒了。　今天又开始写博客是因为被同事问到一个曾经遇到过的问题，但是忘记怎么解决了，查资料又半天没有查到，所以又决定开始写。无论大、小问题，简单记录即可   PPTP">
+<meta property="og:updated_time" content="2017-08-02T13:52:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH僵死">
-<meta name="twitter:description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
+<meta name="twitter:title" content="pptp 启动失败">
+<meta name="twitter:description" content="前言 　工作一年了一直没有写博客的习惯，一共有两个原因：  感觉写博客太花时间的，因为每次都要查很多资料，准备的很充分，想写的很详细； 偷懒一两次之后需要总结的内容就越堆越多，后来写总想补之前的，但是太多了就放弃了； 太懒了。　今天又开始写博客是因为被同事问到一个曾经遇到过的问题，但是忘记怎么解决了，查资料又半天没有查到，所以又决定开始写。无论大、小问题，简单记录即可   PPTP">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/07/05/ssh-disconnect/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/08/02/pptp-启动失败/"/>
 
 
 
 
 
-  <title> SSH僵死 | Richardwei Blog </title>
+  <title> pptp 启动失败 | Richardwei Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/07/05/ssh-disconnect/">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/08/02/pptp-启动失败/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
@@ -279,7 +279,7 @@
             
             
               
-                SSH僵死
+                pptp 启动失败
               
             
           </h1>
@@ -292,8 +292,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-05T17:56:05+08:00">
-                2016-07-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-02T21:26:41+08:00">
+                2017-08-02
               </time>
             
 
@@ -311,8 +311,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name"> Ubuntu </span>
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name"> 运维 </span>
                   </a>
                 </span>
 
@@ -326,8 +326,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/07/05/ssh-disconnect/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/05/ssh-disconnect/" itemprop="commentCount"></span>
+                <a href="/2017/08/02/pptp-启动失败/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/02/pptp-启动失败/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -354,12 +354,31 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题</p>
+<p><strong> 前言 </strong><br>　工作一年了一直没有写博客的习惯，一共有两个原因：</p>
+<ul>
+<li>感觉写博客太花时间的，因为每次都要查很多资料，准备的很充分，想写的很详细；</li>
+<li>偷懒一两次之后需要总结的内容就越堆越多，后来写总想补之前的，但是太多了就放弃了；</li>
+<li>太懒了。<br>　今天又开始写博客是因为被同事问到一个曾经遇到过的问题，但是忘记怎么解决了，查资料又半天没有查到，所以又决定开始写。无论大、小问题，简单记录即可</li>
+</ul>
 </blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>　再次遇到这个问题：<br> 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。</p>
-<p>　这个问题只在ubuntu14.04上发生过，看到过。因为使用Mac的terminal的时候并没有这个情况发生，就算你出去玩一天回来它也不会僵死</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>　查了很多资料都是说的ssh超时，自动断开连接。应该去修改配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div><div class="line">修改：</div><div class="line">ClientAliveInterval 0--&gt;60</div><div class="line">#意思是每隔60s也就是一分钟告知server我还在连接</div><div class="line">#这样也就不会自动断开了</div></pre></td></tr></table></figure></p>
-<p>　但是并没有什么用，而且并不能解决我当前的尴尬的局面，也就是僵死在那里都退出不了，更别说去修改配置了。<br>　真正的解决方法就是敲回车(Enter)+~+.<br>　这样就可以强制退出那个状态的了。</p>
+<h2 id="PPTP-问题"><a href="#PPTP-问题" class="headerlink" title="PPTP 问题"></a>PPTP 问题</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>PPTP（Point to Point Tunneling Protocol），即点对点隧道协议。该协议是在PPP协议的基础上开发的一种新的增强型安全协议，支持多协议虚拟专用网（VPN），可以通过密码验证协议（PAP）、可扩展认证协议（EAP）等方法增强安全性。可以使远程用户通过拨入 ISP、通过直接连接 Internet 或其他网络安全地访问企业网。（此段来自<a href="https://baike.baidu.com/item/PPTP" target="_blank" rel="external">百度百科</a>）</p>
+<h3 id="启动出错"><a href="#启动出错" class="headerlink" title="启动出错"></a>启动出错</h3><p>之前有位同事准备写一个关于搭建虚拟专用网的教程，本来打算使用 pptp 协议来做演示，哪知在 ubuntu 中启动时遇到这样的问题：</p>
+<p>使用这样的命令启动 pptp 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service pptpd start</div></pre></td></tr></table></figure>
+<p>启动完之后自以为启动成功，便继续操作，哪知后面的操作失败，返回来用 <code>service</code> 命令检查服务的状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service pptpd status</div></pre></td></tr></table></figure>
+<p>却得到这样的返回： <code>*/usr/sbin/pptpd is not running</code></p>
+<p>原来这是打包的时候 pptp 的启动脚本写漏了一个参数导致的（<a href="https://bugs.launchpad.net/ubuntu/+source/pptpd/+bug/1296835" target="_blank" rel="external">launchpad 说明页</a>）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">The "status" target in /etc/init.d/pptpd doesn't work, because the call to status_of_proc lacks a "-p" before "$PIDFILE". </div><div class="line"><span class="meta"></span></div><div class="line"># /etc/init.d/pptpd start</div><div class="line"> * Starting PoPToP Point to Point Tunneling Server pptpd [ OK ]</div><div class="line"><span class="meta">#</span> ps aux | grep pptpd</div><div class="line">root 16211 0.0 0.0 10684 680 ? Ss 17:51 0:00 /usr/sbin/pptpd</div><div class="line">root 16305 0.0 0.0 18236 904 pts/0 S+ 17:51 0:00 grep --color=auto pptpd</div><div class="line"><span class="meta">#</span> /etc/init.d/pptpd status</div><div class="line"> * /usr/sbin/pptpd is not running</div><div class="line"></div><div class="line">This happens because status_of_proc takes $PIDFILE as $DAEMON, and tries to use the file "/var/run/pptpd.pid.pid" as source for the PID of the program. Adding "-p" solves the problem.</div></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>1.通过 <code>vim</code> 打开 <code>/etc/init.d/pptpd</code> 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/init.d/pptpd</div></pre></td></tr></table></figure>
+<p>2.然后查找这行代码 <code>status_of_proc &quot;$PIDFILE&quot;</code>,并添加 <code>-p</code> 参数，修改成这样：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">status_of_proc -p "$PIDFILE" "$DAEMON""$NAME" &amp;&amp; exit 0 || exit $?</div></pre></td></tr></table></figure>
+<p>3.保存文件并启动 pptpd</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://baike.baidu.com/item/PPTP" target="_blank" rel="external">PPTP 简介</a></li>
+<li><a href="http://blog.csdn.net/zhaoyu7777777/article/details/50724280" target="_blank" rel="external">zhaoyu7777777 博客</a></li>
+</ul>
 
       
     </div>
@@ -383,7 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssh/" rel="tag">#  ssh </a>
+            <a href="/tags/pptp/" rel="tag">#  pptp </a>
           
         </div>
       
@@ -392,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/25/GNS-Top/" rel="next" title="Graduation Design Topology by GNS3">
-                <i class="fa fa-chevron-left"></i> Graduation Design Topology by GNS3
+              <a href="/2017/01/25/Linux-job-后台运行/" rel="next" title="Linux job 后台运行">
+                <i class="fa fa-chevron-left"></i> Linux job 后台运行
               </a>
             
           </div>
@@ -402,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/07/Linux-help/" rel="prev" title="Linux_help">
-                Linux_help <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/02/PHP-依赖管理/" rel="prev" title="PHP 依赖管理">
+                PHP 依赖管理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PPTP-问题"><span class="nav-number">1.</span> <span class="nav-text">PPTP 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动出错"><span class="nav-number">1.2.</span> <span class="nav-text">启动出错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">1.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -682,9 +701,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'richardweiu';
-      var disqus_identifier = '2016/07/05/ssh-disconnect/';
+      var disqus_identifier = '2017/08/02/pptp-启动失败/';
 
-      var disqus_title = "SSH僵死";
+      var disqus_title = "pptp 启动失败";
 
 
       function run_disqus_script(disqus_script) {

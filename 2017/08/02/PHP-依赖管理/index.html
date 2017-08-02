@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=" ssh ," />
+  <meta name="keywords" content=" PHP ," />
 
 
 
@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
-<meta name="keywords" content=" ssh ">
+<meta name="description" content="前言 　有个同事在写关于 PHP 相关的课程，用到了 Composer 这个工具，需要将其更新至镜像中，便记录了一下这个工具的一些介绍与安装。此文来自于 Composer 中文网，若是方法失效，查看官网。  Composer 的介绍Composer 是 PHP 用来管理依赖（dependency）关系的工具。 你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer">
+<meta name="keywords" content=" PHP ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH僵死">
-<meta property="og:url" content="http://richardweiu.github.io/2016/07/05/ssh-disconnect/index.html">
+<meta property="og:title" content="PHP 依赖管理">
+<meta property="og:url" content="http://richardweiu.github.io/2017/08/02/PHP-依赖管理/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
-<meta property="og:updated_time" content="2017-08-02T10:24:57.000Z">
+<meta property="og:description" content="前言 　有个同事在写关于 PHP 相关的课程，用到了 Composer 这个工具，需要将其更新至镜像中，便记录了一下这个工具的一些介绍与安装。此文来自于 Composer 中文网，若是方法失效，查看官网。  Composer 的介绍Composer 是 PHP 用来管理依赖（dependency）关系的工具。 你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer">
+<meta property="og:updated_time" content="2017-08-02T14:14:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH僵死">
-<meta name="twitter:description" content="前言 　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题  问题　再次遇到这个问题： 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。 　这个问题只在ubuntu14.04上发生过">
+<meta name="twitter:title" content="PHP 依赖管理">
+<meta name="twitter:description" content="前言 　有个同事在写关于 PHP 相关的课程，用到了 Composer 这个工具，需要将其更新至镜像中，便记录了一下这个工具的一些介绍与安装。此文来自于 Composer 中文网，若是方法失效，查看官网。  Composer 的介绍Composer 是 PHP 用来管理依赖（dependency）关系的工具。 你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/07/05/ssh-disconnect/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/08/02/PHP-依赖管理/"/>
 
 
 
 
 
-  <title> SSH僵死 | Richardwei Blog </title>
+  <title> PHP 依赖管理 | Richardwei Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/07/05/ssh-disconnect/">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/08/02/PHP-依赖管理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
@@ -279,7 +279,7 @@
             
             
               
-                SSH僵死
+                PHP 依赖管理
               
             
           </h1>
@@ -292,8 +292,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-05T17:56:05+08:00">
-                2016-07-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-02T21:56:07+08:00">
+                2017-08-02
               </time>
             
 
@@ -311,8 +311,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name"> Ubuntu </span>
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name"> 运维 </span>
                   </a>
                 </span>
 
@@ -326,8 +326,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/07/05/ssh-disconnect/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/05/ssh-disconnect/" itemprop="commentCount"></span>
+                <a href="/2017/08/02/PHP-依赖管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/02/PHP-依赖管理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -354,12 +354,42 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　　再次遇到同样的问题,幸好当年有留下书签，不然确实没有找到该怎么解决这个问题</p>
+<p><strong> 前言 </strong><br>　有个同事在写关于 PHP 相关的课程，用到了 Composer 这个工具，需要将其更新至镜像中，便记录了一下这个工具的一些介绍与安装。此文来自于 <a href="www.phpcomposer.com/">Composer 中文网</a>，若是方法失效，查看官网。</p>
 </blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>　再次遇到这个问题：<br> 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。</p>
-<p>　这个问题只在ubuntu14.04上发生过，看到过。因为使用Mac的terminal的时候并没有这个情况发生，就算你出去玩一天回来它也不会僵死</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>　查了很多资料都是说的ssh超时，自动断开连接。应该去修改配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div><div class="line">修改：</div><div class="line">ClientAliveInterval 0--&gt;60</div><div class="line">#意思是每隔60s也就是一分钟告知server我还在连接</div><div class="line">#这样也就不会自动断开了</div></pre></td></tr></table></figure></p>
-<p>　但是并没有什么用，而且并不能解决我当前的尴尬的局面，也就是僵死在那里都退出不了，更别说去修改配置了。<br>　真正的解决方法就是敲回车(Enter)+~+.<br>　这样就可以强制退出那个状态的了。</p>
+<h2 id="Composer-的介绍"><a href="#Composer-的介绍" class="headerlink" title="Composer 的介绍"></a>Composer 的介绍</h2><p>Composer 是 PHP 用来管理依赖（dependency）关系的工具。 你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。</p>
+<p>Composer 不是一个包管理器。虽然它涉及 “packages” 和 “libraries”，但它在每个项目的基础上进行管理，在你项目的某个目录中（例如 vendor）进行安装。默认情况下它不会在全局安装任何东西。因此，这仅仅是一个依赖管理。</p>
+<p>这种想法并不新鲜，Composer 受到了 node’s npm 和 ruby’s bundler 的强烈启发。而当时 PHP 下并没有类似的工具。</p>
+<p>Composer 将这样为你解决问题：</p>
+<p>a) 你有一个项目依赖于若干个库。</p>
+<p>b) 其中一些库依赖于其他库。</p>
+<p>c) 你声明你所依赖的东西。</p>
+<p>d) Composer 会找出哪个版本的包需要安装，并安装它们（将它们下载到你的项目中）。</p>
+<h2 id="Composer-的安装"><a href="#Composer-的安装" class="headerlink" title="Composer 的安装"></a>Composer 的安装</h2><p>Composer 有两种安装方式：</p>
+<ul>
+<li>局部安装</li>
+<li>全局安装</li>
+</ul>
+<h3 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h3><p>要真正获取 Composer，我们需要做两件事。首先安装 Composer （同样的，这意味着它将下载到你的项目中）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sS https://getcomposer.org/installer | php</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意： 如果上述方法由于某些原因失败了，你还可以通过 php &gt;下载安装器：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -r <span class="string">"readfile('https://getcomposer.org/installer');"</span> | php</div></pre></td></tr></table></figure>
+<p>这将检查一些 PHP 的设置，然后下载 composer.phar(Composer 的二进制文件) 到你的工作目录中。这是一个 PHAR 包（PHP 的归档），PHP 的归档格式可以帮助用户在命令行中执行一些操作。</p>
+<p>你可以通过 –install-dir 选项指定 Composer 的安装目录（它可以是一个绝对或相对路径）：</p>
+<p>curl -sS <a href="https://getcomposer.org/installer" target="_blank" rel="external">https://getcomposer.org/installer</a> | php – –install-dir=bin</p>
+<h3 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h3><p>你可以将此文件放在任何地方。如果你把它放在系统的 PATH 目录中，你就能在全局访问它。 在类Unix系统中，你甚至可以在使用时不加 php 前缀。</p>
+<p>你可以执行这些命令让 composer 在你的系统中进行全局调用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -sS https://getcomposer.org/installer | php</div><div class="line"></div><div class="line">mv composer.phar /usr/local/bin/composer</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意： 如果上诉命令因为权限执行失败， 请使用 <code>sudo</code> 再次尝试运行 mv 那行命令。</p>
+</blockquote>
+<p>现在只需要运行 composer 命令就可以使用 Composer 而不需要输入 php composer.phar。</p>
+<h3 id="全局安装-on-OSX-via-homebrew"><a href="#全局安装-on-OSX-via-homebrew" class="headerlink" title="全局安装 (on OSX via homebrew)"></a>全局安装 (on OSX via homebrew)</h3><p>Composer 是 homebrew-php 项目的一部分。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew update</div><div class="line">brew tap josegonzalez/homebrew-php</div><div class="line">brew tap homebrew/versions</div><div class="line">brew install php55-intl</div><div class="line">brew install josegonzalez/php/composer</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="www.phpcomposer.com/">Composer 中文网</a></li>
+</ul>
 
       
     </div>
@@ -383,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssh/" rel="tag">#  ssh </a>
+            <a href="/tags/PHP/" rel="tag">#  PHP </a>
           
         </div>
       
@@ -392,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/25/GNS-Top/" rel="next" title="Graduation Design Topology by GNS3">
-                <i class="fa fa-chevron-left"></i> Graduation Design Topology by GNS3
+              <a href="/2017/08/02/pptp-启动失败/" rel="next" title="pptp 启动失败">
+                <i class="fa fa-chevron-left"></i> pptp 启动失败
               </a>
             
           </div>
@@ -402,8 +432,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/07/Linux-help/" rel="prev" title="Linux_help">
-                Linux_help <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/02/ppa-的添加/" rel="prev" title="PPA 的介绍">
+                PPA 的介绍 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Composer-的介绍"><span class="nav-number">1.</span> <span class="nav-text">Composer 的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composer-的安装"><span class="nav-number">2.</span> <span class="nav-text">Composer 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部安装"><span class="nav-number">2.1.</span> <span class="nav-text">局部安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装"><span class="nav-number">2.2.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装-on-OSX-via-homebrew"><span class="nav-number">2.3.</span> <span class="nav-text">全局安装 (on OSX via homebrew)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -682,9 +712,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'richardweiu';
-      var disqus_identifier = '2016/07/05/ssh-disconnect/';
+      var disqus_identifier = '2017/08/02/PHP-依赖管理/';
 
-      var disqus_title = "SSH僵死";
+      var disqus_title = "PHP 依赖管理";
 
 
       function run_disqus_script(disqus_script) {
