@@ -91,7 +91,7 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/01/25/Linux-job-后台运行/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言　有时候会将一些工作时间较长的脚本或者小程序放到后台运行，这个时候我们就会用到 jobs，但是放到后台的 jobs 只活跃于当前的 shell 中，所示当前的 shell 关闭掉，放在后台的 jobs 也会被结束掉。  Jobs 后台运行我们经常会碰到这样的一种场景，用 ssh 远程登陆服务器，运行了一个非常耗时的任务或者脚本或者小程序等等，结果当前的网络出问题了，或者断掉了，当我们再次登陆">
-<meta property="og:updated_time" content="2017-02-05T13:24:30.000Z">
+<meta property="og:updated_time" content="2017-08-02T10:24:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux job 后台运行">
 <meta name="twitter:description" content="前言　有时候会将一些工作时间较长的脚本或者小程序放到后台运行，这个时候我们就会用到 jobs，但是放到后台的 jobs 只活跃于当前的 shell 中，所示当前的 shell 关闭掉，放在后台的 jobs 也会被结束掉。  Jobs 后台运行我们经常会碰到这样的一种场景，用 ssh 远程登陆服务器，运行了一个非常耗时的任务或者脚本或者小程序等等，结果当前的网络出问题了，或者断掉了，当我们再次登陆">
@@ -444,6 +444,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/19/Docker-跨主机联网方案/" rel="prev" title="Docker 跨主机联网方案">
+                Docker 跨主机联网方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -518,7 +522,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -535,7 +539,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -585,7 +589,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/"> ssh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS/">GNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinkphp/">Thinkphp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/">ntopng</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/">sentry</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/"> ssh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinkphp/">Thinkphp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/">ntopng</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/">sentry</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
