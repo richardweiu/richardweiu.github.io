@@ -83,4 +83,4 @@ theme: next
 deploy: 
   type: git
   branch: master
-  repo: git@github.com:richardweiu/richardweiu.github.io.git
+  repo: git@richardweiu:richardweiu/richardweiu.github.io.git
