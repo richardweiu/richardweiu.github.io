@@ -91,7 +91,7 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/08/02/ppa-的添加/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　PPA 的使用于添加可以说是基础到不能再基础的问题了，这是大学毕业没多久遇到的一个问题。  PPA 简介PPA 是 Personal Package Archives 的缩写，也就是个人软件包集。 有很多软件因为种种原因，不能进入官方的 Ubuntu 软件仓库。 为了方便 Ubuntu 用户使用，launchpad.net（由 Ubuntu 母公司 Canonical 有限公司所架">
-<meta property="og:updated_time" content="2017-08-02T15:28:53.000Z">
+<meta property="og:updated_time" content="2017-08-02T15:31:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PPA 的介绍">
 <meta name="twitter:description" content="前言 　PPA 的使用于添加可以说是基础到不能再基础的问题了，这是大学毕业没多久遇到的一个问题。  PPA 简介PPA 是 Personal Package Archives 的缩写，也就是个人软件包集。 有很多软件因为种种原因，不能进入官方的 Ubuntu 软件仓库。 为了方便 Ubuntu 用户使用，launchpad.net（由 Ubuntu 母公司 Canonical 有限公司所架">
@@ -366,7 +366,7 @@
 <li>用 <code>add-apt-repository</code> 命令</li>
 </ul>
 <h3 id="命令添加"><a href="#命令添加" class="headerlink" title="命令添加"></a>命令添加</h3><p>一般系统是没有自带 add-apt-repository 命令，需要自己安装。</p>
-<p>有三个安装包可以通过这个命令，三个安装针对不同的 ubuntu 版本与 python 的版本，具体 ubuntu 的版本以哪个版本作为分界线众说纷云有说 11.04 的，有说 12.04，我的方法便是多尝试，都安装试试：</p>
+<p>有三个安装包可以添加这个命令，三个安装针对不同的 ubuntu 版本与 python 的版本，具体 ubuntu 的版本以哪个版本作为分界线众说纷云有说 11.04 的，有说 12.04，我的方法便是多尝试，都安装试试：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>针对较早版本的</div><div class="line">sudo apt-get install python-software-properties</div><div class="line"><span class="meta"></span></div><div class="line">#针对较新版本的</div><div class="line">sudo apt-get install software-properties-common</div><div class="line"><span class="meta"></span></div><div class="line">#针对 python3 的</div><div class="line">sudo apt-get install python3-software-properties</div></pre></td></tr></table></figure>
 <p>安装完成之后我们就拥有 <code>add-apt-repository</code> 这个命令了。这个命令的作用便是为我们自动添加源的地址文件，并自动为我们导入公钥。</p>
 <p>例如我们为了获取到最新版的 python2.7 的版本，输入这样的命令：</p>
