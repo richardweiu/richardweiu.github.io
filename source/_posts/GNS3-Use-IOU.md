@@ -1,7 +1,7 @@
 ---
 title: GNS3 Use IOU
 date: 2016-06-25 12:03:01
-tags: ["GNS","Cisco"]
+tags: ["GNS3","Cisco"]
 categories: "Cisco"
 ---
 
