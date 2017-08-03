@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=" Ubuntu ," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言 　原来刚上班的时候每天都会写 everyday note，这是在 2016 年 8 月 23 日遇到的一个事情，用的监控是 nagios，nagios 在每台被监控的会装 nrpe 插件用于接受 server 端的请求与发送被监控机器的信息，为了方便 nrpe 在执行一些特殊脚本的时候 sudo 不用输入密码，便去修改了 sudoers 文件，哪知改出问题来。  sudo 简介首先简单介">
+<meta name="keywords" content=" Ubuntu ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sudo 无法使用">
+<meta property="og:url" content="http://richardweiu.github.io/2017/08/03/sudo-无法使用/index.html">
+<meta property="og:site_name" content="Richardwei Blog">
+<meta property="og:description" content="前言 　原来刚上班的时候每天都会写 everyday note，这是在 2016 年 8 月 23 日遇到的一个事情，用的监控是 nagios，nagios 在每台被监控的会装 nrpe 插件用于接受 server 端的请求与发送被监控机器的信息，为了方便 nrpe 在执行一些特殊脚本的时候 sudo 不用输入密码，便去修改了 sudoers 文件，哪知改出问题来。  sudo 简介首先简单介">
+<meta property="og:updated_time" content="2017-08-03T05:29:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sudo 无法使用">
+<meta name="twitter:description" content="前言 　原来刚上班的时候每天都会写 everyday note，这是在 2016 年 8 月 23 日遇到的一个事情，用的监控是 nagios，nagios 在每台被监控的会装 nrpe 插件用于接受 server 端的请求与发送被监控机器的信息，为了方便 nrpe 在执行一些特殊脚本的时候 sudo 不用输入密码，便去修改了 sudoers 文件，哪知改出问题来。  sudo 简介首先简单介">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://richardweiu.github.io/2017/08/03/sudo-无法使用/"/>
+
+
+
+
+
+  <title> sudo 无法使用 | Richardwei Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div id="particles-js" style="position: fixed; width: 100%; height:100%">
+		<canvas width="1354" height="113" class="particles-js-canvas-el" style="width: 100%; height: 100%;">
+		</canvas>
+  </div>
+  
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+
+	<div class="headband"></div>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Richardwei Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>	
+	
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/08/03/sudo-无法使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Richardwei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Richardwei Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                sudo 无法使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T08:58:26+08:00">
+                2017-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name"> 运维 </span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/08/03/sudo-无法使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/03/sudo-无法使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong> 前言 </strong><br>　原来刚上班的时候每天都会写 everyday note，这是在 2016 年 8 月 23 日遇到的一个事情，用的监控是 nagios，nagios 在每台被监控的会装 nrpe 插件用于接受 server 端的请求与发送被监控机器的信息，为了方便 nrpe 在执行一些特殊脚本的时候 sudo 不用输入密码，便去修改了 sudoers 文件，哪知改出问题来。</p>
+</blockquote>
+<h2 id="sudo-简介"><a href="#sudo-简介" class="headerlink" title="sudo 简介"></a>sudo 简介</h2><p>首先简单介绍一下 <code>sudo</code>:</p>
+<p>在 <code>sudo</code> 于 1980 年前后被写出之前，一般用户管理系统的方式是利用 <code>su</code> 切换为超级用户。但是使用 <code>su</code> 的缺点之一在于必须要先告知超级用户的密码。</p>
+<p>sudo 使一般用户不需要知道超级用户的密码即可获得权限。首先超级用户将普通用户的名字、可以执行的特定命令、按照哪种用户或用户组的身份执行等信息，登记在特殊的文件中（通常是/etc/sudoers），即完成对该用户的授权（此时该用户称为“sudoer”）；在一般用户需要获取特殊权限时，其可在命令前加上“sudo”，此时 sudo 将会询问该用户自己的密码（以确认终端机前的是该用户本人），回答后系统即会将该命令的进程以超级用户的权限运行。之后的一段时间内（默认为5分钟，可在/etc/sudoers自定义），使用 sudo 不需要再次输入密码。<br>由于不需要超级用户的密码，部分 Unix 系统甚至利用 sudo 使一般用户取代超级用户作为管理账号，例如 Ubuntu、Mac OS X 等。<br>(此段来自于<a href="https://zh.wikipedia.org/wiki/Sudo" target="_blank" rel="external">维基百科</a>)</p>
+<h2 id="sudo-权限"><a href="#sudo-权限" class="headerlink" title="sudo 权限"></a>sudo 权限</h2><p>拥有了 sudo 权限便可以使用 sudo 来执行 root 才可以执行的相关命令，如何让用户拥有 sudo 的权限？</p>
+<p>通过 useradd 添加的用户,并不具备 sudo 权限。在 ubuntu/centos 等系统下,需要将用户加入 admin 组, 才能使其能够输入自己的账号密码来使用 sudo。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usermod -a -G admin [用户]</div></pre></td></tr></table></figure>
+<p>当然这里说明一下，在 ubuntu 的 11.10 之前的版本，使用 sudo 工具的管理员访问权限需要加入 <code>admin group</code>，而在 12.04 的版本中加入了 sudo group，此时便是通过加入 sudo 组来授予相关权限，但是为了兼容并没有废弃 admin 组，所以存在两个权限类似的组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Up until Ubuntu 11.10, administrator access using the sudo tool was granted via the &quot;admin&quot; Unix group. In Ubuntu 12.04, administrator access will be granted via the &quot;sudo&quot; group. This makes Ubuntu more consistent with the upstream implementation and Debian. For compatibility purposes, the &quot;admin&quot; group will continue to provide sudo/administrator access in 12.04.</div></pre></td></tr></table></figure>
+<p>(此段来自于 <a href="https://wiki.ubuntu.com/PrecisePangolin/ReleaseNotes/UbuntuDesktop#PrecisePangolin.2BAC8-ReleaseNotes.2BAC8-CommonInfrastructure.Common_Infrastructure" target="_blank" rel="external">Ubuntu wiki</a>)</p>
+<p>Debian 只拥有 sudo 组，默认并没有创建 wheel 组，wheel 组的概念继承自 UNIX。</p>
+<p>Fedora 与 centos 这样的红帽子系列一般都是用的 wheel 组，来添加 sudo 权限（最开始是添加 su 权限的）。</p>
+<p>这里扩展一下，在 Mac 中我们还可以看到 staff 组，staff 组所有普通用户所在的组</p>
+<p>还有一个就是 admin 与 wheel 组，一般情况下管理员所在的组就是 admin 组，wheel 组诗让其他用户有 sudo、su 的组（好像是这么理解的）</p>
+<h2 id="sudo-配置"><a href="#sudo-配置" class="headerlink" title="sudo 配置"></a>sudo 配置</h2><h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><p>一般情况下加入 <code>sudo</code> 组的用户都会做登记。普通用户的名字、可以执行的特定命令、按照哪种用户或用户组的身份执行等信息，登记在特殊的文件中。</p>
+<p>总的配置文件是 <code>/etc/sudoers</code>，一般新添加的其他用户会在 <code>/etc/sudoers.d/</code> 目录中。</p>
+<p>sudoers 这个总的配置文件只能使用 <code>visudo</code> 这个工具来修改，这个工具会锁住 sudoers 文件，保存修改到临时文件，然后检查文件格式，确保正确后才会覆盖 sudoers 文件。必须保证 sudoers 格式正确，否则 sudo 将无法运行。</p>
+<p>你若是用 <code>sudo vim /etc/sudoers</code> 的话会是这样的警告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">W10: Warning: Changing a readonly file</div></pre></td></tr></table></figure>
+<p>默认情况下 visudo 工具用的是 nano 编辑器（我是觉得这个工具难用的要死），官方仓库里的 sudo 编译时开启了 <code>--with-env-editor</code>，会采用环境变量 <code>VISUAL</code> 和 <code>EDITOR</code> 的设置。如果设置了 <code>VISUAL</code> 就不会使用 <code>EDITOR</code>。</p>
+<p>如果要临时使用其他编辑器，在该命令前加上 <code>EDITOR</code> 环境变量即可。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># EDITOR=vim visudo</div></pre></td></tr></table></figure>
+<p>若是像永久修改可以在 sudoers 中添加这样一句话:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults      editor=/usr/bin/vim, !env_editor</div></pre></td></tr></table></figure>
+<p>在 ubuntu 中还可以设置默认的 editor：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update-alternatives --config editor</div></pre></td></tr></table></figure>
+<p>然后选择 vim 即可。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>sudoers 文件的格式一般是这样的：</p>
+<ol>
+<li><p>以 <code>#</code> 开头的行为注释行</p>
+</li>
+<li><p>授权的格式是这样的：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">授权用户/组 主机=[(切换到哪些用户或组)] [是否需要输入密码验证] 命令1,命令2,...</div><div class="line">字段1      字段2 =[(字段3)] [字段4] 字段5</div></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root   ALL=(ALL:ALL) ALL</div><div class="line"><span class="meta">%</span>admin ALL=(ALL) ALL</div><div class="line"><span class="meta">%</span>sudo  ALL=(ALL:ALL) ALL</div></pre></td></tr></table></figure>
+<ul>
+<li>凡是[ ]中的内容, 都能省略; 命令和命令之间用,号分隔;</li>
+<li>字段一：以%号开头的表示”将要授权的组”, 比如例子中的%admin 和 %sudo</li>
+<li>字段二：表示允许登录的主机, ALL 表示所有; 如果该字段不为 ALL,表示授权用户只能在某些机器上登录本服务器来执行 sudo 命令</li>
+<li>字段三：如果省略,表示切换到root用户; 如果为ALL, 表示能够切换到任何用户; 例子中的(ALL:ALL) 是允许任何 (用户:组) 的意思.</li>
+<li>字段四：可取值是NOPASSWD:。表示执行sudo时可以不需要输入密码</li>
+<li>字段五：使用逗号分开一系列命令,这些命令就是授权给用户的操作; ALL表示允许所有操作<br>(此段来自于参考二、四)</li>
+</ul>
+<p>查看用户有哪些权限可以使用 <code>sudo -l</code> 查看，或者 <code>sudo -ll</code>,命令 <code>sudo -lU user</code> 可以查看某个特定用户的设置:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta"> $</span> sudo -l</div><div class="line"></div><div class="line">Matching Defaults entries for simplecloud on docker1:</div><div class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin</div><div class="line"></div><div class="line">User simplecloud may run the following commands on docker1:</div><div class="line">    (ALL : ALL) ALL</div><div class="line"><span class="meta"></span></div><div class="line"> $ sudo -ll</div><div class="line">Matching Defaults entries for user on host:</div><div class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin</div><div class="line"></div><div class="line">User simplecloud may run the following commands on docker1:</div><div class="line"></div><div class="line">Sudoers entry:</div><div class="line">    RunAsUsers: ALL</div><div class="line">    RunAsGroups: ALL</div><div class="line">    Commands:</div><div class="line">	ALL</div></pre></td></tr></table></figure>
+<p>sudoers 编辑的案例，例如之前所提到的 nrpe：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nagios ALL=(root) NOPASSWD: /etc/init.d/nagios-nrpe-server,/sbin/iptables-save,/sbin/restart</div><div class="line">Defaults:nagios !requiretty</div></pre></td></tr></table></figure>
+<p>亦或者是 shiyanlou 上账户的设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shiyanlou ALL=(ALL) NOPASSWD: ALL</div><div class="line">Defaults:shiyanlou !requiretty</div></pre></td></tr></table></figure>
+<h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><p>在上面的案例中我们看到有个 Defaults 的配置项，其作用就是来做一些特定的限制，比如一下案例：</p>
+<h4 id="设置密码过期时间"><a href="#设置密码过期时间" class="headerlink" title="设置密码过期时间"></a>设置密码过期时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults:用户名 timestamp_timeout=20</div></pre></td></tr></table></figure>
+<p>对该用户，sudo 将记录密码 20 分钟，时间值也可以是小数。若是值为 0 则每次都需要询问</p>
+<h4 id="跨终端-sudo"><a href="#跨终端-sudo" class="headerlink" title="跨终端 sudo"></a>跨终端 sudo</h4><p>如果不想每次启动新终端都重新输入密码，在配置文件中禁止 tty_tickets 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults !tty_tickets</div></pre></td></tr></table></figure>
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>当前用户的环境变量不会应用到 sudo 启动的程序，除非使用 <code>-E</code> 选项：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> sudo -E pacman -Syu</div></pre></td></tr></table></figure>
+<p>如果经常需要这样做，可以在 <code>~/.bashrc</code>（或其他shell配置文件）中加入命令别名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias sudo="sudo -E"</div></pre></td></tr></table></figure>
+<p>在 <code>/etc/sudoers</code> 中添加以下内容作用相同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults !env_reset</div></pre></td></tr></table></figure>
+<p>可以把需要传递环境变量的命令设置到env_keep：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults env_keep += &quot;ftp_proxy http_proxy https_proxy no_proxy&quot;</div></pre></td></tr></table></figure>
+<h4 id="传递命令别名"><a href="#传递命令别名" class="headerlink" title="传递命令别名"></a>传递命令别名</h4><p>当前用户的命令别名不会应用到 sudo。如果需要这样，只需在 <code>~/.bashrc</code> 或者 <code>/etc/bash.bashrc</code> 中加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias sudo=&apos;sudo &apos;</div></pre></td></tr></table></figure>
+<p>默认sudo询问用户密码，若想让用户 sudo 使用 root 密码。添加 <code>targetpw</code> 或 <code>rootpw</code> 到配置文件的 <code>Defaults</code> 部分，可以让 sudo 询问 root 密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults targetpw</div></pre></td></tr></table></figure>
+<p>可以限定特定的组使用 root 密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Defaults:%wheel targetpw</div><div class="line">%wheel ALL=(ALL) ALL</div></pre></td></tr></table></figure>
+<h4 id="SSH-TTY-问题"><a href="#SSH-TTY-问题" class="headerlink" title="SSH TTY 问题"></a>SSH TTY 问题</h4><p>远程执行命令时，SSH 默认不会分配 tty。没有 tty，sudo 就无法在获取密码时关闭回显。使用 <code>-tt</code> 选项强制 SSH 分配 tty（使用两次-tt）。<br>另一方面，sudoers 中的 Defaults 选项 requiretty 要求只有拥有 tty 的用户才能使用 sudo。 禁用这个选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults    !requiretty</div></pre></td></tr></table></figure>
+<p>(此段来自参考二)</p>
+<h4 id="日志记录"><a href="#日志记录" class="headerlink" title="日志记录"></a>日志记录</h4><p>通过在 <code>/etc/syslog.conf</code> 文件中使用以下设置，可以使用 syslog 在 <code>/var/adm/messages</code> 中记录通过 sudo 运行的所有命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*.debug   /var/adm/messages</div></pre></td></tr></table></figure>
+<p>但是，我认为 sudo 命令应该记录在一个单独的文件中，这样便于查看已经运行的 sudo 命令。当然，这也有助于监视失败的 sudo 活动。创建 /var/adm/sudo.log 文件，然后在 /etc/sudoers 文件中添加以下条目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Defaults logfile=/var/adm/sudo.log</div><div class="line">Defaults !syslog</div></pre></td></tr></table></figure>
+<p>现在，无论执行成功还是失败，所有 sudo 活动都会记录在 /var/adm/sudo.log 中。</p>
+<p>(此段来自于参考三，还有变量的使用，以及一些使用的经验)</p>
+<h2 id="问题与解决"><a href="#问题与解决" class="headerlink" title="问题与解决"></a>问题与解决</h2><p>年少的我，没有测试机，只好在生产服务器中修改 sudoers 文件，但是在为 nagios 增加免密码命令的时候，大意少写了一个逗号还是路径的 <code>/</code>，导致 sudoers 出错，使得 sudo 命令没有办法使用，使用就报错:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; /etc/sudoers.d/nrpe: syntax error near line 1 &lt;&lt;&lt;</div><div class="line">sudo: parse error in /etc/sudoers.d/nrpe near line 1</div><div class="line">sudo: no valid sudoers sources found, quitting</div><div class="line">sudo: unable to initialize policy plugin</div></pre></td></tr></table></figure>
+<p>但是要修改 sudoers 文件又必须要 sudo 命令，好像陷入了死循环，baidu 出来的结果全部必须重启自己，进入recovery mode，到有root界面，然后进入 root，更改 /etc/sudoers 权限，然后修改。但是我在阿里云上没有办法啊，而且不敢也不能随便重启生产机器，后来找到了这样一个命令 <code>pkexec</code>。</p>
+<p>这是 <code>pkexec</code> 的介绍：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pkexec allows an authorized user to execute PROGRAM as another user. If username is not specified, then the</div><div class="line">program will be executed as the administrative super user, root.</div></pre></td></tr></table></figure>
+<p>通过这个命令我得以再次修改 sudoers 文件，将 sudo 命令恢复。</p>
+<p>当时真是吓到一身汗。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://askubuntu.com/questions/43317/what-is-the-difference-between-the-sudo-and-admin-group" target="_blank" rel="external">sudo 与 admin 区别</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Sudo_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="external">编辑器修改</a>)</li>
+<li><a href="https://www.ibm.com/developerworks/cn/aix/library/au-sudo/index.html" target="_blank" rel="external">IBM sudo 博客</a></li>
+<li><a href="https://segmentfault.com/a/1190000007394449" target="_blank" rel="external">旺酱在路上 sudoers 介绍</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu/" rel="tag">#  Ubuntu </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/02/ppa-的添加/" rel="next" title="PPA 的介绍">
+                <i class="fa fa-chevron-left"></i> PPA 的介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+					
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Richardwei" />
+          <p class="site-author-name" itemprop="name">Richardwei</p>
+          <p class="site-description motion-element" itemprop="description">updata self everyday</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-简介"><span class="nav-number">1.</span> <span class="nav-text">sudo 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-权限"><span class="nav-number">2.</span> <span class="nav-text">sudo 权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-配置"><span class="nav-number">3.</span> <span class="nav-text">sudo 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑器"><span class="nav-number">3.1.</span> <span class="nav-text">编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技巧"><span class="nav-number">3.3.</span> <span class="nav-text">技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置密码过期时间"><span class="nav-number">3.3.1.</span> <span class="nav-text">设置密码过期时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨终端-sudo"><span class="nav-number">3.3.2.</span> <span class="nav-text">跨终端 sudo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量"><span class="nav-number">3.3.3.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传递命令别名"><span class="nav-number">3.3.4.</span> <span class="nav-text">传递命令别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH-TTY-问题"><span class="nav-number">3.3.5.</span> <span class="nav-text">SSH TTY 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志记录"><span class="nav-number">3.3.6.</span> <span class="nav-text">日志记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题与解决"><span class="nav-number">4.</span> <span class="nav-text">问题与解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+        
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <!-- <h3 class="widget-title">Tag Cloud</h3> -->
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/"> ssh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/">ntopng</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/">sentry</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+        
+
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+	  
+
+    </main>
+	
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Richardwei</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+	
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'richardweiu';
+      var disqus_identifier = '2017/08/03/sudo-无法使用/';
+
+      var disqus_title = "sudo 无法使用";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	<script src="/js/src/particles.js"></script>
+	<script src="/js/src/app.js"></script>
+</body>
+  
+</html>
+
