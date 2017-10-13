@@ -358,7 +358,7 @@
 </blockquote>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>　再次遇到这个问题：<br> 　　在本地ubuntu连接AWS的instance的时候，转身去查资料，回过头来发现用ssh连接AWS的instance的终端卡死在那里，无法动弹。你想ctrl+c没有用，敲键盘的所有按键都没有任何的作用，真是叫天天不应，叫地地不灵啊。</p>
 <p>　这个问题只在ubuntu14.04上发生过，看到过。因为使用Mac的terminal的时候并没有这个情况发生，就算你出去玩一天回来它也不会僵死</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>　查了很多资料都是说的ssh超时，自动断开连接。应该去修改配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div><div class="line">修改：</div><div class="line">ClientAliveInterval 0--&gt;60</div><div class="line">#意思是每隔60s也就是一分钟告知server我还在连接</div><div class="line">#这样也就不会自动断开了</div></pre></td></tr></table></figure></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>　查了很多资料都是说的ssh超时，自动断开连接。应该去修改配置，<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div><div class="line">修改：</div><div class="line">ClientAliveInterval 0--&gt;60</div><div class="line"><span class="meta">#</span><span class="bash">意思是每隔60s也就是一分钟告知server我还在连接</span></div><div class="line"><span class="meta">#</span><span class="bash">这样也就不会自动断开了</span></div></pre></td></tr></table></figure></p>
 <p>　但是并没有什么用，而且并不能解决我当前的尴尬的局面，也就是僵死在那里都退出不了，更别说去修改配置了。<br>　真正的解决方法就是敲回车(Enter)+~+.<br>　这样就可以强制退出那个状态的了。</p>
 
       

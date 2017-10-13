@@ -367,10 +367,10 @@
 <p>我们知道，当用户注销（logout）或者网络断开时，终端会收到 HUP（hangup）信号从而关闭其所有子进程。nohup 的用途就是让提交的命令忽略 hangup 信号。</p>
 <p>nohup 的使用是十分方便的，只需在要处理的命令前加上 nohup 即可，标准输出和标准错误缺省会被重定向到 nohup.out 文件中。一般我们可在结尾加上”&amp;”来将命令同时放入后台运行，也可用 <code>&gt; filename 2&gt;&amp;1</code> 来更改缺省的重定向文件名。</p>
 <p>例如原来老版本的 logstash 没有办法使用 service 来使其在后台工作，但是我们又不可能时时刻刻保持我们的 shell 都打开着，所以我们使用了这样的命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup /opt/logstash/bin/logstash -f /etc/logstash/conf.d/simple.conf &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</div></pre></td></tr></table></figure>
 <p>这样就使得 logstash 即使在我们退出 shell 的时候也能够保持在后台继续运行着。（当然后来升级了，也就不存在这样的问题了）</p>
 <h3 id="setsid-命令"><a href="#setsid-命令" class="headerlink" title="setsid 命令"></a>setsid 命令</h3><p>nohup 无疑能通过忽略 HUP 信号来使我们的进程避免中途被中断，换一种解决方式，我们让我们的进程不属于当前的 shell 管理，这样就不会受到当前 shell 的影响了。例如上述命令我们可以改成这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setsid /opt/logstash/bin/logstash -f /etc/logstash/conf.d/simple.conf &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setsid <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</div></pre></td></tr></table></figure>
 <p>使用 setsid 命令之后的该进程的父进程则是 <code>init</code> 这个 <code>PID = 1</code> 的初始化进程，这样该进程就不会因为当前 shell 的中断或者退出而收到影响。我们可以通过 <code>ps -ef</code> 来验证一番，而 nohup 虽然不受当前 shell 的信号影响，但是其父进程还是当前 shell。</p>
 <h3 id="disown-命令"><a href="#disown-命令" class="headerlink" title="disown 命令"></a>disown 命令</h3><p>事先在命令前加上 <code>nohup</code> 或者 <code>setsid</code> 就可以避免 HUP 信号的影响。但是如果我们未加任何处理就已经提交了命令，该如何补救才能让它避免 HUP 信号的影响呢？只有通过 disown 命令了。</p>
 <ul>
