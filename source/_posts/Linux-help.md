@@ -2,7 +2,7 @@
 title: Linux_help
 date: 2016-07-07 14:32:10
 tags: " Ubuntu "
-categories: " Ubuntu "
+categories: " Linux "
 ---
 
 >**前言**

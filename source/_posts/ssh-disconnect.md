@@ -2,7 +2,7 @@
 title: SSH僵死
 date: 2016-07-05 17:56:05
 tags: " ssh "
-categories: " Ubuntu "
+categories: " Linux "
 ---
 
 >** 前言 **
