@@ -91,7 +91,7 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/10/13/AWK-的使用/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　之前举办了一次 Linux 相关的楼赛，已经过去三个月了，一直想写博客来总结与公布一下我的答案。幸好一直有 everyday note 的习惯，保留当时的记录。这次的楼赛真的是把我 awk 的老底都拿出来。  第一个挑战题目第一个挑战的题目是：提取文本中链接信息 这个题目的来源真的是工作中了，在打包课程时需要获取 markdown 文档中的所有的图片连接，然后将所有的图片都现在下来，并">
-<meta property="og:updated_time" content="2017-10-13T17:39:40.000Z">
+<meta property="og:updated_time" content="2017-10-14T02:35:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWK 的使用（楼赛答案）">
 <meta name="twitter:description" content="前言 　之前举办了一次 Linux 相关的楼赛，已经过去三个月了，一直想写博客来总结与公布一下我的答案。幸好一直有 everyday note 的习惯，保留当时的记录。这次的楼赛真的是把我 awk 的老底都拿出来。  第一个挑战题目第一个挑战的题目是：提取文本中链接信息 这个题目的来源真的是工作中了，在打包课程时需要获取 markdown 文档中的所有的图片连接，然后将所有的图片都现在下来，并">
@@ -368,17 +368,17 @@
 <li>通过 awk 把课程名与连接都剥离出来，然后以特定的方式展现</li>
 </ul>
 <h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><p>从上面的思路我们很容易就得出答案，一行命令就搞定了：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat shiyanlou_lab1.md|grep '\[<span class="string">'| grep -v '^!' | awk -F '[</span>][<span class="symbol">)(</span>]' '&#123;print $2, $3 $4&#125;'</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat shiyanlou_lab1.md | grep <span class="string">'\['</span> | grep -v <span class="string">'^!'</span> | awk -F <span class="string">'[][)(]'</span> <span class="string">'&#123;print $2, $3 $4&#125;'</span></div></pre></td></tr></table></figure>
 <p>这里需要注意的就是以 <code>[</code>、<code>]</code>、<code>(</code>、<code>)</code> 来分割文本的时候不要这样顺序配对的写，需要交错来写，否则会直接闭合，使用默认的分隔符来分割。</p>
 <p>当然本来的题目要求灵活一点写成脚本，需要提取文本的文件名是参数，所以脚本就应该是这样了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line"></div><div class="line">filename=$1</div><div class="line"></div><div class="line">cat $1|grep '\['| grep -v '^!' | awk -F '[][)(]' '&#123;print $2, $3 $4&#125;'</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">filename=<span class="variable">$1</span></div><div class="line"></div><div class="line">cat <span class="variable">$1</span> | grep <span class="string">'\['</span> | grep -v <span class="string">'^!'</span> | awk -F <span class="string">'[][)(]'</span> <span class="string">'&#123;print $2, $3 $4&#125;'</span></div></pre></td></tr></table></figure>
 <h2 id="第二个挑战"><a href="#第二个挑战" class="headerlink" title="第二个挑战"></a>第二个挑战</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>第二个挑战的题目是：统计网络数据包</p>
 <p>这个应该是不是来自于生活中了，虽然平时我已有抓包但是没有统计数据包的需求，而且人家 tcpdump 也显示了抓了多少数据包。这个题目麻烦的地方在于定时，只抓去在规定时间内的数据包，当然着实是难到我了。</p>
 <h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>之前的思路比较局限，就像通过 tcpdump 这个工具本身来完成，google 了一圈，查到的方式用的是用 <code>-G</code> 与 <code>-w</code> 参数，通过 <code>-w</code> 参数可以将抓到的数据写到文件中，而 <code>-G</code> 参数是每隔多少秒就轮询一次，但是这并不是我想要的结果。</p>
 <p>我想要的是 3 秒钟中之后结束 tcpdump 这个命令。</p>
 <p>然后我发现了一个新的命令叫做 <code>timeout</code></p>
 <p>这个工具真是神器，它的介绍就是 <code>run a command with a time limit</code>，有了它就完美解决了：</p>
-<h3 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line"></div><div class="line">port=$1</div><div class="line"></div><div class="line">sudo timeout 3 tcpdump -i eth0 port $port -l 2&gt;&amp;1 |tee test.txt &gt;/dev/null 2&gt;&amp;1</div><div class="line">cat test.txt |grep captured | awk '&#123;print "Packages:",$1&#125;'</div></pre></td></tr></table></figure>
+<h3 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">port=<span class="variable">$1</span></div><div class="line"></div><div class="line">sudo timeout 3 tcpdump -i eth0 port <span class="variable">$port</span> <span class="_">-l</span> 2&gt;&amp;1 |tee test.txt &gt;/dev/null 2&gt;&amp;1</div><div class="line">cat test.txt |grep captured | awk <span class="string">'&#123;print "Packages:",$1&#125;'</span></div></pre></td></tr></table></figure>
 <p>当然这里我是用的 tee 来将输出的内容都写到一个文件中，然后在查看该文件获取 tcpdump 输出的统计，然后以要求的格式输出。因为自己去统计行数来计算包的数据来的非常不准确，所以还是用 tcpdump 给的结论比较靠谱。</p>
 <p>在实际使用的时候若是以管道符与 tee 来将抓包的内容写到一个文件中并不好，我测试的感觉是会丢包较为的严重，还是用 <code>-w</code> 来写入文件比较靠谱，而且这样抓包的内容还可以使用 wireshark 来分析，比较方便一些。</p>
 <h2 id="第三个挑战"><a href="#第三个挑战" class="headerlink" title="第三个挑战"></a>第三个挑战</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>第三个挑战的题目是：收集指定时间的文件</p>
@@ -390,18 +390,142 @@
 <p>目录是用 <code>/</code> 符号一级一级划分，可以用 awk 来分割，分割了之后既要获取到目录保存在变量中，因为不仅需要创建目录还需要将文件相应的位置中去。</p>
 <p>awk 的划分之后若是只有 3 个变量（在 <code>/</code> 之前有一个空格，然后是 <code>etc</code>,然后就是文件）说明没有子目录，直接就是文件，这样的话就可以直接 cp 过去，若是变量数目大于 3 的话就说明有子目录，获取最后一个变量之前的所有内容即为我们所需要的目录，这样我们就可以创建相关的子目录，然后在 cp 文件。这里必须在 awk 中调用 cp 命令，因为相关的变量在 awk 之外无法使用。</p>
 <h3 id="答案-2"><a href="#答案-2" class="headerlink" title="答案"></a>答案</h3><p>通过上述的分析，就得出了这样的脚本：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line"><span class="meta"></span></div><div class="line"></div><div class="line">#<span class="bash">sudo find /etc/* -type f \( -newermt <span class="string">'2015-01-01 00:00'</span> <span class="_">-a</span> -not -newermt <span class="string">'2015-12-31 23:59'</span> \)</span></div><div class="line">if [! -d "/tmp/ect"];then</div><div class="line"></div><div class="line">    sudo mkdir -p /tmp/ect;</div><div class="line">fi</div><div class="line"></div><div class="line">sudo find /etc/* -type f \( -newermt '2015-01-01 00:00' -a -not -newermt '2015-12-31 23:59' \) | while read line</div><div class="line">do</div><div class="line"></div><div class="line">    echo $line | awk -F '/' \</div><div class="line">    '&#123;</div><div class="line">        path="/tmp/etc";</div><div class="line">        if (NF==3)&#123;</div><div class="line">        system("sudo cp " $0 " " "/tmp"$0)</div><div class="line">        &#125; else &#123;</div><div class="line">            for(i=3; i &lt; NF; i++ ) &#123;</div><div class="line">                path=path"/"$i;</div><div class="line">            &#125;</div><div class="line">        system("sudo mkdir -p " path)</div><div class="line">        system("sudo cp " $0 " " path"/"$NF)</div><div class="line">        &#125;</div><div class="line">    &#125;'</div><div class="line"></div><div class="line">done</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">sudo find /etc/* -type f \( -newermt <span class="string">'2015-01-01 00:00'</span> <span class="_">-a</span> -not -newermt <span class="string">'2015-12-31 23:59'</span> \)</div><div class="line"><span class="keyword">if</span> [! <span class="_">-d</span> <span class="string">"/tmp/ect"</span>];<span class="keyword">then</span></div><div class="line"></div><div class="line">    sudo mkdir -p /tmp/ect;</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line">sudo find /etc/* -type f \( -newermt <span class="string">'2015-01-01 00:00'</span> <span class="_">-a</span> -not -newermt <span class="string">'2015-12-31 23:59'</span> \) | <span class="keyword">while</span> <span class="built_in">read</span> line</div><div class="line"><span class="keyword">do</span></div><div class="line"></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$line</span> | awk -F <span class="string">'/'</span> \</div><div class="line">    <span class="string">'&#123;</span></div><div class="line">        path="/tmp/etc";</div><div class="line">        if (NF==3)&#123;</div><div class="line">        system("sudo cp " $0 " " "/tmp"$0)</div><div class="line">        &#125; else &#123;</div><div class="line">            for(i=3; i &lt; NF; i++ ) &#123;</div><div class="line">                path=path"/"$i;</div><div class="line">            &#125;</div><div class="line">        system("sudo mkdir -p " path)</div><div class="line">        system("sudo cp " $0 " " path"/"$NF)</div><div class="line">        &#125;</div><div class="line">    &#125;'</div><div class="line"></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
 <p>通过 find 获取到相关时间段的文件，然后读取每一行数据，紧接着就通过 awk 来划分了，在 awk 中有变量、有判断、又循环、有系统调用完美的胜任了所有的需求，我也是第一次这样使用 awk，十分的强大。之前没有这样的需求，就算有我可能会选择 python 来实现。</p>
-<p>在这里有两个点：</p>
+<h2 id="AWK-的回顾-摘录哈宝狗博客"><a href="#AWK-的回顾-摘录哈宝狗博客" class="headerlink" title="AWK 的回顾(摘录哈宝狗博客)"></a>AWK 的回顾(<a href="http://www.habadog.com/2011/05/22/awk-freshman-handbook/" target="_blank" rel="external">摘录哈宝狗博客</a>)</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk <span class="string">'pattern + &#123;action&#125;'</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
 <ul>
-<li>awk 与 shell 直接传递变量（参看<a href="http://smilejay.com/2011/09/awk-shell-variable/" target="_blank" rel="external">这篇博客</a>）</li>
+<li>单引号”是为了和shell命令区分开；</li>
+<li>大括号 <code>{}</code> 表示一个命令分组；</li>
+<li>pattern 是一个过滤器，表示命中 pattern 的行才进行 action 处理；</li>
+<li>action是处理动作；</li>
+<li>pattern和action可以只有其一，但不能两者都没有,默认的 action 是 print；</li>
+</ul>
+<p>其中的内置变量有<a href="https://www.tutorialspoint.com/awk/awk_built_in_variables.htm" target="_blank" rel="external">tutorialspoint</a>：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前记录，也就是所有内容（作为单个变量）</td>
+</tr>
+<tr>
+<td>\$1~$n</td>
+<td>当前记录的第n个字段，字段间由 FS 分隔</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>字段分隔符 默认是空格</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>当前记录中的字段个数，就是有多少列</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已经读出的记录数，就是行号，从1开始</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>It represents (input) record separator and its default value is newline.</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>It represents the output field separator and its default value is space.</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>It represents the output record separator and its default value is newline.</td>
+</tr>
+<tr>
+<td>ARGC</td>
+<td>命令行参数个数</td>
+</tr>
+<tr>
+<td>ARGV</td>
+<td>命令行参数数组形式展示</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前输入文件的名字</td>
+</tr>
+<tr>
+<td>IGNORECASE</td>
+<td>如果为真，则进行忽略大小写的匹配</td>
+</tr>
+<tr>
+<td>ENVIRON</td>
+<td>环境变量</td>
+</tr>
+<tr>
+<td>ERRNO</td>
+<td>系统错误消息</td>
+</tr>
+<tr>
+<td>FIELDWIDTHS</td>
+<td>输入字段宽度的空白分隔字符串</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>It is similar to NR, but relative to the current file. It is useful when AWK is operating on multiple files. Value of FNR resets with new file.</td>
+</tr>
+</tbody>
+</table>
+<p>内置函数有：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gsub(r,s)</td>
+<td>在 $0 中用 s 代替 r</td>
+</tr>
+<tr>
+<td>index(s,t)</td>
+<td>返回 s 中 t 的第一个位置</td>
+</tr>
+<tr>
+<td>length(s)</td>
+<td>s 的长度</td>
+</tr>
+<tr>
+<td>match(s,r)</td>
+<td>s是否匹配r</td>
+</tr>
+</tbody>
+</table>
+<p>几点注意用法：</p>
+<ul>
+<li>awk 与 shell 直接传递变量</li>
+</ul>
+<p>awk 中使用 shell 中定义的变量：使用单引号即可；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk <span class="string">'&#123;print "'</span><span class="variable">$&#123;PATH&#125;</span><span class="string">'"&#125;'</span></div></pre></td></tr></table></figure>
+<p>shell 中使用 awk 的变量是没办法了</p>
+<ul>
+<li>awk 中使用 shell 命令</li>
+</ul>
+<ol>
+<li>使用系统调用 <code>system()</code></li>
+<li>使用双引号扩起来 <code>awk &#39;{print $0 | &quot;cat&quot;}&#39;</code></li>
+</ol>
+<ul>
 <li>系统调用需要多个参数的时候</li>
 </ul>
 <p>在 awk 脚本中，如果需要调用 shell 脚本/命令，则需要使用 <code>system()</code> 函数，如果需要将变量传递给被调用的 shell，则写为 <code>system(&quot;sh my.sh &quot; $var)</code> (注意第二个引号前有一个空格)</p>
 <p>若是需要多个参数的时候，参数直接的空格需要用引号扩起来(来自于 <a href="https://stackoverflow.com/questions/15823216/awk-system-call" target="_blank" rel="external">stackoverflow</a>，例如：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk '&#123;system(<span class="string">"mv -R "</span> <span class="variable">$1</span> <span class="string">" "</span> <span class="variable">$2</span>)&#125;' <span class="keyword">file</span>.cfg</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk <span class="string">'&#123;system("mv -R " $1 " " $2)&#125;'</span> file.cfg</div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://smilejay.com/2011/09/awk-shell-variable/" target="_blank" rel="external">笑遍世界</a></li>
+<li><a href="https://www.tutorialspoint.com/awk/awk_built_in_variables.htm" target="_blank" rel="external">tutorialspoint</a></li>
+<li><a href="http://www.habadog.com/2011/05/22/awk-freshman-handbook/" target="_blank" rel="external">哈巴狗</a></li>
 <li><a href="https://stackoverflow.com/questions/15823216/awk-system-call" target="_blank" rel="external">stackoverflow</a></li>
 </ul>
 
@@ -572,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个挑战"><span class="nav-number">1.</span> <span class="nav-text">第一个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案"><span class="nav-number">1.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二个挑战"><span class="nav-number">2.</span> <span class="nav-text">第二个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案-1"><span class="nav-number">2.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三个挑战"><span class="nav-number">3.</span> <span class="nav-text">第三个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案-2"><span class="nav-number">3.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个挑战"><span class="nav-number">1.</span> <span class="nav-text">第一个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案"><span class="nav-number">1.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二个挑战"><span class="nav-number">2.</span> <span class="nav-text">第二个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案-1"><span class="nav-number">2.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三个挑战"><span class="nav-number">3.</span> <span class="nav-text">第三个挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#答案-2"><span class="nav-number">3.3.</span> <span class="nav-text">答案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWK-的回顾-摘录哈宝狗博客"><span class="nav-number">4.</span> <span class="nav-text">AWK 的回顾(摘录哈宝狗博客)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
