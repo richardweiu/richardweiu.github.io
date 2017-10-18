@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=" Ubuntu ," />
+  <meta name="keywords" content=" SSH ," />
 
 
 
@@ -84,27 +84,17 @@
 
 
 
-<meta name="description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta name="keywords" content=" Ubuntu ">
+<meta name="description" content="前言 　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 hosts 与 ./ssh/config 文件了，由此想记录一下我如何配置我的 ssh 配置文件的  SSH 配置需求在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：  要想在一台电脑上使用不同的 github 账号； 需要登陆多个服务器但是配">
+<meta name="keywords" content=" SSH ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Add hotspot on Ubuntu">
-<meta property="og:url" content="http://richardweiu.github.io/2016/06/08/hotspot/index.html">
+<meta property="og:title" content="SSH 本地配置文件">
+<meta property="og:url" content="http://richardweiu.github.io/2017/10/18/SSH-本地配置文件/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg">
-<meta property="og:updated_time" content="2017-10-13T14:13:07.000Z">
+<meta property="og:description" content="前言 　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 hosts 与 ./ssh/config 文件了，由此想记录一下我如何配置我的 ssh 配置文件的  SSH 配置需求在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：  要想在一台电脑上使用不同的 github 账号； 需要登陆多个服务器但是配">
+<meta property="og:updated_time" content="2017-10-18T11:00:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Add hotspot on Ubuntu">
-<meta name="twitter:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta name="twitter:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
+<meta name="twitter:title" content="SSH 本地配置文件">
+<meta name="twitter:description" content="前言 　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 hosts 与 ./ssh/config 文件了，由此想记录一下我如何配置我的 ssh 配置文件的  SSH 配置需求在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：  要想在一台电脑上使用不同的 github 账号； 需要登陆多个服务器但是配">
 
 
 
@@ -132,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/06/08/hotspot/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/10/18/SSH-本地配置文件/"/>
 
 
 
 
 
-  <title> Add hotspot on Ubuntu | Richardwei Blog </title>
+  <title> SSH 本地配置文件 | Richardwei Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -265,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/08/hotspot/">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/10/18/SSH-本地配置文件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
@@ -289,7 +279,7 @@
             
             
               
-                Add hotspot on Ubuntu
+                SSH 本地配置文件
               
             
           </h1>
@@ -302,8 +292,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-08T22:56:08+08:00">
-                2016-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T17:57:25+08:00">
+                2017-10-18
               </time>
             
 
@@ -336,8 +326,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/06/08/hotspot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/08/hotspot/" itemprop="commentCount"></span>
+                <a href="/2017/10/18/SSH-本地配置文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/18/SSH-本地配置文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,16 +354,30 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.</p>
+<p><strong> 前言 </strong><br>　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 <code>hosts</code> 与 <code>./ssh/config</code> 文件了，由此想记录一下我如何配置我的 ssh 配置文件的</p>
 </blockquote>
-<h3 id="在windows中"><a href="#在windows中" class="headerlink" title="在windows中"></a>在windows中</h3><p>　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网.</p>
-<h3 id="在ubuntu中"><a href="#在ubuntu中" class="headerlink" title="在ubuntu中"></a>在ubuntu中</h3><p>　这才是我们的重点.其实让我们的ubuntu提供一个热点其实并不难,最主要的问题在于ubuntu提供的热点其他的windows设备可以搜到并且成功的连接、其他的IOS设备可以搜到并连接上。但是我们的安卓机,却要装一下了,搜不到添加隐藏网络也无法成功。最主要的问题我们的安卓机并不支持在添加热点设置中的mode模式。所以它无法识别，无法搜索到。<br>　而要让安卓机能够成功的识别,能够成功的搜索到并连接上有两种方法.</p>
-<h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><p>　1.首先设置我们网络的连接信息,点击屏幕右上角的wifi信号标志(连接的是wifi的话)或者是上下箭头的数据传输标志(连接的是网线)，然后进入设置窗口,如图所示<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png" alt="push_wifi_sigin"><br>　然后会出现如下的menu,编辑网络连接<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png" alt="modify_menu"><br>　之后会弹出这样的一个编辑窗口我们点击添加也就是add<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png" alt="add"><br>　2.接下来我们将选择添加网络连接的用途，我们选择wifi<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png" alt="choose"><br>　3.然后我们为我们的网络连接设置一个名字以及ssid还有模式的选择<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png" alt="create_1"><br>　4.为我们的wifi设置一个密码以及加密的方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png" alt="add_pwd"><br>　5.选择共享方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png" alt="share_mode"><br>　6.完成之后我们点击save,这样我们就初步完成了热点的创建,windows与iphone连接一点问题的没有.我们开始为安卓机服务的准备。我们需要kde下的一款网络包，kde-nm-connection-editor，打开ubuntu-software-center,在搜索一栏搜索 network，找到 kde-nm-connection-editor，安装<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png" alt="install_kde"><br>　7.安装完成之后我们使用终端开开启该应用,在终端中输入该软件名称.<br>　8.在弹出的窗口中点击之前我们所创建的热点,然后编辑它。<br>　9.在接下来的窗口中我们修改wifi的模式从ad-hoc修改为access point,然后点击OK就可以了(这里我盗了一个图，呵呵)<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg" alt="modify_mode"><br>　10.最后一步了。马上就成功啦！接下来只需要电脑在有线联网的情况下激活刚才创建的wifi热点即可，同前，右上角打开　网络设置，选择　创建新的wifi网络(Create New Wi-Fi Network)，弹出窗口，连接(Connection)一栏中选择刚才创建的wifi热点名称,其他选项系统自动设置完成，单机OK,等待片刻后，你的android设备就可顺利搜索到你的wifi网络并连接了～～!!</p>
-<h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><p>　这种方法使用的是ap-hotspot,这里参考<a href="http://www.cnblogs.com/csulennon/p/4418734.html" target="_blank" rel="external">http://www.cnblogs.com/csulennon/p/4418734.html</a><br>  1.安装ap-hotspot<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ sudo<span class="built_in"> add-apt-repository </span>ppa:nilarimogard/webupd8</div><div class="line"></div><div class="line">$ sudo apt-get update</div><div class="line"></div><div class="line">$ sudo apt-get install hostapd</div><div class="line"></div><div class="line">$ sudo apt-get install ap-hotspot</div></pre></td></tr></table></figure></p>
-<p>　2.配置ap-hotspot<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ sudo ap-hotspot configure</div><div class="line"></div><div class="line">Detecting configuration...</div><div class="line">Detected eth0 <span class="keyword">as</span> <span class="keyword">the</span> network interface connected <span class="built_in">to</span> <span class="keyword">the</span> Internet. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface below (e.g.- eth0, ppp0 etc.):</div><div class="line"><span class="comment">	// 回车确认</span></div><div class="line"></div><div class="line">Detected wlan0 <span class="keyword">as</span> your WiFi interface. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface (e.g.- wlan1):</div><div class="line"><span class="comment">	// 回车确认</span></div><div class="line"></div><div class="line">Enter <span class="keyword">the</span> desired Access Point name <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (myhotspot):</div><div class="line"><span class="comment">	// 输入wifi的名字</span></div><div class="line"></div><div class="line">Enter <span class="keyword">the</span> desired WPA Passphrase below <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (qwerty0987):</div><div class="line"><span class="comment">	// 输入wifi的密码</span></div></pre></td></tr></table></figure></p>
-<p>　3.启动wifi<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> sudo ap-hotspot start</span></div></pre></td></tr></table></figure></p>
-<p>这样就搞定了</p>
-
+<h2 id="SSH-配置"><a href="#SSH-配置" class="headerlink" title="SSH 配置"></a>SSH 配置</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：</p>
+<ul>
+<li>要想在一台电脑上使用不同的 github 账号；</li>
+<li>需要登陆多个服务器但是配置的端口、key 不同</li>
+</ul>
+<p>既然都要讲本地的 ssh 配置，那就把服务端建议配置与创建密钥一起讲了。</p>
+<h3 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h3><p>服务器端的配置文件位于 <code>/etc/ssh/sshd_config</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Port 22  <span class="comment"># 默认端口建议修改，并且建议设置的值高一些</span></div><div class="line">PasswordAuthentication no  <span class="comment"># 不允许任何的密码登陆，统一都用密钥</span></div><div class="line">PermitRootLogin no <span class="comment"># 不允许 root 账户登陆</span></div><div class="line">PermitEmptyPasswords no <span class="comment">#不允许空密码登陆</span></div><div class="line">AllowUsers <span class="comment"># 白名单（可以不设置），如果白名单有用户只有白名单的用户可以登陆</span></div><div class="line">DenyUsers  <span class="comment"># 黑名单（可以不设置），被拒绝的用户，如果即允许又拒绝则拒绝生效</span></div></pre></td></tr></table></figure>
+<p>一般重要的服务器我都会修改端口号，因为我们能登录服务器的人并不多，创建的账户也不多所以一般我不用白名单与黑名单，其他三项是必备的。</p>
+<h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p>生成密钥就比较简单了，一个命令的问题：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -<span class="selector-tag">b</span> <span class="number">4096</span></div></pre></td></tr></table></figure>
+<p>然后就会问你创建的密钥要放在那里，使用密钥的时候密码是什么。</p>
+<p>以前的我这里会不输入密码但是现在的我会输入一个简单的密码，这样即使我的密钥不小心被偷了，也比没有密码的好，虽然没有无密码的爽，但是心里稍微踏实一些。</p>
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>本地的 ssh 配置一般会放在家目录的 <code>.ssh/config</code> 里面。</p>
+<p>一般常用的配置项有：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HOST：配置机器的别名就是你 ssh 后面需要跟的名字，若是 * 的话其下面的配置对所有的机器都生效</div><div class="line">	HostName: 配置机器的域名或者是 IP 地址，我一般 IP 地址写在 host 里面，然后这里写别名</div><div class="line">	User：登录的用户名</div><div class="line">	Port：登录机器的端口，默认使用的是 22，这里可以特定设置</div><div class="line">	preferredauthentications：登录认证的方式选择，有这样的一些选项hostbased(在SSH-2中考虑Rhosts存在安全漏洞，废弃了这种方式), publickey（公钥）, keyboard-interactive（交互式）, password（直接输入密码）</div><div class="line">	identityfile:认证公钥的路径</div><div class="line">	ServerAliveInterval：设置如果在多少秒之后没有接受到服务端的数据就 timeout，断开链接</div></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Host <span class="built_in">test</span></div><div class="line">	HostName <span class="built_in">test</span></div><div class="line">User <span class="built_in">test</span></div><div class="line">	preferredauthentications publickey</div><div class="line">	identityfile ~/key/weizj</div><div class="line">	ServerAliveInterval 30</div></pre></td></tr></table></figure>
+<p>若是配置 github 的多账号管理的话主要就是为了用不同的 key，所以区别在于别名与密钥，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Host richardwei1</div><div class="line">    User git</div><div class="line">    Hostname github.com</div><div class="line">    identityfile ~/key/richardwei1</div><div class="line"></div><div class="line"></div><div class="line">Host richardwei2</div><div class="line">    User git</div><div class="line">    Hostname github.com</div><div class="line">    identityfile ~/key/richardwei2</div></pre></td></tr></table></figure>
+<p>配置之后只需要在相关的项目中 <code>.git/config</code> 里面的 <code>github.com</code> 更换成我们的 Host 的别名就可以。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@richardwei1:richardwei1/richardwei1.git</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -396,7 +400,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Ubuntu/" rel="tag">#  Ubuntu </a>
+            <a href="/tags/SSH/" rel="tag">#  SSH </a>
           
         </div>
       
@@ -405,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/03/Ubuntu/" rel="next" title="Ubuntu 杂记">
-                <i class="fa fa-chevron-left"></i> Ubuntu 杂记
+              <a href="/2017/10/18/ubuntu-修改用户名/" rel="next" title="ubuntu 修改用户名">
+                <i class="fa fa-chevron-left"></i> ubuntu 修改用户名
               </a>
             
           </div>
@@ -414,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/09/Nginx+thinkphp/" rel="prev" title="Nginx 遇 Thinkphp 的水土不服">
-                Nginx 遇 Thinkphp 的水土不服 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -545,7 +545,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在windows中"><span class="nav-number">1.</span> <span class="nav-text">在windows中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在ubuntu中"><span class="nav-number">2.</span> <span class="nav-text">在ubuntu中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方法"><span class="nav-number">2.1.</span> <span class="nav-text">第一种方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方法"><span class="nav-number">2.2.</span> <span class="nav-text">第二种方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-配置"><span class="nav-number">1.</span> <span class="nav-text">SSH 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">1.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端配置"><span class="nav-number">1.2.</span> <span class="nav-text">服务器端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成密钥"><span class="nav-number">1.3.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端配置"><span class="nav-number">1.4.</span> <span class="nav-text">客户端配置</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -695,9 +695,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'richardweiu';
-      var disqus_identifier = '2016/06/08/hotspot/';
+      var disqus_identifier = '2017/10/18/SSH-本地配置文件/';
 
-      var disqus_title = "Add hotspot on Ubuntu";
+      var disqus_title = "SSH 本地配置文件";
 
 
       function run_disqus_script(disqus_script) {
