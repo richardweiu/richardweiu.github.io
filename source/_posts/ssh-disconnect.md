@@ -1,7 +1,7 @@
 ---
-title: SSH僵死
+title: SSH 僵死
 date: 2016-07-05 17:56:05
-tags: " ssh "
+tags: " SSH "
 categories: " Linux "
 ---
 
