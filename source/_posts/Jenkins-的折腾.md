@@ -211,7 +211,7 @@ stages {
         }
 ```
 
-`dir()` 可以在你执行命令之前切换至某个目录非常的方便，这样就不用老是写 `cd xxx` 了，剩下的东西就很简单了，sh 模块里面输入你想执行的 shell 命令即可。
+`dir()` 可以在你执行命令之前切换至某个目录非常的方便，这样就不用老是写 `cd xxx` 了，此处需要使用绝对路径，否则的话就会在 workspace 中运行，剩下的东西就很简单了，sh 模块里面输入你想执行的 shell 命令即可。
 
 还有一个 git 模块用来更新代码：
 
@@ -520,6 +520,68 @@ if(changeSets != null) {
 这是最后的效果：
 
 ![email-template](http://7xu3tw.com1.z0.glb.clouddn.com/email-template.png)
+
+### 注意事项
+
+1.在 pipeline 中用 sudo 需要密码：
+
+为了能够在 pipeline 中使用 sudo，只有两种方式
+
+- 在 sudo 的文件中对相关用于的相关密码使用 NOPASS
+- 还有就是 echo pwd | sudo -S command
+
+2.jenkins 下设置邮件一直不成功
+
+报错信息：
+
+```
+ Failed to send out e-mail  com.sun.mail.smtp.SMTPSendFailedException: 501 mail from address must be same as authorization user;  nested exception is: com.sun.mail.smtp.SMTPSenderFailedException: 501 mail from address must be same as authorization user  at hudson.util.PluginServletFilter$1.doFilter(PluginServletFilter.java:95)
+```
+
+解决方法：
+
+在设置 Jenkins URL 底下有一个文本框 System Admin e-mail address，这里要设置发送者的邮箱地址，我晕。看来以后还是要细心啊。(来自于[anxuyong](https://my.oschina.net/anxuyong/blog/353897))
+
+3.创建管理员账户的脚本
+
+```groovy
+#!groovy
+import hudson.security.*
+import jenkins.model.*
+
+def instance = Jenkins.getInstance()
+def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+def users = hudsonRealm.getAllUsers()
+users_s = users.collect { it.toString() }
+if ("{{ jenkins_admin_username }}" in users_s) {
+    println "Admin user already exists"
+} else {
+    println "--> creating local admin user"
+
+    hudsonRealm.createAccount('{{ jenkins_admin_username }}', '{{ jenkins_admin_password }}')
+    instance.setSecurityRealm(hudsonRealm)
+
+    def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
+    instance.setAuthorizationStrategy(strategy)
+    instance.save()
+}
+```
+
+4.在模版中发送更新内容的时候
+
+这个报错：
+
+```groovy
+No such property: changeSet for class: org.jenkinsci.plugins.workflow.job.WorkflowRun
+Possible solutions: changeSets
+```
+解决来自于这个页面（https://issues.jenkins-ci.org/browse/JENKINS-38968）
+
+5.安全配置
+
+若是开源项目可以共搭建都查看使用，但是若是私人的项目一定要要求登陆才能查看相关的内容：
+
+![jenkins-security](http://7xu3tw.com1.z0.glb.clouddn.com/jenkins-security.png)
 
 ## 参考
 
