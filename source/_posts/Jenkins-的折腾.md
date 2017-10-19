@@ -534,8 +534,8 @@ if(changeSets != null) {
 
 报错信息：
 
-```
- Failed to send out e-mail  com.sun.mail.smtp.SMTPSendFailedException: 501 mail from address must be same as authorization user;  nested exception is: com.sun.mail.smtp.SMTPSenderFailedException: 501 mail from address must be same as authorization user  at hudson.util.PluginServletFilter$1.doFilter(PluginServletFilter.java:95)
+```groovy
+Failed to send out e-mail com.sun.mail.smtp.SMTPSendFailedException: 501 mail from address must be same as authorization user;  nested exception is: com.sun.mail.smtp.SMTPSenderFailedException: 501 mail from address must be same as authorization user at hudson.util.PluginServletFilter$1.doFilter(PluginServletFilter.java:95)
 ```
 
 解决方法：
