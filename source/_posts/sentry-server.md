@@ -1,8 +1,8 @@
 ---
 title: Sentry Server的部署
 date: 2016-06-10 14:36:24
-tags: "sentry"
-categories: "运维"
+tags: " sentry "
+categories: " 运维 "
 ---
 
 >** 前言 **
