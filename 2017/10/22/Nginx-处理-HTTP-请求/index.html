@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　虽然利用 openrestry 加载 Lua 模块实现了动态域名的转发，但是回过头来发现自己对 Nginx 与 Lua 一点都不了解，下载来的深入理解 nginx 的书也没有非常仔细的去查阅，这里先记录一下 nginx 处理 http 请求的 11 个阶段与 Lua 执行的 8 个阶段，回头开始啃书。  Nginx 处理 HTTP 请求Nginx 的模块化设计使得每一个 HTTP 请求">
 <meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/openresty_phases.png">
-<meta property="og:updated_time" content="2017-10-22T15:50:05.000Z">
+<meta property="og:updated_time" content="2017-10-22T15:53:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx 处理 HTTP 请求">
 <meta name="twitter:description" content="前言 　虽然利用 openrestry 加载 Lua 模块实现了动态域名的转发，但是回过头来发现自己对 Nginx 与 Lua 一点都不了解，下载来的深入理解 nginx 的书也没有非常仔细的去查阅，这里先记录一下 nginx 处理 http 请求的 11 个阶段与 Lua 执行的 8 个阶段，回头开始啃书。  Nginx 处理 HTTP 请求Nginx 的模块化设计使得每一个 HTTP 请求">
@@ -370,9 +370,12 @@
 <li>content_by_lua*: 内容生成</li>
 <li>header_filter_by_lua*: 响应头部过滤处理(例如添加头部信息)</li>
 <li>body_filter_by_lua*: 响应体过滤处理(例如完成应答内容统一成大写)</li>
-<li>log_by_lua*: 会话完成后本地异步完成日志记录(日志可以记录在本地，还可以同步到其他机器)<br>（此段与图来自于<a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="external">openrestry 最佳实践</a>）<h3 id="小节"><a href="#小节" class="headerlink" title="小节"></a>小节</h3></li>
+<li>log_by_lua*: 会话完成后本地异步完成日志记录(日志可以记录在本地，还可以同步到其他机器)<br>（此段与图来自于<a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="external">openrestry 最佳实践</a>）</li>
 </ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="external">openrestry 最佳实践</a>）</li>
+</ul>
+
       
     </div>
 
@@ -404,7 +407,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/21/ELK-实现标签排名/" rel="next" title="ELK 实现标签排名">
+              <a href="/2017/10/22/ELK-实现标签排名/" rel="next" title="ELK 实现标签排名">
                 <i class="fa fa-chevron-left"></i> ELK 实现标签排名
               </a>
             
@@ -505,7 +508,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -540,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-处理-HTTP-请求"><span class="nav-number">1.</span> <span class="nav-text">Nginx 处理 HTTP 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenResty-处理-HTTP-请求"><span class="nav-number">2.</span> <span class="nav-text">OpenResty 处理 HTTP 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小节"><span class="nav-number">2.1.</span> <span class="nav-text">小节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-处理-HTTP-请求"><span class="nav-number">1.</span> <span class="nav-text">Nginx 处理 HTTP 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenResty-处理-HTTP-请求"><span class="nav-number">2.</span> <span class="nav-text">OpenResty 处理 HTTP 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -555,7 +558,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
