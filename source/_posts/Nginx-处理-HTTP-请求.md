@@ -64,6 +64,7 @@ typedef enum {
 - body_filter_by_lua*: 响应体过滤处理(例如完成应答内容统一成大写)
 - log_by_lua*: 会话完成后本地异步完成日志记录(日志可以记录在本地，还可以同步到其他机器)
 （此段与图来自于[openrestry 最佳实践](https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html)）
-### 小节
 
 ## 参考
+
+- [openrestry 最佳实践](https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html)）
