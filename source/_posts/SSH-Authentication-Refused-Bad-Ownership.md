@@ -25,7 +25,7 @@ debug1: key_load_public: No such file or directory
 
 ## 解决
 
-通过 console 查看到 ssh 的日志：
+通过 console 登录到机器，查看 `/var/log/auth.log` 中 ssh 的日志：
 
 ```
 Oct 26 12:17:45 xxxxx sshd[4800]: Authentication refused: bad ownership or modes for file /home/xxxxx/.ssh/authorized_keys
