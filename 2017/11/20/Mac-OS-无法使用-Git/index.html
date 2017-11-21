@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="前言 　前阵子升级了一下 Mac，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer path (/Library/Developer/CommandLineTo">
+<meta name="description" content="前言 　前阵子升级了一下 Mac 到 Mac OS High Sierra(10.13.1)，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  Git 无法使用问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer">
 <meta name="keywords" content=" Mac ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac OS 无法使用 Git">
+<meta property="og:title" content="Mac OS 升级导致的问题">
 <meta property="og:url" content="http://richardweiu.github.io/2017/11/20/Mac-OS-无法使用-Git/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　前阵子升级了一下 Mac，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer path (/Library/Developer/CommandLineTo">
-<meta property="og:updated_time" content="2017-11-20T01:24:59.186Z">
+<meta property="og:description" content="前言 　前阵子升级了一下 Mac 到 Mac OS High Sierra(10.13.1)，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  Git 无法使用问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer">
+<meta property="og:updated_time" content="2017-11-21T01:52:17.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac OS 无法使用 Git">
-<meta name="twitter:description" content="前言 　前阵子升级了一下 Mac，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer path (/Library/Developer/CommandLineTo">
+<meta name="twitter:title" content="Mac OS 升级导致的问题">
+<meta name="twitter:description" content="前言 　前阵子升级了一下 Mac 到 Mac OS High Sierra(10.13.1)，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。  Git 无法使用问题问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错： 1xcrun: error: invalid active developer">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title> Mac OS 无法使用 Git | Richardwei Blog </title>
+  <title> Mac OS 升级导致的问题 | Richardwei Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -279,7 +279,7 @@
             
             
               
-                Mac OS 无法使用 Git
+                Mac OS 升级导致的问题
               
             
           </h1>
@@ -354,14 +354,18 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　前阵子升级了一下 Mac，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。</p>
+<p><strong> 前言 </strong><br>　前阵子升级了一下 Mac 到 Mac OS High Sierra(10.13.1)，因为最近都在搞环境没有使用本地的 git，也就没有发现问题，今天一用突然发现用不了了。</p>
 </blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错：</p>
+<h2 id="Git-无法使用"><a href="#Git-无法使用" class="headerlink" title="Git 无法使用"></a>Git 无法使用</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>问题的产生是将 Mac 系统升级了一下，当然 xcode 也升级了，然后使用 git 的时候出现了这样的报错：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</div></pre></td></tr></table></figure>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>通过这个命令重新安装一下 xcode 开发工具就可以解决：</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>通过这个命令重新安装一下 xcode 开发工具就可以解决：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div></pre></td></tr></table></figure>
+<h2 id="Telnet-无法使用"><a href="#Telnet-无法使用" class="headerlink" title="Telnet 无法使用"></a>Telnet 无法使用</h2><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>同样是因为升级系统造成的问题，telnet、ftp 等一些基础的网络命令不见了</p>
+<h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>通过 homebrew 重新安装一下，可以只安装 telnet 也可以装网络工具集：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew install telnet</div><div class="line"></div><div class="line">or</div><div class="line"></div><div class="line">brew install inetutils</div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://ohthehugemanatee.org/blog/2015/10/01/how-i-got-el-capitain-working-with-my-developer-tools/" target="_blank" rel="external">Oh The Huge Manatee</a></li>
+<li><a href="https://apple.stackexchange.com/questions/299758/how-to-get-bsd-ftp-and-telnet-back-in-10-13-high-sierra" target="_blank" rel="external">StackExchange</a></li>
 </ul>
 
       
@@ -531,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-无法使用"><span class="nav-number">1.</span> <span class="nav-text">Git 无法使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">1.2.</span> <span class="nav-text">解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Telnet-无法使用"><span class="nav-number">2.</span> <span class="nav-text">Telnet 无法使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-1"><span class="nav-number">2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-1"><span class="nav-number">2.2.</span> <span class="nav-text">解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -683,7 +687,7 @@
       var disqus_shortname = 'richardweiu';
       var disqus_identifier = '2017/11/20/Mac-OS-无法使用-Git/';
 
-      var disqus_title = "Mac OS 无法使用 Git";
+      var disqus_title = "Mac OS 升级导致的问题";
 
 
       function run_disqus_script(disqus_script) {
