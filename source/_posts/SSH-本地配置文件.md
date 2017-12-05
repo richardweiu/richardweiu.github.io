@@ -66,11 +66,11 @@ HOST：配置机器的别名就是你 ssh 后面需要跟的名字，若是 * �
 
 ```bash
  Host test
- 	HostName test
-	User test
- 	preferredauthentications publickey
- 	identityfile ~/key/weizj
- 	ServerAliveInterval 30
+    HostName test
+    User test
+    preferredauthentications publickey
+    identityfile ~/key/weizj
+    ServerAliveInterval 30
 
 ```
 
