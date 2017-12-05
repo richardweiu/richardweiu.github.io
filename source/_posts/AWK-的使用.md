@@ -2,7 +2,7 @@
 title: AWK 的使用（楼赛答案）
 date: 2017-10-13 22:06:14
 tags: "awk"
-categories: "Linux"
+categories: " Linux "
 ---
 
 > ** 前言 **
