@@ -91,7 +91,7 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/10/18/SSH-本地配置文件/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 hosts 与 ./ssh/config 文件了，由此想记录一下我如何配置我的 ssh 配置文件的  SSH 配置需求在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：  要想在一台电脑上使用不同的 github 账号； 需要登陆多个服务器但是配">
-<meta property="og:updated_time" content="2017-10-18T11:00:09.000Z">
+<meta property="og:updated_time" content="2017-12-05T04:53:18.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH 本地配置文件">
 <meta name="twitter:description" content="前言 　在扩展节点的时候又需要修改 ssh 的配置文件，不禁让我想起我这电脑上最最宝贵的莫过于我的 hosts 与 ./ssh/config 文件了，由此想记录一下我如何配置我的 ssh 配置文件的  SSH 配置需求在我的认识中若是有一下两个需求的同学，建议配置你的 ssh config，这样可以给你省不少的麻烦：  要想在一台电脑上使用不同的 github 账号； 需要登陆多个服务器但是配">
@@ -373,11 +373,12 @@
 <p>一般常用的配置项有：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HOST：配置机器的别名就是你 ssh 后面需要跟的名字，若是 * 的话其下面的配置对所有的机器都生效</div><div class="line">	HostName: 配置机器的域名或者是 IP 地址，我一般 IP 地址写在 host 里面，然后这里写别名</div><div class="line">	User：登录的用户名</div><div class="line">	Port：登录机器的端口，默认使用的是 22，这里可以特定设置</div><div class="line">	preferredauthentications：登录认证的方式选择，有这样的一些选项hostbased(在SSH-2中考虑Rhosts存在安全漏洞，废弃了这种方式), publickey（公钥）, keyboard-interactive（交互式）, password（直接输入密码）</div><div class="line">	identityfile:认证公钥的路径</div><div class="line">	ServerAliveInterval：设置如果在多少秒之后没有接受到服务端的数据就 timeout，断开链接</div></pre></td></tr></table></figure>
 <p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Host <span class="built_in">test</span></div><div class="line">	HostName <span class="built_in">test</span></div><div class="line">User <span class="built_in">test</span></div><div class="line">	preferredauthentications publickey</div><div class="line">	identityfile ~/key/weizj</div><div class="line">	ServerAliveInterval 30</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Host <span class="built_in">test</span></div><div class="line">   HostName <span class="built_in">test</span></div><div class="line">   User <span class="built_in">test</span></div><div class="line">   preferredauthentications publickey</div><div class="line">   identityfile ~/key/weizj</div><div class="line">   ServerAliveInterval 30</div></pre></td></tr></table></figure>
 <p>若是配置 github 的多账号管理的话主要就是为了用不同的 key，所以区别在于别名与密钥，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Host richardwei1</div><div class="line">    User git</div><div class="line">    Hostname github.com</div><div class="line">    identityfile ~/key/richardwei1</div><div class="line"></div><div class="line"></div><div class="line">Host richardwei2</div><div class="line">    User git</div><div class="line">    Hostname github.com</div><div class="line">    identityfile ~/key/richardwei2</div></pre></td></tr></table></figure>
 <p>配置之后只需要在相关的项目中 <code>.git/config</code> 里面的 <code>github.com</code> 更换成我们的 Host 的别名就可以。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@richardwei1:richardwei1/richardwei1.git</div></pre></td></tr></table></figure>
+
       
     </div>
 
