@@ -2,7 +2,7 @@
 title: Nagios check_disk error
 date: 2017-10-19 15:15:15
 tags: " Nagios "
-categories: " Linux "
+categories: " 运维 "
 ---
 
 > ** 前言 **

@@ -1,8 +1,8 @@
 ---
 title: SSH 本地配置文件
 date: 2017-10-18 17:57:25
-tags: " SSH "
-categories: " Linux "
+tags: [" SSH "," Linux "
+categories: " 运维 "
 ---
 
 > ** 前言 **

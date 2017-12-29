@@ -1,8 +1,8 @@
 ---
 title: Linux_help
 date: 2016-07-07 14:32:10
-tags: " Ubuntu "
-categories: " Linux "
+tags: " Linux "
+categories: " 运维 "
 ---
 
 >**前言**

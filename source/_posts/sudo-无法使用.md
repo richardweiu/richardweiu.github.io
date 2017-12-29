@@ -1,7 +1,7 @@
 ---
 title: sudo 无法使用
 date: 2017-08-03 08:58:26
-tags: " Ubuntu "
+tags: " Linux "
 categories: " 运维 "
 ---
 

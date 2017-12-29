@@ -1,7 +1,7 @@
 ---
 title: Linux job 后台运行
 date: 2017-01-25 19:29:09
-tags: " Ubuntu "
+tags: " Linux "
 categories: " 运维 "
 
 ---

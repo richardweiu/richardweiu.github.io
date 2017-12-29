@@ -1,7 +1,7 @@
 ---
 title: PPA 的介绍
 date: 2017-08-02 22:18:56
-tags: " Ubuntu "
+tags: " Linux "
 categories: " 运维 "
 ---
 

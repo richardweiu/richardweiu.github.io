@@ -2,8 +2,8 @@
 layout: post
 title: Ubuntu 杂记
 date: 2016-06-03 16:25:44
-tags: " Ubuntu "
-categories: " Linux "
+tags: " Linux "
+categories: " 运维 "
 ---
 >** 前言 **
 　　有需求就有方向,之前在上班的时候学到了不少东西,很多东西只是加了书签没有写下来,也有很多写下来的但是没有分类,没有一个阶段性的总结,看起来特别的杂乱,找起来也特别的痛苦.这一篇就把一些非常基础的简单操作先记录下.Linux中很多操作也不好分类.我们可以使用该网站<http://man.linuxde.net/>来查寻命令

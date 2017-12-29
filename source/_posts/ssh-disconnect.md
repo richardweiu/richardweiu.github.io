@@ -1,8 +1,8 @@
 ---
 title: SSH 僵死
 date: 2016-07-05 17:56:05
-tags: " SSH "
-categories: " Linux "
+tags: [" SSH "," Linux "]
+categories: " 运维 "
 ---
 
 >** 前言 **

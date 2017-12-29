@@ -1,8 +1,8 @@
 ---
 title: 'SSH Authentication Refused: Bad Ownership'
 date: 2017-10-26 12:22:30
-tags: " SSH "
-categories: " Linux "
+tags: [" SSH "," Linux "]
+categories: " 运维 "
 ---
 
 > ** 前言 **

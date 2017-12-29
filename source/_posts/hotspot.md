@@ -1,8 +1,8 @@
 ---
 title: Add hotspot on Ubuntu
 date: 2016-06-08 22:56:08
-tags: " Ubuntu "
-categories: " Linux "
+tags: " Linux "
+categories: " 运维 "
 ---
 
 >** 前言 **
@@ -38,7 +38,7 @@ categories: " Linux "
 　10.最后一步了。马上就成功啦！接下来只需要电脑在有线联网的情况下激活刚才创建的wifi热点即可，同前，右上角打开　网络设置，选择　创建新的wifi网络(Create New Wi-Fi Network)，弹出窗口，连接(Connection)一栏中选择刚才创建的wifi热点名称,其他选项系统自动设置完成，单机OK,等待片刻后，你的android设备就可顺利搜索到你的wifi网络并连接了～～!!
 
 #### 第二种方法 ####
-　这种方法使用的是ap-hotspot,这里参考<http://www.cnblogs.com/csulennon/p/4418734.html>
+　这种方法使用的是ap-hotspot,这里参考<http://www.cnblogs.com/csulennon/p/4418734.html>d
   1.安装ap-hotspot
 ```
 $ sudo add-apt-repository ppa:nilarimogard/webupd8

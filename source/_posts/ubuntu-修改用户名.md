@@ -1,8 +1,8 @@
 ---
 title: ubuntu 修改用户名
 date: 2017-10-18 13:43:34
-tags: " Ubuntu "
-categories: " Linux "
+tags: " Linux "
+categories: " 运维 "
 ---
 
 > ** 前言 **
