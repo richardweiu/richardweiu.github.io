@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小">
+<meta name="description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小写">
 <meta name="keywords" content=" Linux , zsh ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zsh 注意">
 <meta property="og:url" content="http://richardweiu.github.io/2018/01/01/zsh-注意/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小">
-<meta property="og:updated_time" content="2018-01-02T02:08:30.332Z">
+<meta property="og:description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小写">
+<meta property="og:updated_time" content="2018-02-19T13:23:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zsh 注意">
-<meta name="twitter:description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小">
+<meta name="twitter:description" content="前言 　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同  zsh 的 path在 Bash 中我们知道通过 echo $PATH 可以查看我们的环境变量，也就是命令搜索的位置。 使用这个命令的时候必须使用全大写的 PATH,若是小写的 path 并没有任何的作用。 而在 zsh 中大写 PATH 与小写">
 
 
 
@@ -354,20 +354,20 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同</p>
+<p><strong> 前言 </strong><br>　在 zsh 中有些很强大的功能，高级的自动补全，输入部分命令就可以通过上下箭头搜索相关的命令等等，但是还是有一些习惯与 bash 中的不同</p>
 </blockquote>
 <h2 id="zsh-的-path"><a href="#zsh-的-path" class="headerlink" title="zsh 的 path"></a>zsh 的 path</h2><p>在 Bash 中我们知道通过 <code>echo $PATH</code> 可以查看我们的环境变量，也就是命令搜索的位置。</p>
 <p>使用这个命令的时候必须使用全大写的 <code>PATH</code>,若是小写的 <code>path</code> 并没有任何的作用。</p>
-<p>而在 zsh 中大写 <code>PATH</code> 与小写 <code>path</code> 两个变量的作用都是存在的，大写的作用与在 Bash 中的相同申明路径，而小写的作用是将 <code>PATH</code> 中的路径转换成一个路径列表</p>
+<p>而在 zsh 中大写 <code>PATH</code> 与小写 <code>path</code> 两个变量的作用都是存在的，大写的作用与在 Bash 中的相同申明路径，而小写的作用是将 <code>PATH</code> 中的路径转换成一个路径列表</p>
 <p>在官方的邮件列表中发现有人提问，官方人员是这样回答的（忘记保存当时查到的连接了）：</p>
 <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">That <span class="keyword">is</span> <span class="keyword">not</span> a bug. It<span class="symbol">'s</span> a feature. See the discussion <span class="keyword">of</span> <span class="string">"typeset -T"</span> <span class="keyword">in</span></div><div class="line"><span class="string">"man zshbuiltins"</span>. The lower-<span class="keyword">case</span> version <span class="keyword">of</span> PATH <span class="keyword">is</span> an <span class="keyword">array</span> parameter</div><div class="line">bound <span class="keyword">to</span> the scalar upper-<span class="keyword">case</span> parameter. The CDPATH parameter has a</div><div class="line">similar binding. You can create your own <span class="keyword">with</span> <span class="string">"typeset -T"</span>.</div></pre></td></tr></table></figure>
-<h2 id="zsh-的快捷键"><a href="#zsh-的快捷键" class="headerlink" title="zsh 的快捷键"></a>zsh 的快捷键</h2><p>在 Bash 中我们可以通过 <code>alt + 方向键</code> 来根据单词移动我们的光标，但是在 zsh 中却做不到，这样输入只会得来这样的输出:</p>
+<h2 id="zsh-的快捷键"><a href="#zsh-的快捷键" class="headerlink" title="zsh 的快捷键"></a>zsh 的快捷键</h2><p>在 Bash 中我们可以通过 <code>alt + 方向键</code> 来根据单词移动我们的光标，但是在 zsh 中却做不到，这样输入只会得来这样的输出:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[D[C</div></pre></td></tr></table></figure>
 <p>我们需要在 <code>.zshrc</code> 中增加这样的配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">bindkey</span> <span class="string">"\e\e[D"</span> backward-word  </div><div class="line"><span class="built_in">bindkey</span> <span class="string">"\e\e[C"</span> forward-word</div></pre></td></tr></table></figure>
 <p>这样功能便恢复了。</p>
 <h2 id="zsh-的-export"><a href="#zsh-的-export" class="headerlink" title="zsh 的 export"></a>zsh 的 export</h2><p>在 zsh 中不能使用 <code>export -f</code> 来导出函数，使得子 shell 中使用导出的函数</p>
-<h2 id="zsh-的-history"><a href="#zsh-的-history" class="headerlink" title="zsh 的 history"></a>zsh 的 history</h2><p>在 Bash 中我们可以通过 <code>history -c</code> 来清理我们的历史命令，但是在 zsh 中的 <code>history</code> 并没有这个参数，若是想要清除 history 需要删除 <code>.zsh_history</code> 中的内容。</p>
+<h2 id="zsh-的-history"><a href="#zsh-的-history" class="headerlink" title="zsh 的 history"></a>zsh 的 history</h2><p>在 Bash 中我们可以通过 <code>history -c</code> 来清理我们的历史命令，但是在 zsh 中的 <code>history</code> 并没有这个参数，若是想要清除 history 需要删除 <code>.zsh_history</code> 中的内容。</p>
 
       
     </div>
@@ -402,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/01/Bash-编程-变量/" rel="next" title="Bash 编程--变量">
-                <i class="fa fa-chevron-left"></i> Bash 编程--变量
+              <a href="/2018/01/01/Bash-编程-变量/" rel="next" title="Bash 编程--变量、运算">
+                <i class="fa fa-chevron-left"></i> Bash 编程--变量、运算
               </a>
             
           </div>
@@ -503,7 +503,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -538,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-path"><span class="nav-number">1.</span> <span class="nav-text">zsh 的 path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的快捷键"><span class="nav-number">2.</span> <span class="nav-text">zsh 的快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-export"><span class="nav-number">3.</span> <span class="nav-text">zsh 的 export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-history"><span class="nav-number">4.</span> <span class="nav-text">zsh 的 history</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-path"><span class="nav-number">1.</span> <span class="nav-text">zsh 的 path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的快捷键"><span class="nav-number">2.</span> <span class="nav-text">zsh 的快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-export"><span class="nav-number">3.</span> <span class="nav-text">zsh 的 export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-的-history"><span class="nav-number">4.</span> <span class="nav-text">zsh 的 history</span></a></li></ol></div>
             
 
           </div>
@@ -553,7 +553,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>

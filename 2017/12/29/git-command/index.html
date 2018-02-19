@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为">
+<meta name="description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 com">
 <meta name="keywords" content=" Git ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 常用用法">
 <meta property="og:url" content="http://richardweiu.github.io/2017/12/29/git-command/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为">
-<meta property="og:updated_time" content="2018-01-01T07:29:38.691Z">
+<meta property="og:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 com">
+<meta property="og:updated_time" content="2018-02-19T13:46:16.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 常用用法">
-<meta name="twitter:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为">
+<meta name="twitter:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 com">
 
 
 
@@ -354,7 +354,7 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　零散的记录一下一些 git 的命令的使用</p>
+<p><strong> 前言 </strong><br>　零散的记录一下一些 git 的命令的使用</p>
 </blockquote>
 <h2 id="git-加速"><a href="#git-加速" class="headerlink" title="git 加速"></a>git 加速</h2><p>这里将提到两种加速方式：</p>
 <ul>
@@ -362,29 +362,29 @@
 <li>代理下载：通过设置代理节点从下载速度上解决下载慢的问题</li>
 </ul>
 <h3 id="浅下载"><a href="#浅下载" class="headerlink" title="浅下载"></a>浅下载</h3><p>有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。</p>
-<p>有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 commit 与 branch 很多所导致的，这个时候们就会用到 <code>--depth</code> 的参数。</p>
+<p>有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 commit 与 branch 很多所导致的，这个时候们就会用到 <code>--depth</code> 的参数。</p>
 <p>通过 <code>--depth</code> 参数我们可以指定我们要下载 commit 的数量，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只下载 linux 项目中的一个 commit</span></div><div class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/torvalds/linux.git</div></pre></td></tr></table></figure>
-<p>在使用 <code>--depth</code> 参数的时候也就意味默认使用了 <code>--single-branch</code> 参数（只会下载一个分支，除非使用 <code>--no-single-branch</code> 参数来指明需要下载所有的分支）。</p>
+<p>在使用 <code>--depth</code> 参数的时候也就意味默认使用了 <code>--single-branch</code> 参数（只会下载一个分支，除非使用 <code>--no-single-branch</code> 参数来指明需要下载所有的分支）。</p>
 <p>还需要注意的是若是我们的项目中有一些子项目也同时需要 clone 下来的话需要使用 <code>--shallow-submodules</code> 参数。</p>
-<p>若是项目成功下载之后发现我们还是需要完成的 commit 信息的话，我们可以通过这样的命令来下载完整版：</p>
+<p>若是项目成功下载之后发现我们还是需要完成的 commit 信息的话，我们可以通过这样的命令来下载完整版：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch --unshallow</div></pre></td></tr></table></figure>
-<p>当然相关的参数还有很多，例如 <code>--shallow-since</code> 可以指定下载从什么时间段开始的 commit，这里就在了解了，用到的情况很少了。</p>
-<h3 id="代理下载"><a href="#代理下载" class="headerlink" title="代理下载"></a>代理下载</h3><p>若是我们的网络差到 <code>1 kb/s</code> 速度下载的话，上面的方式也不会起到什么实质上的作用，这个时候我们考虑设置 git 的代理，通过代理来提高我们的下载速度。</p>
-<p>例如我们在本地使用的 ss 做代理，我们可以使用这样的命令来设置 git 的代理：</p>
+<p>当然相关的参数还有很多，例如 <code>--shallow-since</code> 可以指定下载从什么时间段开始的 commit，这里就在了解了，用到的情况很少了。</p>
+<h3 id="代理下载"><a href="#代理下载" class="headerlink" title="代理下载"></a>代理下载</h3><p>若是我们的网络差到 <code>1 kb/s</code> 速度下载的话，上面的方式也不会起到什么实质上的作用，这个时候我们考虑设置 git 的代理，通过代理来提高我们的下载速度。</p>
+<p>例如我们在本地使用的 ss 做代理，我们可以使用这样的命令来设置 git 的代理：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy <span class="string">'socks5://127.0.0.1:1080'</span></div><div class="line">git config --global https.proxy <span class="string">'socks5://127.0.0.1:1080'</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：</p>
 <ul>
-<li>此时一般项目都没有下下来，所以这里使用 <code>--global</code> 参数设置全局的代理参数</li>
-<li>在 Mac 中 ss 客户端默认用的端口是 1086，根据自己使用的端口设置</li>
-<li>这是 ss 的代理方式，若是通过用户名密码登录的方式来连接 proxy 的话，格式是：<code>http://user:password@domain:port</code></li>
+<li>此时一般项目都没有下下来，所以这里使用 <code>--global</code> 参数设置全局的代理参数</li>
+<li>在 Mac 中 ss 客户端默认用的端口是 1086，根据自己使用的端口设置</li>
+<li>这是 ss 的代理方式，若是通过用户名密码登录的方式来连接 proxy 的话，格式是：<code>http://user:password@domain:port</code></li>
 <li>加代理的方式很灵活了，我们还可以设置 ssh 的 proxy 同样能够达到目的。</li>
 </ul>
 </blockquote>
 <h2 id="git-重现"><a href="#git-重现" class="headerlink" title="git 重现"></a>git 重现</h2><p>所谓的 git 重现便是将其他分支中的 commit 修改应用在当前的分支中，例如当前的分支与其他的分支相差较大时，此时我们想将其他分支中的某一段修改应用在当前分支的时候我们就会用这种方式。</p>
-<p>所谓的重现是我根据其作用起的名字，主要用到的是 <code>cherry-pick</code> 命令，其用法是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 老得 commit hash 值在前，新的在后</span></div><div class="line">git cherry-pick old-commit-hash..new-commit-hash</div><div class="line"></div><div class="line"><span class="comment"># 也可以直接使用分支名指定 head 的前几个 commit，这就是前两个到 head 的所有 commit</span></div><div class="line">git cherry-pick <span class="built_in">test</span>-b~2..test-b</div><div class="line"></div><div class="line"><span class="comment"># 若只是某一个 commit 的话，同样可以用 hash 和 branch-test 两种方式</span></div><div class="line">git cherry-pick <span class="built_in">hash</span></div><div class="line"></div><div class="line"><span class="comment"># 若是需要多个 commit 的话就指定多个即可</span></div><div class="line">git cherry-pick <span class="built_in">hash</span> <span class="built_in">hash</span></div></pre></td></tr></table></figure>
+<p>所谓的重现是我根据其作用起的名字，主要用到的是 <code>cherry-pick</code> 命令，其用法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 老得 commit hash 值在前，新的在后</span></div><div class="line">git cherry-pick old-commit-hash..new-commit-hash</div><div class="line"></div><div class="line"><span class="comment"># 也可以直接使用分支名指定 head 的前几个 commit，这就是前两个到 head 的所有 commit</span></div><div class="line">git cherry-pick <span class="built_in">test</span>-b~2..test-b</div><div class="line"></div><div class="line"><span class="comment"># 若只是某一个 commit 的话，同样可以用 hash 和 branch-test 两种方式</span></div><div class="line">git cherry-pick <span class="built_in">hash</span></div><div class="line"></div><div class="line"><span class="comment"># 若是需要多个 commit 的话就指定多个即可</span></div><div class="line">git cherry-pick <span class="built_in">hash</span> <span class="built_in">hash</span></div></pre></td></tr></table></figure>
 <p>这就是重现，以前才开始用 pull request 方式提交 bug 的时候很常用。</p>
 <h2 id="git-暂存"><a href="#git-暂存" class="headerlink" title="git 暂存"></a>git 暂存</h2><p>有时候写代码突然需要切换分支，这个时候需要将工作区清空，否则当前做的修改会应用到其他的分支中去，但是我们这些修改都是不可丢弃的，此时我们就会用暂存。</p>
 <p>暂存就是帮当前的所有修改、删除都保存起来，但是新建的文件并不会暂存起来，因为他没有历史版本。</p>
@@ -538,7 +538,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -588,7 +588,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
