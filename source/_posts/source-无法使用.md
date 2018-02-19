@@ -6,11 +6,11 @@ categories: " 运维 "
 ---
 
 > ** 前言 **
-　有时候在脚本中需要使用 source 命令，但是脚本却执行失败，无法使用 source 命令，`command not found`
+　有时候在脚本中需要使用 source 命令，但是脚本却执行失败，无法使用 source 命令，`command not found`
 
 ## 问题
 
-在 Jenkins 中的 pipeline 使用 `sh` 可以让其在过程中执行一些 shell 命令。
+在 Jenkins 中的 pipeline 使用 `sh` 可以让其在过程中执行一些 shell 命令。
 
 在 ansible 中使用 shell module 的时候也可以执行 shell 命令。
 
