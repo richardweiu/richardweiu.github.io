@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" Jenkins ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" Jenkins ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,8 +91,9 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/11/29/Jenkins-部署两次/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　折腾两次了，终于有了一个能够解决问题的方案了，再次证明自己对 Jenkins 的了解还是太少了，非常的片面。通过这两次折腾主要记录如何开启 Jenkins 的 debug 日志与 Jenkins 的权限问题。  问题其实之前就有注意到 Jenkins 偶尔会触发两次的情况出现，但是没有引起重视，自己猜想的原因这样的： pipeline 设计之初只是为了在 freestyle proje">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/checkout-sandbox.png">
-<meta property="og:updated_time" content="2018-02-19T13:48:05.058Z">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins 部署两次">
 <meta name="twitter:description" content="前言 　折腾两次了，终于有了一个能够解决问题的方案了，再次证明自己对 Jenkins 的了解还是太少了，非常的片面。通过这两次折腾主要记录如何开启 Jenkins 的 debug 日志与 Jenkins 的权限问题。  问题其实之前就有注意到 Jenkins 偶尔会触发两次的情况出现，但是没有引起重视，自己猜想的原因这样的： pipeline 设计之初只是为了在 freestyle proje">
@@ -124,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2017/11/29/Jenkins-部署两次/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/11/29/Jenkins-部署两次/">
 
 
 
@@ -133,7 +134,7 @@
   <title> Jenkins 部署两次 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -160,12 +161,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -192,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -202,7 +203,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -212,7 +213,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -222,7 +223,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -256,18 +257,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/11/29/Jenkins-部署两次/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -305,14 +306,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Devops/" itemprop="url" rel="index">
                     <span itemprop="name"> Devops </span>
                   </a>
@@ -369,9 +370,9 @@
 <p>而即使我的 pipeline 选择的是 pipeline script from scm 也没有被触发，似乎这里的 Source Code Management 与 Build Triggers 并没有关联性。</p>
 <p>当然这一切都是我的猜想，只有看代码才知道其真正的原因是什么，在 Jenkins 的 JIRA 上也有看到类似的 issue 提出：</p>
 <ul>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-6819" target="_blank" rel="external">https://issues.jenkins-ci.org/browse/JENKINS-6819</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17346" target="_blank" rel="external">https://issues.jenkins-ci.org/browse/JENKINS-17346</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-30350" target="_blank" rel="external">https://issues.jenkins-ci.org/browse/JENKINS-30350</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-6819" target="_blank" rel="noopener">https://issues.jenkins-ci.org/browse/JENKINS-6819</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17346" target="_blank" rel="noopener">https://issues.jenkins-ci.org/browse/JENKINS-17346</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-30350" target="_blank" rel="noopener">https://issues.jenkins-ci.org/browse/JENKINS-30350</a></li>
 </ul>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>遇到这个问题，去解决问题的想法有这样几个：</p>
 <ul>
@@ -380,9 +381,9 @@
 <li>自己想解决方案</li>
 </ul>
 <h3 id="1-我的第一反应是打开-debug-日志，看能不能从根本上看到一些端倪，即使看不出来应该也能获得一些日志信息，这样方便我去-Google"><a href="#1-我的第一反应是打开-debug-日志，看能不能从根本上看到一些端倪，即使看不出来应该也能获得一些日志信息，这样方便我去-Google" class="headerlink" title="1.我的第一反应是打开 debug 日志，看能不能从根本上看到一些端倪，即使看不出来应该也能获得一些日志信息，这样方便我去 Google"></a>1.我的第一反应是打开 debug 日志，看能不能从根本上看到一些端倪，即使看不出来应该也能获得一些日志信息，这样方便我去 Google</h3><p>首先编写 log 的配置参数在 jenkins 的项目目录中，<code>vim log.properties</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handlers=java.util.logging.ConsoleHandler</div><div class="line">jenkins.level=FINEST</div><div class="line">java.util.logging.ConsoleHandler.level=FINEST</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handlers=java.util.logging.ConsoleHandler</span><br><span class="line">jenkins.level=FINEST</span><br><span class="line">java.util.logging.ConsoleHandler.level=FINEST</span><br></pre></td></tr></table></figure>
 <p>然后重新启动 jenkins，并让其加载参数配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker run <span class="_">-d</span> -p 8181:8080 -p 50000:50000 --env JAVA_OPTS=<span class="string">"-Djava.util.logging.config.file=/var/jenkins_home/log.properties"</span> -v /opt/jenkins/:</div><div class="line">/var/jenkins_home --name jenkins jenkins</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8181:8080 -p 50000:50000 --env JAVA_OPTS=<span class="string">"-Djava.util.logging.config.file=/var/jenkins_home/log.properties"</span> -v /opt/jenkins/:</span><br><span class="line">/var/jenkins_home --name jenkins jenkins</span><br></pre></td></tr></table></figure>
 <p>debug 的日志信息含量很大，可能自己过于粗心或者打开的方式不对，并未能获取到与之关联的日志信息，加上自己的对 Stapler 与 jelly 的不熟悉，准确来说应该是对 Jenkins 的框架结构、执行流程都没有理清楚就来看日志信息，头有点大。因为需要快速解决暂时放弃这条路。</p>
 <h3 id="2-找现有的解决方案"><a href="#2-找现有的解决方案" class="headerlink" title="2.找现有的解决方案"></a>2.找现有的解决方案</h3><p>找到有用的信息也就上面给出的 issue 链接。</p>
 <h3 id="3-自己想解决方案"><a href="#3-自己想解决方案" class="headerlink" title="3.自己想解决方案"></a>3.自己想解决方案</h3><p>既然是短时间内被触发两次，那么能否在发现上一 build 还在运行中就把自己关闭结束掉呢？</p>
@@ -401,15 +402,15 @@
 <p><strong>注意</strong>：这一切的获取会涉及到权限的问题，将在最后详细说明。</p>
 </blockquote>
 <h4 id="build-状态获取"><a href="#build-状态获取" class="headerlink" title="build 状态获取"></a>build 状态获取</h4><p>首先解决第一个问题如何获取上一个 build 的状态：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">currentBuild.getPreviousBuild().result</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentBuild.getPreviousBuild().result</span><br></pre></td></tr></table></figure>
 <p>这样只能获取上一次 build 的结果，当然我测试了一下在上一个 build 还没有完成的时候该值为 null，其实也可以拿来做判断的依据。</p>
 <p>还可以通过这样的方式：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">currentBuild.rawBuild.getPreviousBuildInProgress()</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentBuild.rawBuild.getPreviousBuildInProgress()</span><br></pre></td></tr></table></figure>
 <p>若是为 null 则上一个 build 并不在 build 中，反之则存在。</p>
 <p>需要提醒的是若是为空的时候直接 <code>echo currentBuild.rawBuild.getPreviousBuildInProgress()</code> 没有问题，但是不为空的时候这样 echo 是会报错，然后直接退出该 build，虽然也达到目的了但是会给我们发邮件，而且这样处理并不好。</p>
 <h4 id="退出-build"><a href="#退出-build" class="headerlink" title="退出 build"></a>退出 build</h4><p>解决了 build 状态获取的问题，进一步便是如何退出 build。</p>
 <p>可以通过这样的方式设置当前 build 的状态：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">currentBuild.result = <span class="string">'ABORTED'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentBuild.result = <span class="string">'ABORTED'</span></span><br></pre></td></tr></table></figure>
 <p>但是该命令也仅仅是设置当前的 build 的状态，并不会时期退出，他会继续执行，只是最后的结果是不是 success 与 fail 而是 aborted。</p>
 <p>所以在该命令之后需要添加 <code>error(&#39;the build maybe repeat…&#39;)</code> 让其退出不再继续执行。</p>
 <p>所以最终对 jenkinsfile 的调整只是：</p>
@@ -417,12 +418,12 @@
 <li>删除 disableConcurrentBuilds 的配置选项</li>
 <li>在 stage 流程的最前面增加了这样的一个判断：</li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">stage(<span class="string">'get pre-build status'</span>)&#123;</div><div class="line">    steps &#123;</div><div class="line">        script &#123;</div><div class="line">            <span class="keyword">if</span> (currentBuild.rawBuild.getPreviousBuildInProgress() != <span class="literal">null</span>) &#123;</div><div class="line">                currentBuild.result = <span class="string">'ABORTED'</span></div><div class="line">                error(<span class="string">'the build maybe repeat…'</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stage(<span class="string">'get pre-build status'</span>)&#123;</span><br><span class="line">    steps &#123;</span><br><span class="line">        script &#123;</span><br><span class="line">            <span class="keyword">if</span> (currentBuild.rawBuild.getPreviousBuildInProgress() != <span class="literal">null</span>) &#123;</span><br><span class="line">                currentBuild.result = <span class="string">'ABORTED'</span></span><br><span class="line">                error(<span class="string">'the build maybe repeat…'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由此便解决了触发两次的问题。</p>
-<h3 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h3><p>在 <a href="https://jenkins.io/doc/book/managing/script-approval/" target="_blank" rel="external">jenkins 的官方文档</a>中这样说明 sandbox 的：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The sandbox only allows a subset of Groovy’s methods deemed sufficiently safe <span class="keyword">for</span> <span class="string">"untrusted"</span> access to be executed without prior approval. Scripts using the Groovy Sandbox are all subject to the same restrictions, therefore a Pipeline authored by an Administrator is subject to the restrictions <span class="keyword">as</span> one authorized by a non-administrative user.</div></pre></td></tr></table></figure>
+<h3 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h3><p>在 <a href="https://jenkins.io/doc/book/managing/script-approval/" target="_blank" rel="noopener">jenkins 的官方文档</a>中这样说明 sandbox 的：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The sandbox only allows a subset of Groovy’s methods deemed sufficiently safe <span class="keyword">for</span> <span class="string">"untrusted"</span> access to be executed without prior approval. Scripts using the Groovy Sandbox are all subject to the same restrictions, therefore a Pipeline authored by an Administrator is subject to the restrictions <span class="keyword">as</span> one authorized by a non-administrative user.</span><br></pre></td></tr></table></figure>
 <p>其实 sandbox 就是一个保护机制，让 script 在运行时不能使用一些较大权限的模块，若是在 sandbox 中使用较大权限的模块，会有这样的报错：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">org.jenkinsci.plugins.scriptsecurity.sandbox.<span class="string">RejectedAccessException:</span> Scripts not permitted to use method org.jenkinsci.plugins.workflow.support.steps.build.RunWrapper getRawBuild</div><div class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.whitelists.StaticWhitelist.rejectMethod(StaticWhitelist.<span class="string">java:</span><span class="number">175</span>)</div><div class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor$<span class="number">6.</span>reject(SandboxInterceptor.<span class="string">java:</span><span class="number">261</span>)</div><div class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onGetProperty(SandboxInterceptor.<span class="string">java:</span><span class="number">381</span>)</div><div class="line">	at org.kohsuke.groovy.sandbox.impl.Checker$<span class="number">6.</span>call(Checker.<span class="string">java:</span><span class="number">282</span>)</div><div class="line">	at org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.<span class="string">java:</span><span class="number">286</span>)</div><div class="line">	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.getProperty(SandboxInvoker.<span class="string">java:</span><span class="number">29</span>)</div><div class="line">	at com.cloudbees.groovy.cps.impl.PropertyAccessBlock.rawGet(PropertyAccessBlock.<span class="string">java:</span><span class="number">20</span>)</div><div class="line">	at WorkflowScript.run(<span class="string">WorkflowScript:</span><span class="number">22</span>)</div><div class="line">	at ___cps.transform___(Native Method)</div><div class="line">	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.get(PropertyishBlock.<span class="string">java:</span><span class="number">74</span>)</div><div class="line">	at com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.<span class="string">java:</span><span class="number">30</span>)</div><div class="line">	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.fixName(PropertyishBlock.<span class="string">java:</span><span class="number">66</span>)</div><div class="line">	at sun.reflect.GeneratedMethodAccessor195.invoke(Unknown Source)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.<span class="string">java:</span><span class="number">43</span>)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.<span class="string">java:</span><span class="number">498</span>)</div><div class="line">	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.<span class="string">java:</span><span class="number">72</span>)</div><div class="line">	at com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.<span class="string">java:</span><span class="number">21</span>)</div><div class="line">	at com.cloudbees.groovy.cps.Next.step(Next.<span class="string">java:</span><span class="number">83</span>)</div><div class="line">	at com.cloudbees.groovy.cps.Continuable$<span class="number">1.</span>call(Continuable.<span class="string">java:</span><span class="number">174</span>)</div><div class="line">	at com.cloudbees.groovy.cps.Continuable$<span class="number">1.</span>call(Continuable.<span class="string">java:</span><span class="number">163</span>)</div><div class="line">	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.<span class="string">java:</span><span class="number">122</span>)</div><div class="line">	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.<span class="string">java:</span><span class="number">261</span>)</div><div class="line">	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.<span class="string">java:</span><span class="number">163</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$<span class="number">001</span>(SandboxContinuable.<span class="string">java:</span><span class="number">19</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable$<span class="number">1.</span>call(SandboxContinuable.<span class="string">java:</span><span class="number">35</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable$<span class="number">1.</span>call(SandboxContinuable.<span class="string">java:</span><span class="number">32</span>)</div><div class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.GroovySandbox.runInSandbox(GroovySandbox.<span class="string">java:</span><span class="number">108</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.<span class="string">java:</span><span class="number">32</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.<span class="string">java:</span><span class="number">174</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.<span class="string">java:</span><span class="number">330</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$<span class="number">100</span>(CpsThreadGroup.<span class="string">java:</span><span class="number">82</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$<span class="number">2.</span>call(CpsThreadGroup.<span class="string">java:</span><span class="number">242</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$<span class="number">2.</span>call(CpsThreadGroup.<span class="string">java:</span><span class="number">230</span>)</div><div class="line">	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$<span class="number">2.</span>call(CpsVmExecutorService.<span class="string">java:</span><span class="number">64</span>)</div><div class="line">	at java.util.concurrent.FutureTask.run(FutureTask.<span class="string">java:</span><span class="number">266</span>)</div><div class="line">	at hudson.remoting.SingleLaneExecutorService$<span class="number">1.</span>run(SingleLaneExecutorService.<span class="string">java:</span><span class="number">112</span>)</div><div class="line">	at jenkins.util.ContextResettingExecutorService$<span class="number">1.</span>run(ContextResettingExecutorService.<span class="string">java:</span><span class="number">28</span>)</div><div class="line">	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.<span class="string">java:</span><span class="number">511</span>)</div><div class="line">	at java.util.concurrent.FutureTask.run(FutureTask.<span class="string">java:</span><span class="number">266</span>)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.<span class="string">java:</span><span class="number">1149</span>)</div><div class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.<span class="string">java:</span><span class="number">624</span>)</div><div class="line">	at java.lang.Thread.run(Thread.<span class="string">java:</span><span class="number">748</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">org.jenkinsci.plugins.scriptsecurity.sandbox.<span class="string">RejectedAccessException:</span> Scripts not permitted to use method org.jenkinsci.plugins.workflow.support.steps.build.RunWrapper getRawBuild</span><br><span class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.whitelists.StaticWhitelist.rejectMethod(StaticWhitelist.<span class="string">java:</span><span class="number">175</span>)</span><br><span class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor$<span class="number">6.</span>reject(SandboxInterceptor.<span class="string">java:</span><span class="number">261</span>)</span><br><span class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onGetProperty(SandboxInterceptor.<span class="string">java:</span><span class="number">381</span>)</span><br><span class="line">	at org.kohsuke.groovy.sandbox.impl.Checker$<span class="number">6.</span>call(Checker.<span class="string">java:</span><span class="number">282</span>)</span><br><span class="line">	at org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.<span class="string">java:</span><span class="number">286</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.getProperty(SandboxInvoker.<span class="string">java:</span><span class="number">29</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.impl.PropertyAccessBlock.rawGet(PropertyAccessBlock.<span class="string">java:</span><span class="number">20</span>)</span><br><span class="line">	at WorkflowScript.run(<span class="string">WorkflowScript:</span><span class="number">22</span>)</span><br><span class="line">	at ___cps.transform___(Native Method)</span><br><span class="line">	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.get(PropertyishBlock.<span class="string">java:</span><span class="number">74</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.<span class="string">java:</span><span class="number">30</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.fixName(PropertyishBlock.<span class="string">java:</span><span class="number">66</span>)</span><br><span class="line">	at sun.reflect.GeneratedMethodAccessor195.invoke(Unknown Source)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.<span class="string">java:</span><span class="number">43</span>)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.<span class="string">java:</span><span class="number">498</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.<span class="string">java:</span><span class="number">72</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.<span class="string">java:</span><span class="number">21</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.Next.step(Next.<span class="string">java:</span><span class="number">83</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.Continuable$<span class="number">1.</span>call(Continuable.<span class="string">java:</span><span class="number">174</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.Continuable$<span class="number">1.</span>call(Continuable.<span class="string">java:</span><span class="number">163</span>)</span><br><span class="line">	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.<span class="string">java:</span><span class="number">122</span>)</span><br><span class="line">	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.<span class="string">java:</span><span class="number">261</span>)</span><br><span class="line">	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.<span class="string">java:</span><span class="number">163</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$<span class="number">001</span>(SandboxContinuable.<span class="string">java:</span><span class="number">19</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable$<span class="number">1.</span>call(SandboxContinuable.<span class="string">java:</span><span class="number">35</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable$<span class="number">1.</span>call(SandboxContinuable.<span class="string">java:</span><span class="number">32</span>)</span><br><span class="line">	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.GroovySandbox.runInSandbox(GroovySandbox.<span class="string">java:</span><span class="number">108</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.<span class="string">java:</span><span class="number">32</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.<span class="string">java:</span><span class="number">174</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.<span class="string">java:</span><span class="number">330</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$<span class="number">100</span>(CpsThreadGroup.<span class="string">java:</span><span class="number">82</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$<span class="number">2.</span>call(CpsThreadGroup.<span class="string">java:</span><span class="number">242</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$<span class="number">2.</span>call(CpsThreadGroup.<span class="string">java:</span><span class="number">230</span>)</span><br><span class="line">	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$<span class="number">2.</span>call(CpsVmExecutorService.<span class="string">java:</span><span class="number">64</span>)</span><br><span class="line">	at java.util.concurrent.FutureTask.run(FutureTask.<span class="string">java:</span><span class="number">266</span>)</span><br><span class="line">	at hudson.remoting.SingleLaneExecutorService$<span class="number">1.</span>run(SingleLaneExecutorService.<span class="string">java:</span><span class="number">112</span>)</span><br><span class="line">	at jenkins.util.ContextResettingExecutorService$<span class="number">1.</span>run(ContextResettingExecutorService.<span class="string">java:</span><span class="number">28</span>)</span><br><span class="line">	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.<span class="string">java:</span><span class="number">511</span>)</span><br><span class="line">	at java.util.concurrent.FutureTask.run(FutureTask.<span class="string">java:</span><span class="number">266</span>)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.<span class="string">java:</span><span class="number">1149</span>)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.<span class="string">java:</span><span class="number">624</span>)</span><br><span class="line">	at java.lang.Thread.run(Thread.<span class="string">java:</span><span class="number">748</span>)</span><br></pre></td></tr></table></figure>
 <p>关闭的方法有两种，主要是对应 pipeline 的两种方法：</p>
 <h4 id="pipeline-script-方式"><a href="#pipeline-script-方式" class="headerlink" title="pipeline script 方式"></a>pipeline script 方式</h4><p>这个方法较为简单就是在输入框的左下角有一个 <code>Use Groovy Sandbox</code> 的选择框：</p>
 <p><img src="http://7xu3tw.com1.z0.glb.clouddn.com/checkout-sandbox.png" alt="checkout-sandbox"></p>
@@ -432,9 +433,9 @@
 <li>添加参数 <code>-Dpermissive-script-security.enabled=true</code></li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://stackoverflow.com/questions/40760716/jenkins-abort-running-build-if-new-one-is-started" target="_blank" rel="external">判断状态的方法</a></li>
-<li><a href="https://stackoverflow.com/questions/42667600/abort-current-build-from-pipeline-in-jenkins" target="_blank" rel="external">退出 pipeline 方法</a></li>
-<li><a href="https://stackoverflow.com/questions/38276341/jenkins-ci-pipeline-scripts-not-permitted-to-use-method-groovy-lang-groovyobject" target="_blank" rel="external">关闭 sandbox</a></li>
+<li><a href="https://stackoverflow.com/questions/40760716/jenkins-abort-running-build-if-new-one-is-started" target="_blank" rel="noopener">判断状态的方法</a></li>
+<li><a href="https://stackoverflow.com/questions/42667600/abort-current-build-from-pipeline-in-jenkins" target="_blank" rel="noopener">退出 pipeline 方法</a></li>
+<li><a href="https://stackoverflow.com/questions/38276341/jenkins-ci-pipeline-scripts-not-permitted-to-use-method-groovy-lang-groovyobject" target="_blank" rel="noopener">关闭 sandbox</a></li>
 </ul>
 
       
@@ -536,7 +537,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -546,17 +547,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -623,7 +622,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -644,10 +643,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

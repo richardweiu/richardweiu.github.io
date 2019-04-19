@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" Linux ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" Linux ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,7 +91,8 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/01/25/Linux-job-后台运行/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言　有时候会将一些工作时间较长的脚本或者小程序放到后台运行，这个时候我们就会用到 jobs，但是放到后台的 jobs 只活跃于当前的 shell 中，所示当前的 shell 关闭掉，放在后台的 jobs 也会被结束掉。  Jobs 后台运行我们经常会碰到这样的一种场景，用 ssh 远程登陆服务器，运行了一个非常耗时的任务或者脚本或者小程序等等，结果当前的网络出问题了，或者断掉了，当我们再次登陆">
-<meta property="og:updated_time" content="2018-02-19T12:51:25.038Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux job 后台运行">
 <meta name="twitter:description" content="前言　有时候会将一些工作时间较长的脚本或者小程序放到后台运行，这个时候我们就会用到 jobs，但是放到后台的 jobs 只活跃于当前的 shell 中，所示当前的 shell 关闭掉，放在后台的 jobs 也会被结束掉。  Jobs 后台运行我们经常会碰到这样的一种场景，用 ssh 远程登陆服务器，运行了一个非常耗时的任务或者脚本或者小程序等等，结果当前的网络出问题了，或者断掉了，当我们再次登陆">
@@ -122,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2017/01/25/Linux-job-后台运行/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/01/25/Linux-job-后台运行/">
 
 
 
@@ -131,7 +132,7 @@
   <title> Linux job 后台运行 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -158,12 +159,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -190,7 +191,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -200,7 +201,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -210,7 +211,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -220,7 +221,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -254,18 +255,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/01/25/Linux-job-后台运行/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -303,14 +304,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/运维/" itemprop="url" rel="index">
                     <span itemprop="name"> 运维 </span>
                   </a>
@@ -367,10 +368,10 @@
 <p>我们知道，当用户注销（logout）或者网络断开时，终端会收到 HUP（hangup）信号从而关闭其所有子进程。nohup 的用途就是让提交的命令忽略 hangup 信号。</p>
 <p>nohup 的使用是十分方便的，只需在要处理的命令前加上 nohup 即可，标准输出和标准错误缺省会被重定向到 nohup.out 文件中。一般我们可在结尾加上”&amp;”来将命令同时放入后台运行，也可用 <code>&gt; filename 2&gt;&amp;1</code> 来更改缺省的重定向文件名。</p>
 <p>例如原来老版本的 logstash 没有办法使用 service 来使其在后台工作，但是我们又不可能时时刻刻保持我们的 shell 都打开着，所以我们使用了这样的命令:</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</span><br></pre></td></tr></table></figure>
 <p>这样就使得 logstash 即使在我们退出 shell 的时候也能够保持在后台继续运行着。（当然后来升级了，也就不存在这样的问题了）</p>
 <h3 id="setsid-命令"><a href="#setsid-命令" class="headerlink" title="setsid 命令"></a>setsid 命令</h3><p>nohup 无疑能通过忽略 HUP 信号来使我们的进程避免中途被中断，换一种解决方式，我们让我们的进程不属于当前的 shell 管理，这样就不会受到当前 shell 的影响了。例如上述命令我们可以改成这样：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setsid <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsid <span class="regexp">/opt/</span>logstash<span class="regexp">/bin/</span>logstash -f <span class="regexp">/etc/</span>logstash<span class="regexp">/conf.d/</span>simple.conf &amp;</span><br></pre></td></tr></table></figure>
 <p>使用 setsid 命令之后的该进程的父进程则是 <code>init</code> 这个 <code>PID = 1</code> 的初始化进程，这样该进程就不会因为当前 shell 的中断或者退出而收到影响。我们可以通过 <code>ps -ef</code> 来验证一番，而 nohup 虽然不受当前 shell 的信号影响，但是其父进程还是当前 shell。</p>
 <h3 id="disown-命令"><a href="#disown-命令" class="headerlink" title="disown 命令"></a>disown 命令</h3><p>事先在命令前加上 <code>nohup</code> 或者 <code>setsid</code> 就可以避免 HUP 信号的影响。但是如果我们未加任何处理就已经提交了命令，该如何补救才能让它避免 HUP 信号的影响呢？只有通过 disown 命令了。</p>
 <ul>
@@ -401,7 +402,7 @@
 <li>前缀+”：屏幕分屏，分为上下两边</li>
 </ul>
 <p>通过这样的一种方式我们便可以让程序不受到 shell、网络的影响。</p>
-<p>这是当时才上班不久就用到的一个需求，终于想着来记录了，当然这也不是我完全原创的，截取与参考 <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/#icomments" target="_blank" rel="external">IBM developerWorks 的 Linux 技巧</a></p>
+<p>这是当时才上班不久就用到的一个需求，终于想着来记录了，当然这也不是我完全原创的，截取与参考 <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/#icomments" target="_blank" rel="noopener">IBM developerWorks 的 Linux 技巧</a></p>
 
       
     </div>
@@ -502,7 +503,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -512,17 +513,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -589,7 +588,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -610,10 +609,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

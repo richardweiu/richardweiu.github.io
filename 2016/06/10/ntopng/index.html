@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" ntopng ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" ntopng ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,7 +91,8 @@
 <meta property="og:url" content="http://richardweiu.github.io/2016/06/10/ntopng/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　最开始接触流量监控的原因居然是集团公司人说我们电商部门的人搬过来之后网速变慢了,怀疑我们电商部门有人上班之余偷看电视剧，下电影什么的，最开始的想法是看是否真的有人在下载东西所以最开始就想找一款简单的查看是否有流量异常的工具  流行的监控　对于局域网络的监控的工具有很多很多,做一个大致的分类:(1)字符界面(2)web网页呈现。其中常用的工具有:　(1)字符界面的:　　1.nload(最">
-<meta property="og:updated_time" content="2018-02-19T12:51:25.058Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监控工具与ntopng部署">
 <meta name="twitter:description" content="前言 　最开始接触流量监控的原因居然是集团公司人说我们电商部门的人搬过来之后网速变慢了,怀疑我们电商部门有人上班之余偷看电视剧，下电影什么的，最开始的想法是看是否真的有人在下载东西所以最开始就想找一款简单的查看是否有流量异常的工具  流行的监控　对于局域网络的监控的工具有很多很多,做一个大致的分类:(1)字符界面(2)web网页呈现。其中常用的工具有:　(1)字符界面的:　　1.nload(最">
@@ -122,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/06/10/ntopng/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2016/06/10/ntopng/">
 
 
 
@@ -131,7 +132,7 @@
   <title> 监控工具与ntopng部署 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -158,12 +159,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -190,7 +191,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -200,7 +201,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -210,7 +211,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -220,7 +221,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -254,18 +255,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/10/ntopng/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -303,14 +304,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/运维/" itemprop="url" rel="index">
                     <span itemprop="name"> 运维 </span>
                   </a>
@@ -356,10 +357,10 @@
         <blockquote>
 <p><strong> 前言 </strong><br>　最开始接触流量监控的原因居然是集团公司人说我们电商部门的人搬过来之后网速变慢了,怀疑我们电商部门有人上班之余偷看电视剧，下电影什么的，最开始的想法是看是否真的有人在下载东西所以最开始就想找一款简单的查看是否有流量异常的工具</p>
 </blockquote>
-<h3 id="流行的监控"><a href="#流行的监控" class="headerlink" title="流行的监控"></a>流行的监控</h3><p>　对于局域网络的监控的工具有很多很多,做一个大致的分类:(1)字符界面(2)web网页呈现。其中常用的工具有:<br>　(1)字符界面的:<br>　　1.nload(最开始用的便是这款,但是只能看到每张网卡的实时网速和总流量。不够)<br>　　2.nethogs(这个能够看到网卡的总流量以及流量是通过哪些程序发送的和接收的)<br>　　3.ethstatus(这个类似于nload，差别在于实时流量图，和一些显示的信息详尽)<br>　(2)web界面的:<br>　　1.<a href="http://www.ntop.org/products/traffic-analysis/ntop/" target="_blank" rel="external">ntopng</a>:web界面呈现的话这个是我最先接触的工具了,在github上也有订阅，Ntopng是ntop的下一代，他不仅仅可以看到总的流量走势图还可以所有关联主机的流量使用以及流量用于何处,甚至流向远程主机的ip地址、还有做该主机使用流量的分类统计(比如说该主机今天一共用了10G流量,其中3G用于windows up,4G用于迅雷,3G用于浏览器等等)等等。功能很强大配置也很简单,方便。记得当时还在github建议它加入LDAP模块的管理用户登陆,在5月的时候看到是加了该功能的。还可以做发邮件通知流量异常情况，让你第一时间得到消息，只是我还没有用过。<br>　　它是由libcap-dev来实时捕获数据(数据包捕获函数库,由伯克利的两位教授编写的,或者直接使用PF_ring是Luca Deri发明的提高内核处理数据包效率,libcap也是用的它)、由rrdtool来将数据存储以及生成图表，由sqlite做用户登陆数据库以及rra数据与主机的登陆、用redis做缓存队列这样的基本框架来实现的,并且用bootstrap做前端的呈现。可以说ntopng就是专注于简单的流量监控而且走的很深<br>　　2.mrtg(接触的也不多，但是名气很大，自定义化程度高，可以生成图。但是网页的生成管理等等都需要自己管理，好像很复杂的样子，cacti就好很多了)<br>　　3.<a href="http://www.cacti.net/" target="_blank" rel="external">cacti</a>:这个是我接触的第二个web界面呈现的网络监控程序了,因为似乎它的名气很大呀。虽然它的界面不好看(应该是很丑)，不像ntopng那样使用bootstrap做前端的呈现，很流量的分类统计和去向的追踪，但是它的优势是它的自定义化程度很高,而且他可以的不仅仅只是监控你的网卡还可以监控你的cpu使用率，内存等等。。它主要功能可以说不是流量监控，他可以做的是服务器的全方位监控，可以通过自己写模板来呈现你所需要的数据的走势图。可以说它与ntopng的着重点不同吧。而且可以做发邮件通知流量异常情况<br>　　而cacti是由net.snmp来实现数据的采集工作,由rrdtool来存储所采集的数据以及数据的绘图，由php/mysql实现web的呈现以及用户登陆和rra与主机对应的数据存储.cacti还有一个基于centos的Linux发行版叫做cactiEZ,就是专门做一台流量监控的server端<br>　　4.<a href="https://www.nagios.org/" target="_blank" rel="external">nagios</a>:这个工具与cacti在企业中简直就是神一般的存在，nagios用的好不好可以直接看出这个运维的水平高不高，与cacti功能类似，可以写模板监控服务器的全方位数据，画出你想要的数据走向图，还有高警示度警告功能。<br>　　单纯nagios可能你以为就这样，但是他可以加各种各样的插件，厉害起来吓死你，可以我还为对他有更深入的研究也就没有权力做更多的评论<br>　　5.<a href="http://www.zabbix.org/wiki/Main_Page" target="_blank" rel="external">zabbix</a>:与nagios相同，神器啊简直就是，当然还未来得机更多的深入研究，与nagios之间有很多争论谁才是老大哥。<br>　　6.<a href="http://www.oneapm.com/ci/feature.html" target="_blank" rel="external">Cloud Insight</a>:Cloud Insigh 是一个通过 StatsD收集数据，使用 OpenTSDB 对性能指标进行聚合、分组、过滤，利用 highcharts 做前端展示的数据管理平台。它的呈现风格更好看（至少我很喜欢）而且功能也相当的强大。<br>　　而且该公司有类似于sentry这样的产品但是功能强大很多，数据归纳的更加的清晰明了，很容易检查出问题，就是有些贵。</p>
+<h3 id="流行的监控"><a href="#流行的监控" class="headerlink" title="流行的监控"></a>流行的监控</h3><p>　对于局域网络的监控的工具有很多很多,做一个大致的分类:(1)字符界面(2)web网页呈现。其中常用的工具有:<br>　(1)字符界面的:<br>　　1.nload(最开始用的便是这款,但是只能看到每张网卡的实时网速和总流量。不够)<br>　　2.nethogs(这个能够看到网卡的总流量以及流量是通过哪些程序发送的和接收的)<br>　　3.ethstatus(这个类似于nload，差别在于实时流量图，和一些显示的信息详尽)<br>　(2)web界面的:<br>　　1.<a href="http://www.ntop.org/products/traffic-analysis/ntop/" target="_blank" rel="noopener">ntopng</a>:web界面呈现的话这个是我最先接触的工具了,在github上也有订阅，Ntopng是ntop的下一代，他不仅仅可以看到总的流量走势图还可以所有关联主机的流量使用以及流量用于何处,甚至流向远程主机的ip地址、还有做该主机使用流量的分类统计(比如说该主机今天一共用了10G流量,其中3G用于windows up,4G用于迅雷,3G用于浏览器等等)等等。功能很强大配置也很简单,方便。记得当时还在github建议它加入LDAP模块的管理用户登陆,在5月的时候看到是加了该功能的。还可以做发邮件通知流量异常情况，让你第一时间得到消息，只是我还没有用过。<br>　　它是由libcap-dev来实时捕获数据(数据包捕获函数库,由伯克利的两位教授编写的,或者直接使用PF_ring是Luca Deri发明的提高内核处理数据包效率,libcap也是用的它)、由rrdtool来将数据存储以及生成图表，由sqlite做用户登陆数据库以及rra数据与主机的登陆、用redis做缓存队列这样的基本框架来实现的,并且用bootstrap做前端的呈现。可以说ntopng就是专注于简单的流量监控而且走的很深<br>　　2.mrtg(接触的也不多，但是名气很大，自定义化程度高，可以生成图。但是网页的生成管理等等都需要自己管理，好像很复杂的样子，cacti就好很多了)<br>　　3.<a href="http://www.cacti.net/" target="_blank" rel="noopener">cacti</a>:这个是我接触的第二个web界面呈现的网络监控程序了,因为似乎它的名气很大呀。虽然它的界面不好看(应该是很丑)，不像ntopng那样使用bootstrap做前端的呈现，很流量的分类统计和去向的追踪，但是它的优势是它的自定义化程度很高,而且他可以的不仅仅只是监控你的网卡还可以监控你的cpu使用率，内存等等。。它主要功能可以说不是流量监控，他可以做的是服务器的全方位监控，可以通过自己写模板来呈现你所需要的数据的走势图。可以说它与ntopng的着重点不同吧。而且可以做发邮件通知流量异常情况<br>　　而cacti是由net.snmp来实现数据的采集工作,由rrdtool来存储所采集的数据以及数据的绘图，由php/mysql实现web的呈现以及用户登陆和rra与主机对应的数据存储.cacti还有一个基于centos的Linux发行版叫做cactiEZ,就是专门做一台流量监控的server端<br>　　4.<a href="https://www.nagios.org/" target="_blank" rel="noopener">nagios</a>:这个工具与cacti在企业中简直就是神一般的存在，nagios用的好不好可以直接看出这个运维的水平高不高，与cacti功能类似，可以写模板监控服务器的全方位数据，画出你想要的数据走向图，还有高警示度警告功能。<br>　　单纯nagios可能你以为就这样，但是他可以加各种各样的插件，厉害起来吓死你，可以我还为对他有更深入的研究也就没有权力做更多的评论<br>　　5.<a href="http://www.zabbix.org/wiki/Main_Page" target="_blank" rel="noopener">zabbix</a>:与nagios相同，神器啊简直就是，当然还未来得机更多的深入研究，与nagios之间有很多争论谁才是老大哥。<br>　　6.<a href="http://www.oneapm.com/ci/feature.html" target="_blank" rel="noopener">Cloud Insight</a>:Cloud Insigh 是一个通过 StatsD收集数据，使用 OpenTSDB 对性能指标进行聚合、分组、过滤，利用 highcharts 做前端展示的数据管理平台。它的呈现风格更好看（至少我很喜欢）而且功能也相当的强大。<br>　　而且该公司有类似于sentry这样的产品但是功能强大很多，数据归纳的更加的清晰明了，很容易检查出问题，就是有些贵。</p>
 <h3 id="ntopng的部署"><a href="#ntopng的部署" class="headerlink" title="ntopng的部署"></a>ntopng的部署</h3><p>　说了那么多牛的监控监控工具，但是我们的需求并没有这么高，只是简单的查看是否有人偷使用网络看电视剧下电影这么简单。所以当时我还是先使用的ntopng(当然还有原因就是我当时没有接触这么多,不知道这些腻害的监控工具,只是想尽快的弄出个东西找出元凶给老板一个交代，看起来好像很高效率做出他想要的结果的样子，所以当时选用了这个，其他牛都有些复杂不好弄)</p>
-<h4 id="ntopng的依赖"><a href="#ntopng的依赖" class="headerlink" title="ntopng的依赖"></a>ntopng的依赖</h4><p>　首当其冲的当然是依赖包的安装拉<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span> #当然先更新一下源咯</div><div class="line">sudo apt-<span class="built_in">get</span> install libcap rrdtool librrd-<span class="built_in">dev</span> redis-server libsqlite3-<span class="built_in">dev</span> libmysqlclient-<span class="built_in">dev</span> #这些是主要功能实现的库文件或者程序</div><div class="line">sudo apt-<span class="built_in">get</span> install subversion libglib2<span class="number">.0</span> libxml2-<span class="built_in">dev</span> libtool autoconf automake autogen wget libhirdis-<span class="built_in">dev</span> libgeoip-<span class="built_in">dev</span> </div><div class="line">libcurl4-openssl-<span class="built_in">dev</span> libpango1<span class="number">.0</span>-<span class="built_in">dev</span> libcairo2-<span class="built_in">dev</span> libpng12-<span class="built_in">dev</span> git #这些主要是一些辅助的功能库和工具等</div><div class="line">#还需要安装nDPI,这个是通过下载源码编译安装</div><div class="line">git clone https:<span class="comment">//github.com/ntop/nDPI.git</span></div><div class="line">cd nDPI/</div><div class="line">./autogen.sh</div><div class="line">make</div></pre></td></tr></table></figure></p>
-<h4 id="ntopng的安装"><a href="#ntopng的安装" class="headerlink" title="ntopng的安装"></a>ntopng的安装</h4><p>　同样的ntopng本生，我们也是通过编译安装，因为这样才能安装的最新的版本，apt-get源库中的版本太老了,而且我记得似乎只有ntop的版本<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ..</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/ntop/ntopng.git</div><div class="line"><span class="keyword">cd</span> ntopng</div><div class="line">./autogen.<span class="keyword">sh</span></div><div class="line">./configure</div><div class="line"><span class="keyword">make</span></div><div class="line"><span class="keyword">make</span> install</div></pre></td></tr></table></figure></p>
+<h4 id="ntopng的依赖"><a href="#ntopng的依赖" class="headerlink" title="ntopng的依赖"></a>ntopng的依赖</h4><p>　首当其冲的当然是依赖包的安装拉<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span> #当然先更新一下源咯</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libcap rrdtool librrd-<span class="built_in">dev</span> redis-server libsqlite3-<span class="built_in">dev</span> libmysqlclient-<span class="built_in">dev</span> #这些是主要功能实现的库文件或者程序</span><br><span class="line">sudo apt-<span class="built_in">get</span> install subversion libglib2<span class="number">.0</span> libxml2-<span class="built_in">dev</span> libtool autoconf automake autogen wget libhirdis-<span class="built_in">dev</span> libgeoip-<span class="built_in">dev</span> </span><br><span class="line">libcurl4-openssl-<span class="built_in">dev</span> libpango1<span class="number">.0</span>-<span class="built_in">dev</span> libcairo2-<span class="built_in">dev</span> libpng12-<span class="built_in">dev</span> git #这些主要是一些辅助的功能库和工具等</span><br><span class="line">#还需要安装nDPI,这个是通过下载源码编译安装</span><br><span class="line">git clone https:<span class="comment">//github.com/ntop/nDPI.git</span></span><br><span class="line">cd nDPI/</span><br><span class="line">./autogen.sh</span><br><span class="line">make</span><br></pre></td></tr></table></figure></p>
+<h4 id="ntopng的安装"><a href="#ntopng的安装" class="headerlink" title="ntopng的安装"></a>ntopng的安装</h4><p>　同样的ntopng本生，我们也是通过编译安装，因为这样才能安装的最新的版本，apt-get源库中的版本太老了,而且我记得似乎只有ntop的版本<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ..</span><br><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/ntop/ntopng.git</span><br><span class="line"><span class="keyword">cd</span> ntopng</span><br><span class="line">./autogen.<span class="keyword">sh</span></span><br><span class="line">./configure</span><br><span class="line"><span class="keyword">make</span></span><br><span class="line"><span class="keyword">make</span> install</span><br></pre></td></tr></table></figure></p>
 <h4 id="ntopng的启动"><a href="#ntopng的启动" class="headerlink" title="ntopng的启动"></a>ntopng的启动</h4><p>　(1)首先确保redis是否已经启动了<br>　(2)然后启动它。./ntopng或者是ntopng<br>之前在部署sentry的时候使用过一个工具就是supervior来管理进程，你要是愿意的话也可以使用他来管理我们的ntopng.当时部署使用的时候没有写博客的想法也就忘记截图了</p>
 
       
@@ -461,7 +462,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -471,17 +472,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -548,7 +547,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -569,10 +568,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

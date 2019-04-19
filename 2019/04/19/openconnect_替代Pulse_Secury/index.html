@@ -84,28 +84,18 @@
 
 
 
-<meta name="description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
+<meta name="description" content="前言 　公司用的 Pulse Secury 做 vpn，但是在 Linux 中已经不支持浏览器中嵌套 Java 的方式了，并且客户端也放弃升级了所以导致 Linux 中无法直接使用的 client，因此通过 openconnect 来替代  使用 openconnectopenconnect 是一个开源工具，我们选择它来替换 Pulse Secury  首先安装 openconnect  12">
 <meta name="keywords" content=" Linux ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Add hotspot on Ubuntu">
-<meta property="og:url" content="http://richardweiu.github.io/2016/06/08/hotspot/index.html">
+<meta property="og:title" content="openconnect 替代 Pulse Secury">
+<meta property="og:url" content="http://richardweiu.github.io/2019/04/19/openconnect_替代Pulse_Secury/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
+<meta property="og:description" content="前言 　公司用的 Pulse Secury 做 vpn，但是在 Linux 中已经不支持浏览器中嵌套 Java 的方式了，并且客户端也放弃升级了所以导致 Linux 中无法直接使用的 client，因此通过 openconnect 来替代  使用 openconnectopenconnect 是一个开源工具，我们选择它来替换 Pulse Secury  首先安装 openconnect  12">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg">
-<meta property="og:updated_time" content="2019-01-08T02:31:45.383Z">
+<meta property="og:updated_time" content="2019-04-19T06:19:00.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Add hotspot on Ubuntu">
-<meta name="twitter:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta name="twitter:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
+<meta name="twitter:title" content="openconnect 替代 Pulse Secury">
+<meta name="twitter:description" content="前言 　公司用的 Pulse Secury 做 vpn，但是在 Linux 中已经不支持浏览器中嵌套 Java 的方式了，并且客户端也放弃升级了所以导致 Linux 中无法直接使用的 client，因此通过 openconnect 来替代  使用 openconnectopenconnect 是一个开源工具，我们选择它来替换 Pulse Secury  首先安装 openconnect  12">
 
 
 
@@ -133,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/06/08/hotspot/">
+  <link rel="canonical" href="http://richardweiu.github.io/2019/04/19/openconnect_替代Pulse_Secury/">
 
 
 
 
 
-  <title> Add hotspot on Ubuntu | Richardwei Blog </title>
+  <title> openconnect 替代 Pulse Secury | Richardwei Blog </title>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
@@ -266,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/08/hotspot/">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2019/04/19/openconnect_替代Pulse_Secury/">
 
   <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
@@ -290,7 +280,7 @@
             
             
               
-                Add hotspot on Ubuntu
+                openconnect 替代 Pulse Secury
               
             
           </h1>
@@ -303,8 +293,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-08T22:56:08+08:00">
-                2016-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T13:20:33+08:00">
+                2019-04-19
               </time>
             
 
@@ -337,8 +327,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/06/08/hotspot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/08/hotspot/" itemprop="commentCount"></span>
+                <a href="/2019/04/19/openconnect_替代Pulse_Secury/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/openconnect_替代Pulse_Secury/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,15 +355,39 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.</p>
+<p><strong> 前言 </strong><br>　公司用的 Pulse Secury 做 vpn，但是在 Linux 中已经不支持浏览器中嵌套 Java 的方式了，并且客户端也放弃升级了所以导致 Linux 中无法直接使用的 client，因此通过 openconnect 来替代</p>
 </blockquote>
-<h3 id="在windows中"><a href="#在windows中" class="headerlink" title="在windows中"></a>在windows中</h3><p>　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网.</p>
-<h3 id="在ubuntu中"><a href="#在ubuntu中" class="headerlink" title="在ubuntu中"></a>在ubuntu中</h3><p>　这才是我们的重点.其实让我们的ubuntu提供一个热点其实并不难,最主要的问题在于ubuntu提供的热点其他的windows设备可以搜到并且成功的连接、其他的IOS设备可以搜到并连接上。但是我们的安卓机,却要装一下了,搜不到添加隐藏网络也无法成功。最主要的问题我们的安卓机并不支持在添加热点设置中的mode模式。所以它无法识别，无法搜索到。<br>　而要让安卓机能够成功的识别,能够成功的搜索到并连接上有两种方法.</p>
-<h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><p>　1.首先设置我们网络的连接信息,点击屏幕右上角的wifi信号标志(连接的是wifi的话)或者是上下箭头的数据传输标志(连接的是网线)，然后进入设置窗口,如图所示<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png" alt="push_wifi_sigin"><br>　然后会出现如下的menu,编辑网络连接<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png" alt="modify_menu"><br>　之后会弹出这样的一个编辑窗口我们点击添加也就是add<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png" alt="add"><br>　2.接下来我们将选择添加网络连接的用途，我们选择wifi<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png" alt="choose"><br>　3.然后我们为我们的网络连接设置一个名字以及ssid还有模式的选择<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png" alt="create_1"><br>　4.为我们的wifi设置一个密码以及加密的方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png" alt="add_pwd"><br>　5.选择共享方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png" alt="share_mode"><br>　6.完成之后我们点击save,这样我们就初步完成了热点的创建,windows与iphone连接一点问题的没有.我们开始为安卓机服务的准备。我们需要kde下的一款网络包，kde-nm-connection-editor，打开ubuntu-software-center,在搜索一栏搜索 network，找到 kde-nm-connection-editor，安装<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png" alt="install_kde"><br>　7.安装完成之后我们使用终端开开启该应用,在终端中输入该软件名称.<br>　8.在弹出的窗口中点击之前我们所创建的热点,然后编辑它。<br>　9.在接下来的窗口中我们修改wifi的模式从ad-hoc修改为access point,然后点击OK就可以了(这里我盗了一个图，呵呵)<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg" alt="modify_mode"><br>　10.最后一步了。马上就成功啦！接下来只需要电脑在有线联网的情况下激活刚才创建的wifi热点即可，同前，右上角打开　网络设置，选择　创建新的wifi网络(Create New Wi-Fi Network)，弹出窗口，连接(Connection)一栏中选择刚才创建的wifi热点名称,其他选项系统自动设置完成，单机OK,等待片刻后，你的android设备就可顺利搜索到你的wifi网络并连接了～～!!</p>
-<h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><p>　这种方法使用的是ap-hotspot,这里参考<a href="http://www.cnblogs.com/csulennon/p/4418734.html" target="_blank" rel="noopener">http://www.cnblogs.com/csulennon/p/4418734.html</a>d<br>  1.安装ap-hotspot<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo<span class="built_in"> add-apt-repository </span>ppa:nilarimogard/webupd8</span><br><span class="line"></span><br><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install hostapd</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install ap-hotspot</span><br></pre></td></tr></table></figure></p>
-<p>　2.配置ap-hotspot<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ap-hotspot configure</span><br><span class="line"></span><br><span class="line">Detecting configuration...</span><br><span class="line">Detected eth0 <span class="keyword">as</span> <span class="keyword">the</span> network interface connected <span class="built_in">to</span> <span class="keyword">the</span> Internet. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface below (e.g.- eth0, ppp0 etc.):</span><br><span class="line"><span class="comment">	// 回车确认</span></span><br><span class="line"></span><br><span class="line">Detected wlan0 <span class="keyword">as</span> your WiFi interface. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface (e.g.- wlan1):</span><br><span class="line"><span class="comment">	// 回车确认</span></span><br><span class="line"></span><br><span class="line">Enter <span class="keyword">the</span> desired Access Point name <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (myhotspot):</span><br><span class="line"><span class="comment">	// 输入wifi的名字</span></span><br><span class="line"></span><br><span class="line">Enter <span class="keyword">the</span> desired WPA Passphrase below <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (qwerty0987):</span><br><span class="line"><span class="comment">	// 输入wifi的密码</span></span><br></pre></td></tr></table></figure></p>
-<p>　3.启动wifi<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ap-hotspot <span class="literal">start</span></span><br></pre></td></tr></table></figure></p>
-<p>这样就搞定了</p>
+<h2 id="使用-openconnect"><a href="#使用-openconnect" class="headerlink" title="使用 openconnect"></a>使用 openconnect</h2><p>openconnect 是一个开源工具，我们选择它来替换 Pulse Secury</p>
+<ul>
+<li>首先安装 openconnect</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意 openconnect v7.06 有 bug，务必安装 7.08 及以上的版本</span></span><br><span class="line"></span><br><span class="line">sudo apt-get install openconnect <span class="comment"># Ubuntu</span></span><br><span class="line">sudo yum install openconnect <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>下载 vpnc 脚本（vpnc-script 作用 To set the routing and name service up, 单独下载是因为老版本少了一个监控什么的）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/vpnc/</span><br><span class="line">curl http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script &gt; /etc/vpnc/vpnc-script</span><br><span class="line">chmod a+x /etc/vpnc/vpnc-script</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后启动 vpn:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">openconnect --juniper --script /etc/vpnc/vpnc-script https://vpn.xxxx.xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">WARNING: Juniper Network Connect support is experimental.</span><br><span class="line">It will probably be superseded by Junos Pulse support.</span><br><span class="line">GET https://vpn.xxxx.xxx/</span><br><span class="line">Connected to xxx.xxx.xxx.xxx:443</span><br><span class="line">SSL negotiation with vpn.xxxx.xxx</span><br><span class="line">Server certificate verify failed: signer not found</span><br><span class="line"></span><br><span class="line">Certificate from VPN server <span class="string">"vpn.xxxx.xxxx"</span> failed verification.</span><br><span class="line">Reason: signer not found</span><br><span class="line">To trust this server <span class="keyword">in</span> future, perhaps add this to your <span class="built_in">command</span> line:</span><br><span class="line">Enter <span class="string">'yes'</span> to accept, <span class="string">'no'</span> to abort; anything <span class="keyword">else</span> to view: yes</span><br><span class="line">Connected to HTTPS on vpn.xxxx.xxxx</span><br><span class="line">Got HTTP response: HTTP/1.1 302 Found</span><br><span class="line">GET https://vpn.xxxxx.xxxx/dana-na/auth/url_default/welcome.cgi</span><br><span class="line">SSL negotiation with vpn.xxxx.xxx</span><br><span class="line">Server certificate verify failed: signer not found</span><br><span class="line">Connected to HTTPS on vpn.xxxx.xxx</span><br><span class="line">frmLogin</span><br><span class="line">realm [MOTP动态令牌登陆|传统登陆]:MOTP动态令牌登陆</span><br><span class="line">frmLogin</span><br><span class="line">username:xxx</span><br><span class="line">password:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ubuntu 插件可以帮我们在 Network Manager 中简单配置即可，不用每次都运行命令(支持 openconnect、openfortivpn 等等)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># network-manager-openconnect-gnome 这个似乎也行，没用过</span></span><br><span class="line">sudo apt-get install network-manager-fortisslvpn</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>若是用到老版本的 openconnect 会有这样的报错</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Connected to HTTPS on &#123;&#123;myserver&#125;&#125;</span><br><span class="line">Got HTTP response: HTTP/1.1 400 Bad Request</span><br><span class="line">Unexpected 400 result from server</span><br><span class="line">Creating SSL connection failed</span><br></pre></td></tr></table></figure>
+<p>在同事一台服务器（ubuntu16.04 系统）上因为找不到 v7.08 的安装包所以只能尝试编译安装，遇到了这样的问题:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个问题主要是还是因为缺少依赖导致的</span></span><br><span class="line"><span class="comment"># ./autogen.sh </span></span><br><span class="line">autoheader: warning: missing template: LIBPROXY_HDR</span><br><span class="line">autoheader: Use AC_DEFINE([LIBPROXY_HDR], [], [Description])</span><br></pre></td></tr></table></figure>
+<p>编译安装的流程:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">sudo apt-get install build-essential gettext autoconf automake libproxy-dev libxml2-dev libtool vpnc-scripts pkg-config libgnutls-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载源码</span></span><br><span class="line">git <span class="built_in">clone</span> git://git.infradead.org/users/dwmw2/openconnect.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载最新的脚本</span></span><br><span class="line">mkdir -p /etc/vpnc/</span><br><span class="line">curl http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script &gt; /etc/vpnc/vpnc-script</span><br><span class="line">chmod a+x /etc/vpnc/vpnc-script</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译安装</span></span><br><span class="line"><span class="built_in">cd</span> openconnect/</span><br><span class="line">git checkout v7.08</span><br><span class="line">sudo ./autogen.sh</span><br><span class="line">sudo ./configure</span><br><span class="line">sudo make &amp;&amp; sudo make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后检查版本即可</span></span><br><span class="line">sudo ./openconnect --version</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>官网： <a href="https://www.infradead.org/openconnect/packages.html" target="_blank" rel="noopener">https://www.infradead.org/openconnect/packages.html</a></li>
+<li>vpnc-script 说明: <a href="http://www.infradead.org/openconnect/vpnc-script.html" target="_blank" rel="noopener">http://www.infradead.org/openconnect/vpnc-script.html</a></li>
+<li>低版本问题: <a href="https://serverfault.com/questions/835918/openconnect-and-pulse-stopped-working" target="_blank" rel="noopener">https://serverfault.com/questions/835918/openconnect-and-pulse-stopped-working</a></li>
+<li>安装说明: <a href="https://github.com/dlenski/openconnect#building-from-source-on-linux" target="_blank" rel="noopener">https://github.com/dlenski/openconnect#building-from-source-on-linux</a></li>
+</ul>
 
       
     </div>
@@ -406,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/03/Ubuntu/" rel="next" title="Ubuntu 杂记">
-                <i class="fa fa-chevron-left"></i> Ubuntu 杂记
+              <a href="/2018/01/01/zsh-注意/" rel="next" title="zsh 注意">
+                <i class="fa fa-chevron-left"></i> zsh 注意
               </a>
             
           </div>
@@ -415,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/09/Nginx+thinkphp/" rel="prev" title="Nginx 遇 Thinkphp 的水土不服">
-                Nginx 遇 Thinkphp 的水土不服 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在windows中"><span class="nav-number">1.</span> <span class="nav-text">在windows中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在ubuntu中"><span class="nav-number">2.</span> <span class="nav-text">在ubuntu中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方法"><span class="nav-number">2.1.</span> <span class="nav-text">第一种方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方法"><span class="nav-number">2.2.</span> <span class="nav-text">第二种方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-openconnect"><span class="nav-number">1.</span> <span class="nav-text">使用 openconnect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -694,9 +704,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'richardweiu';
-      var disqus_identifier = '2016/06/08/hotspot/';
+      var disqus_identifier = '2019/04/19/openconnect_替代Pulse_Secury/';
 
-      var disqus_title = "Add hotspot on Ubuntu";
+      var disqus_title = "openconnect 替代 Pulse Secury";
 
 
       function run_disqus_script(disqus_script) {

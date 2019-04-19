@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" sentry ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" sentry ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,7 +91,8 @@
 <meta property="og:url" content="http://richardweiu.github.io/2016/06/10/sentry-server/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　sentry是用python基于Django构建的实时事件日志聚合平台，可将程序所有的exception记录下来并在一个web端中呈现出来。翻译成人类的语言来说就是主要用来实时监控你所添加需要监管的server端,出现error将第一时间在平台中收集并以邮件的形式通知你，并且将error的日志信息解读归类等等的简单处理  部数前注意　(1)Django是1.6的与sentry6.1.2">
-<meta property="og:updated_time" content="2018-02-19T12:51:25.054Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sentry Server的部署">
 <meta name="twitter:description" content="前言 　sentry是用python基于Django构建的实时事件日志聚合平台，可将程序所有的exception记录下来并在一个web端中呈现出来。翻译成人类的语言来说就是主要用来实时监控你所添加需要监管的server端,出现error将第一时间在平台中收集并以邮件的形式通知你，并且将error的日志信息解读归类等等的简单处理  部数前注意　(1)Django是1.6的与sentry6.1.2">
@@ -122,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/06/10/sentry-server/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2016/06/10/sentry-server/">
 
 
 
@@ -131,7 +132,7 @@
   <title> Sentry Server的部署 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -158,12 +159,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -190,7 +191,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -200,7 +201,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -210,7 +211,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -220,7 +221,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -254,18 +255,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/10/sentry-server/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -303,14 +304,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/运维/" itemprop="url" rel="index">
                     <span itemprop="name"> 运维 </span>
                   </a>
@@ -358,32 +359,32 @@
 </blockquote>
 <h3 id="部数前注意"><a href="#部数前注意" class="headerlink" title="部数前注意"></a>部数前注意</h3><p>　(1)Django是1.6的与sentry6.1.2的不兼容，这样可能会出现这样的错误信息在你部署之后:Internal Server Error<br>　所以官方的使用文档上会推荐或者说建议你使用virtualenv来做好环境隔离。避免影响你server端中的其他python环境，我认为若是我们专门那一台server（一般现在都用云，AWS中的instance等等）来做我们的sentry server也就不存在环境的影响也就可以不需要使用它.</p>
 <blockquote>
-<p>virtualenv的了解<br>　<a href="https://virtualenv.pypa.io/en/stable/" target="_blank" rel="external">VirtualEnv</a>用于在一台机器上创建多个独立的Python虚拟运行环境，多个Python环境相互独立，互不影响，它能够：<br>  1.在没有权限的情况下安装新套件<br>  2.不同应用可以使用不同的套件版本<br>  3.套件升级不影响其他应用<br>　虚拟环境是在Python解释器上的一个私有复制，你可以在一个隔绝的环境下安装packages，不会影响到你系统中全局的Python解释器。<br>　虚拟环境非常有用，因为它可以防止系统出现包管理混乱和版本冲突的问题。为每个应用程序创建一个虚拟环境可以确保应用程序只能访问它们自己使用的包，从而全局解释器只作为一个源且依然整洁干净去更多的虚拟环境。另一个好处是，虚拟环境不需要管理员权限。</p>
+<p>virtualenv的了解<br>　<a href="https://virtualenv.pypa.io/en/stable/" target="_blank" rel="noopener">VirtualEnv</a>用于在一台机器上创建多个独立的Python虚拟运行环境，多个Python环境相互独立，互不影响，它能够：<br>  1.在没有权限的情况下安装新套件<br>  2.不同应用可以使用不同的套件版本<br>  3.套件升级不影响其他应用<br>　虚拟环境是在Python解释器上的一个私有复制，你可以在一个隔绝的环境下安装packages，不会影响到你系统中全局的Python解释器。<br>　虚拟环境非常有用，因为它可以防止系统出现包管理混乱和版本冲突的问题。为每个应用程序创建一个虚拟环境可以确保应用程序只能访问它们自己使用的包，从而全局解释器只作为一个源且依然整洁干净去更多的虚拟环境。另一个好处是，虚拟环境不需要管理员权限。</p>
 </blockquote>
-<p>　(2)sentry的依赖有很多,若是准备工作没有做好,没有都装上到后面也会报错让你补上的。<br>　(3)<a href="https://pip.pypa.io/en/stable/" target="_blank" rel="external">pip</a>是一个安装和管理 Python 包的工具,是 easy_install 的一个替换品。pip的安装需要setuptools 或者 distribute，如果你使用的是Python3.x那么就只能使用distribute因为Python3.x不支持setuptools。因为sentry是由python开发出来的,所以我们也将使用pip来安装以及管理它.<br>　这里将详细阐述分别使用virtuaenv与不使用virtuaenv两种方式的安装过程</p>
-<h3 id="使用virtuaenv"><a href="#使用virtuaenv" class="headerlink" title="使用virtuaenv"></a>使用virtuaenv</h3><h4 id="依赖的安装"><a href="#依赖的安装" class="headerlink" title="依赖的安装"></a>依赖的安装</h4><p>　安装之前当然需要为sentry提供好其依赖的环境以及库咯<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span> #更新源在本地的包的版本信息</div><div class="line">sudo apt-<span class="built_in">get</span> install python-setuptools #上文提到过</div><div class="line">sudo apt-<span class="built_in">get</span> install python-pip #安装pip管理工具</div><div class="line">sudo apt-<span class="built_in">get</span> install nginx postgresql redis-server </div><div class="line">#sentry是以nginx做其web server(准确来说是反向代理),postgresql主要用于存储用户信息,redis来做其缓存数据库</div><div class="line">sudo apt-<span class="built_in">get</span> install python-<span class="built_in">dev</span> libxlt1-<span class="built_in">dev</span> libxml2-<span class="built_in">dev</span> zlib-<span class="built_in">dev</span> libtfi-<span class="built_in">dev</span> libssl-<span class="built_in">dev</span> libpq-<span class="built_in">dev</span> libyaml-<span class="built_in">dev</span> lxml</div><div class="line">sudo apt-<span class="built_in">get</span> install psycopg2 postfix #psycopg2是python用于连接postgresql的第三方工具,postfix是邮件服务系统,可选</div></pre></td></tr></table></figure></p>
-<h4 id="环境的安装"><a href="#环境的安装" class="headerlink" title="环境的安装"></a>环境的安装</h4><p>　虚拟环境的安装及其使用<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pip install -U virtualenv</div><div class="line">virtualenv <span class="regexp">/www/</span>sentry <span class="comment">#为sentry创造一个坑位</span></div><div class="line">source <span class="regexp">/www/</span>sentry<span class="regexp">/bin/</span>activate <span class="comment">#初始化启用环境</span></div><div class="line">pip install -U sentry <span class="comment">#sentry的安装</span></div><div class="line">sentry init <span class="regexp">/www/</span>sentry.conf.py <span class="comment">#初始化sentry生成配置文件</span></div></pre></td></tr></table></figure></p>
+<p>　(2)sentry的依赖有很多,若是准备工作没有做好,没有都装上到后面也会报错让你补上的。<br>　(3)<a href="https://pip.pypa.io/en/stable/" target="_blank" rel="noopener">pip</a>是一个安装和管理 Python 包的工具,是 easy_install 的一个替换品。pip的安装需要setuptools 或者 distribute，如果你使用的是Python3.x那么就只能使用distribute因为Python3.x不支持setuptools。因为sentry是由python开发出来的,所以我们也将使用pip来安装以及管理它.<br>　这里将详细阐述分别使用virtuaenv与不使用virtuaenv两种方式的安装过程</p>
+<h3 id="使用virtuaenv"><a href="#使用virtuaenv" class="headerlink" title="使用virtuaenv"></a>使用virtuaenv</h3><h4 id="依赖的安装"><a href="#依赖的安装" class="headerlink" title="依赖的安装"></a>依赖的安装</h4><p>　安装之前当然需要为sentry提供好其依赖的环境以及库咯<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">update</span> <span class="comment">#更新源在本地的包的版本信息</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-setuptools <span class="comment">#上文提到过</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-pip <span class="comment">#安装pip管理工具</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> nginx postgresql redis-<span class="keyword">server</span> </span><br><span class="line"><span class="comment">#sentry是以nginx做其web server(准确来说是反向代理),postgresql主要用于存储用户信息,redis来做其缓存数据库</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-dev libxlt1-dev libxml2-dev zlib-dev libtfi-dev libssl-dev libpq-dev libyaml-dev lxml</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> psycopg2 postfix <span class="comment">#psycopg2是python用于连接postgresql的第三方工具,postfix是邮件服务系统,可选</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="环境的安装"><a href="#环境的安装" class="headerlink" title="环境的安装"></a>环境的安装</h4><p>　虚拟环境的安装及其使用<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -U virtualenv</span><br><span class="line">virtualenv /www/sentry <span class="comment">#为sentry创造一个坑位</span></span><br><span class="line"><span class="keyword">source</span> /www/sentry/<span class="keyword">bin</span>/<span class="keyword">activate</span> <span class="comment">#初始化启用环境</span></span><br><span class="line">pip <span class="keyword">install</span> -U sentry <span class="comment">#sentry的安装</span></span><br><span class="line">sentry init /www/sentry.conf.py <span class="comment">#初始化sentry生成配置文件</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="环境的配置"><a href="#环境的配置" class="headerlink" title="环境的配置"></a>环境的配置</h4><p>　既然是自己安装sentry服务器当然高可自定义化咯,<a name="conf_en">自己修改配置文件咯</a></p>
-<h5 id="修改sentry的配置文件"><a href="#修改sentry的配置文件" class="headerlink" title="修改sentry的配置文件"></a>修改sentry的配置文件</h5><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">vim /www/sentry/sentry.conf.py</div><div class="line"></div><div class="line"><span class="meta">#第一个需要修改的是DB的使用,sentry可以使用postgresql,mysql,sqlite。默认使用的是sqlite，当然你可以使用默认的，也可以使用postgresql</span></div><div class="line"><span class="meta">#使用自己的postgresql的时候做如下的修改,在配置文件的注释中有提示使用postgresql记得安装psycppg2</span></div><div class="line"></div><div class="line"><span class="keyword">default</span>:&#123;</div><div class="line">		<span class="string">'ENGINE'</span>: <span class="string">'sentry.db.postgres'</span>,</div><div class="line">		<span class="string">'NAME'</span>:	<span class="string">'sentry'</span>,</div><div class="line">		<span class="string">'USER'</span>: <span class="string">'postgres'</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">#接着需要修改配置的是HOST的访问,HOST板块中添加一下语句</span></div><div class="line"><span class="meta">#若是不添加词句那么你从其他的地方是无法访问的</span></div><div class="line"><span class="meta">#若是好心有条件也可以为其配置域名</span></div><div class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</div><div class="line">SENTRY_URL_PREFIX = <span class="string">'http://......'</span></div><div class="line"></div><div class="line"><span class="meta">#若是需要email的通知,记得修改末尾的SMTP SERVER板块的配置，若是本地则将host改为loaclhost</span></div></pre></td></tr></table></figure>
-<h5 id="修改Nginx的配置文件"><a href="#修改Nginx的配置文件" class="headerlink" title="修改Nginx的配置文件"></a>修改Nginx的配置文件</h5><p>　使用Nginx做反向代理将访问80端口的请求悄悄的专向sentry默认的9000号端口的服务上<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">vim</span> /etc/nginx/site-enable/default</div><div class="line"></div><div class="line">location /&#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://localhost:9000;</div><div class="line">		<span class="attribute">proxy_redired</span> <span class="literal">off</span>;</div><div class="line">		<span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</div><div class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x</span>;</div><div class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#既然修改了配置就需要重启nginx服务,让其生效</span></div><div class="line"><span class="attribute">service</span> nginx restart</div></pre></td></tr></table></figure></p>
-<h5 id="postgresql的准备"><a href="#postgresql的准备" class="headerlink" title="postgresql的准备"></a>postgresql的准备</h5><p>(1)修改pg的访问控制，不然sentry无法访问<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/postgresql/<span class="number">9.3</span>/main/pg_hba.conf</div><div class="line"><span class="keyword">local</span> 		all 		postgres 		peer<span class="comment">---&gt;trust</span></div><div class="line"></div><div class="line"><span class="comment">#同样修改后需要重启数据库服务</span></div><div class="line">service postgresql restart</div></pre></td></tr></table></figure></p>
+<h5 id="修改sentry的配置文件"><a href="#修改sentry的配置文件" class="headerlink" title="修改sentry的配置文件"></a>修改sentry的配置文件</h5><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim /www/sentry/sentry.conf.py</span><br><span class="line"></span><br><span class="line"><span class="meta">#第一个需要修改的是DB的使用,sentry可以使用postgresql,mysql,sqlite。默认使用的是sqlite，当然你可以使用默认的，也可以使用postgresql</span></span><br><span class="line"><span class="meta">#使用自己的postgresql的时候做如下的修改,在配置文件的注释中有提示使用postgresql记得安装psycppg2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">default</span>:&#123;</span><br><span class="line">		<span class="string">'ENGINE'</span>: <span class="string">'sentry.db.postgres'</span>,</span><br><span class="line">		<span class="string">'NAME'</span>:	<span class="string">'sentry'</span>,</span><br><span class="line">		<span class="string">'USER'</span>: <span class="string">'postgres'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#接着需要修改配置的是HOST的访问,HOST板块中添加一下语句</span></span><br><span class="line"><span class="meta">#若是不添加词句那么你从其他的地方是无法访问的</span></span><br><span class="line"><span class="meta">#若是好心有条件也可以为其配置域名</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br><span class="line">SENTRY_URL_PREFIX = <span class="string">'http://......'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#若是需要email的通知,记得修改末尾的SMTP SERVER板块的配置，若是本地则将host改为loaclhost</span></span><br></pre></td></tr></table></figure>
+<h5 id="修改Nginx的配置文件"><a href="#修改Nginx的配置文件" class="headerlink" title="修改Nginx的配置文件"></a>修改Nginx的配置文件</h5><p>　使用Nginx做反向代理将访问80端口的请求悄悄的专向sentry默认的9000号端口的服务上<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /etc/nginx/site-enable/default</span><br><span class="line"></span><br><span class="line">location /&#123;</span><br><span class="line">		<span class="attribute">proxy_pass</span> http://localhost:9000;</span><br><span class="line">		<span class="attribute">proxy_redired</span> <span class="literal">off</span>;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x</span>;</span><br><span class="line">		<span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#既然修改了配置就需要重启nginx服务,让其生效</span></span><br><span class="line"><span class="attribute">service</span> nginx restart</span><br></pre></td></tr></table></figure></p>
+<h5 id="postgresql的准备"><a href="#postgresql的准备" class="headerlink" title="postgresql的准备"></a>postgresql的准备</h5><p>(1)修改pg的访问控制，不然sentry无法访问<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/postgresql/9.3/main/pg_hba.conf</span><br><span class="line">local 		all 		postgres 		peer---&gt;trust</span><br><span class="line"></span><br><span class="line"><span class="comment">#同样修改后需要重启数据库服务</span></span><br><span class="line">service postgresql restart</span><br></pre></td></tr></table></figure></p>
 <p>(2)为sentry创建一个它操作的数据库（三种方法）<br>1.psql -U postgres create database -E utf-8 sentry<br>2.切换至用户postgres下然后create -E utf-8 sentry<br>3.直接进入psql中创建</p>
-<h4 id="sentry启动"><a href="#sentry启动" class="headerlink" title="sentry启动"></a>sentry启动</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SENTRY_CONF=/www/sentry/sentry<span class="selector-class">.conf</span><span class="selector-class">.py</span> sentry start/stop</div></pre></td></tr></table></figure>
-<h3 id="不使用virtuaenv"><a href="#不使用virtuaenv" class="headerlink" title="不使用virtuaenv"></a>不使用virtuaenv</h3><h4 id="依赖的安装-1"><a href="#依赖的安装-1" class="headerlink" title="依赖的安装"></a>依赖的安装</h4><p>　首先当然是安装一些sentry需要依赖的环境以及库咯<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span> #更新源在本地的包的版本信息</div><div class="line">sudo apt-<span class="built_in">get</span> install python-setuptools #上文提到过</div><div class="line">sudo apt-<span class="built_in">get</span> install python-pip #安装pip管理工具</div><div class="line">sudo apt-<span class="built_in">get</span> install nginx postgresql redis-server </div><div class="line">#sentry是以nginx做其web server(准确来说是反向代理),postgresql主要用于存储用户信息,redis来做其缓存数据库</div><div class="line">sudo apt-<span class="built_in">get</span> install python-<span class="built_in">dev</span> libxlt1-<span class="built_in">dev</span> libxml2-<span class="built_in">dev</span> zlib-<span class="built_in">dev</span> libtfi-<span class="built_in">dev</span> libssl-<span class="built_in">dev</span> libpq-<span class="built_in">dev</span> libyaml-<span class="built_in">dev</span> lxml</div><div class="line">sudo apt-<span class="built_in">get</span> install psycopg2 postfix #psycopg2是python用于连接postgresql的第三方工具,postfix是邮件服务系统,可选</div></pre></td></tr></table></figure></p>
-<h4 id="sentry安装"><a href="#sentry安装" class="headerlink" title="sentry安装"></a>sentry安装</h4><p>　既然不需要虚拟环境的隔离当然就直接安装sentry咯<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip <span class="keyword">install</span> -U sentry</div></pre></td></tr></table></figure></p>
-<h4 id="sentry的初始化"><a href="#sentry的初始化" class="headerlink" title="sentry的初始化"></a>sentry的初始化</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir ~/<span class="selector-class">.sentry</span> #总的给sentry一个家吧</div><div class="line">sentry init ~/.sentry/sentry<span class="selector-class">.conf</span><span class="selector-class">.py</span> #和上面相同初始化配置文件</div></pre></td></tr></table></figure>
+<h4 id="sentry启动"><a href="#sentry启动" class="headerlink" title="sentry启动"></a>sentry启动</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SENTRY_CONF=/www/sentry/sentry<span class="selector-class">.conf</span><span class="selector-class">.py</span> sentry start/stop</span><br></pre></td></tr></table></figure>
+<h3 id="不使用virtuaenv"><a href="#不使用virtuaenv" class="headerlink" title="不使用virtuaenv"></a>不使用virtuaenv</h3><h4 id="依赖的安装-1"><a href="#依赖的安装-1" class="headerlink" title="依赖的安装"></a>依赖的安装</h4><p>　首先当然是安装一些sentry需要依赖的环境以及库咯<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">update</span> <span class="comment">#更新源在本地的包的版本信息</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-setuptools <span class="comment">#上文提到过</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-pip <span class="comment">#安装pip管理工具</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> nginx postgresql redis-<span class="keyword">server</span> </span><br><span class="line"><span class="comment">#sentry是以nginx做其web server(准确来说是反向代理),postgresql主要用于存储用户信息,redis来做其缓存数据库</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> python-dev libxlt1-dev libxml2-dev zlib-dev libtfi-dev libssl-dev libpq-dev libyaml-dev lxml</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> psycopg2 postfix <span class="comment">#psycopg2是python用于连接postgresql的第三方工具,postfix是邮件服务系统,可选</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="sentry安装"><a href="#sentry安装" class="headerlink" title="sentry安装"></a>sentry安装</h4><p>　既然不需要虚拟环境的隔离当然就直接安装sentry咯<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -U sentry</span><br></pre></td></tr></table></figure></p>
+<h4 id="sentry的初始化"><a href="#sentry的初始化" class="headerlink" title="sentry的初始化"></a>sentry的初始化</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/<span class="selector-class">.sentry</span> #总的给sentry一个家吧</span><br><span class="line">sentry init ~/.sentry/sentry<span class="selector-class">.conf</span><span class="selector-class">.py</span> #和上面相同初始化配置文件</span><br></pre></td></tr></table></figure>
 <h4 id="环境的配置-1"><a href="#环境的配置-1" class="headerlink" title="环境的配置"></a>环境的配置</h4><p>　与<a href="#conf_en">上文</a>相同这里就不在赘述了</p>
-<h4 id="sentry的启动"><a href="#sentry的启动" class="headerlink" title="sentry的启动"></a>sentry的启动</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sentry upgrate <span class="comment">#设置初始化，创建root用户</span></div><div class="line"></div><div class="line">输入root用户信息等等</div><div class="line"></div><div class="line">sentry <span class="literal">start</span> <span class="comment">#启动服务</span></div></pre></td></tr></table></figure>
+<h4 id="sentry的启动"><a href="#sentry的启动" class="headerlink" title="sentry的启动"></a>sentry的启动</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sentry upgrate <span class="comment">#设置初始化，创建root用户</span></span><br><span class="line"></span><br><span class="line">输入root用户信息等等</span><br><span class="line"></span><br><span class="line">sentry <span class="literal">start</span> <span class="comment">#启动服务</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意<br>　　若只是这样简单的启动没有为其启动worker进程，打开web端会有一个醒目的红色警告大标题栏提示你。</p>
 </blockquote>
 <h3 id="sentry进程管理"><a href="#sentry进程管理" class="headerlink" title="sentry进程管理"></a>sentry进程管理</h3><p>　当我们退出终端以后,并没有人来管理这些进程,就算哪天停止了服务我们也不能第一时间得知,所以官网建议我们使用supervisor来管理sentry的进程。supervisor能在sentry停止服务的第一时间重新将其启动起来。</p>
-<h4 id="安装supervisor"><a href="#安装supervisor" class="headerlink" title="安装supervisor"></a>安装supervisor</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span> install supervisor</div></pre></td></tr></table></figure>
-<h4 id="生成supervisor配置"><a href="#生成supervisor配置" class="headerlink" title="生成supervisor配置"></a>生成supervisor配置</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">echo</span>_supervisord_conf &gt; <span class="string">/etc/supervisord.conf</span></div><div class="line"><span class="comment">#若是放在默认位置以后便不用-c参数来指定配置文件的所在</span></div></pre></td></tr></table></figure>
-<h4 id="修改supervisor配置"><a href="#修改supervisor配置" class="headerlink" title="修改supervisor配置"></a>修改supervisor配置</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="section">[program:sentry_web]</span></div><div class="line">directory = /home/ubuntu/.sentry  <span class="comment">#指出config文件的所在路径</span></div><div class="line">environment = SENTRY_CONF = /path/sentry.conf.py <span class="comment">#指出sentry的配置文件所在路径</span></div><div class="line">command = sentry start <span class="comment">#启动sentry的命令,也可以具体的来写</span></div><div class="line">autostart = true <span class="comment">#在停止服务的时候自动重启</span></div><div class="line">redirect_stderr = true</div><div class="line">stdout_logfile = syslog <span class="comment">#将输出的日志信息放在那个文件中</span></div><div class="line">stderr_logfile = syslog <span class="comment">#将错误的日志信息输入至那个文件</span></div><div class="line"></div><div class="line"><span class="section">[program:sentry_worker]</span></div><div class="line">directory = /home/ubuntu/.sentry  <span class="comment">#指出config文件的所在路径</span></div><div class="line">environment = C_FORCE_Root = <span class="string">"true"</span> <span class="comment">#指出sentry的配置文件所在路径</span></div><div class="line">command = sentry start celery worker -B <span class="comment">#启动sentry的命令,也可以具体的来写</span></div><div class="line">autostart = true <span class="comment">#在停止服务的时候自动重启</span></div><div class="line">redirect_stderr = true</div><div class="line">stdout_logfile = syslog <span class="comment">#将输出的日志信息放在那个文件中</span></div><div class="line">stderr_logfile = syslog <span class="comment">#将错误的日志信息输入至那个文件</span></div></pre></td></tr></table></figure>
-<h4 id="启动supervisor进程"><a href="#启动supervisor进程" class="headerlink" title="启动supervisor进程"></a>启动supervisor进程</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">supervisord -c /path/config <span class="built_in">file</span> <span class="comment">#supervisord的配置文件路径</span></div><div class="line">supervisorctl -c 同上 不加参数进入交互模式／加参数命令</div></pre></td></tr></table></figure>
+<h4 id="安装supervisor"><a href="#安装supervisor" class="headerlink" title="安装supervisor"></a>安装supervisor</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install supervisor</span><br></pre></td></tr></table></figure>
+<h4 id="生成supervisor配置"><a href="#生成supervisor配置" class="headerlink" title="生成supervisor配置"></a>生成supervisor配置</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span>_supervisord_conf &gt; <span class="string">/etc/supervisord.conf</span></span><br><span class="line"><span class="comment">#若是放在默认位置以后便不用-c参数来指定配置文件的所在</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改supervisor配置"><a href="#修改supervisor配置" class="headerlink" title="修改supervisor配置"></a>修改supervisor配置</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:sentry_web]</span></span><br><span class="line">directory = /home/ubuntu/.sentry  <span class="comment">#指出config文件的所在路径</span></span><br><span class="line">environment = SENTRY_CONF = /path/sentry.conf.py <span class="comment">#指出sentry的配置文件所在路径</span></span><br><span class="line">command = sentry start <span class="comment">#启动sentry的命令,也可以具体的来写</span></span><br><span class="line">autostart = true <span class="comment">#在停止服务的时候自动重启</span></span><br><span class="line">redirect_stderr = true</span><br><span class="line">stdout_logfile = syslog <span class="comment">#将输出的日志信息放在那个文件中</span></span><br><span class="line">stderr_logfile = syslog <span class="comment">#将错误的日志信息输入至那个文件</span></span><br><span class="line"></span><br><span class="line"><span class="section">[program:sentry_worker]</span></span><br><span class="line">directory = /home/ubuntu/.sentry  <span class="comment">#指出config文件的所在路径</span></span><br><span class="line">environment = C_FORCE_Root = <span class="string">"true"</span> <span class="comment">#指出sentry的配置文件所在路径</span></span><br><span class="line">command = sentry start celery worker -B <span class="comment">#启动sentry的命令,也可以具体的来写</span></span><br><span class="line">autostart = true <span class="comment">#在停止服务的时候自动重启</span></span><br><span class="line">redirect_stderr = true</span><br><span class="line">stdout_logfile = syslog <span class="comment">#将输出的日志信息放在那个文件中</span></span><br><span class="line">stderr_logfile = syslog <span class="comment">#将错误的日志信息输入至那个文件</span></span><br></pre></td></tr></table></figure>
+<h4 id="启动supervisor进程"><a href="#启动supervisor进程" class="headerlink" title="启动supervisor进程"></a>启动supervisor进程</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c /path<span class="built_in">/config </span>file #supervisord的配置文件路径</span><br><span class="line">supervisorctl -c 同上 不加参数进入交互模式／加参数命令</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong> 注意: </strong><br>1.出现unlink的错误说明你不是用的shutdown这样正规的方式来关闭进程需要<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unlink /tmp/supervisor<span class="selector-class">.sock</span></div><div class="line">然后在启动</div></pre></td></tr></table></figure></p>
+<p><strong> 注意: </strong><br>1.出现unlink的错误说明你不是用的shutdown这样正规的方式来关闭进程需要<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink /tmp/supervisor.sock</span><br><span class="line">然后在启动</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>2.出现127的error,可能是config没有写正确,检查一下directory与command写正确没有</p>
 <p>剩下的只需要在你需要监控的程序中加入sentry接口</p>
@@ -487,7 +488,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -497,17 +498,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -574,7 +573,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -595,10 +594,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

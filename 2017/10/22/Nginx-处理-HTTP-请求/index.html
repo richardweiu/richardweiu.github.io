@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" Nginx ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" Nginx ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,8 +91,9 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/10/22/Nginx-处理-HTTP-请求/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　虽然利用 openrestry 加载 Lua 模块实现了动态域名的转发，但是回过头来发现自己对 Nginx 与 Lua 一点都不了解，下载来的深入理解 nginx 的书也没有非常仔细的去查阅，这里先记录一下 nginx 处理 http 请求的 11 个阶段与 Lua 执行的 8 个阶段，回头开始啃书。  Nginx 处理 HTTP 请求Nginx 的模块化设计使得每一个 HTTP 请求">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/openresty_phases.png">
-<meta property="og:updated_time" content="2018-02-19T12:51:25.094Z">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx 处理 HTTP 请求">
 <meta name="twitter:description" content="前言 　虽然利用 openrestry 加载 Lua 模块实现了动态域名的转发，但是回过头来发现自己对 Nginx 与 Lua 一点都不了解，下载来的深入理解 nginx 的书也没有非常仔细的去查阅，这里先记录一下 nginx 处理 http 请求的 11 个阶段与 Lua 执行的 8 个阶段，回头开始啃书。  Nginx 处理 HTTP 请求Nginx 的模块化设计使得每一个 HTTP 请求">
@@ -124,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2017/10/22/Nginx-处理-HTTP-请求/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/10/22/Nginx-处理-HTTP-请求/">
 
 
 
@@ -133,7 +134,7 @@
   <title> Nginx 处理 HTTP 请求 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -160,12 +161,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -192,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -202,7 +203,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -212,7 +213,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -222,7 +223,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -256,18 +257,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/10/22/Nginx-处理-HTTP-请求/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -305,14 +306,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/运维/" itemprop="url" rel="index">
                     <span itemprop="name"> 运维 </span>
                   </a>
@@ -360,7 +361,7 @@
 </blockquote>
 <h2 id="Nginx-处理-HTTP-请求"><a href="#Nginx-处理-HTTP-请求" class="headerlink" title="Nginx 处理 HTTP 请求"></a>Nginx 处理 HTTP 请求</h2><p>Nginx 的模块化设计使得每一个 HTTP 请求可以专注的完成一个独立的、简单的功能，而一个请求的完整处理过程由无数个 HTTP 模块共同合作完成。</p>
 <p>HTTP 框架依据常见的处理流程将处理阶段划分成 11 个阶段：</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">typedef enum &#123;</div><div class="line">    // 接收到完整的<span class="type">HTTP</span>头部后处理阶段</div><div class="line">    <span class="type">NGX_HTTP_POST_READ_PHASE</span> = 0,</div><div class="line"></div><div class="line">    // 将请求<span class="type">URI</span>与location表达式匹配前，修改<span class="type">URI</span>，即重定向阶段</div><div class="line">    <span class="type">NGX_HTTP_SERVER_REWRITE_PHASE</span>,</div><div class="line"></div><div class="line">    // 只能由ngx_http_core_module模块实现，用于根据请求<span class="type">URI</span>寻找location表达式</div><div class="line">    <span class="type">NGX_HTTP_FIND_CONFIG_PHASE</span>,</div><div class="line"></div><div class="line">    // 上一过程结束后修改<span class="type">URI</span></div><div class="line">    <span class="type">NGX_HTTP_REWRITE_PHASE</span>,</div><div class="line"></div><div class="line">    // 为了防止rewrite造成死循环（一个请求执行10次会被<span class="type">Nginx</span>认定为死循环）</div><div class="line">    <span class="type">NGX_HTTP_POST_REWRITE_PHASE</span>,</div><div class="line"></div><div class="line">    // 在“决定请求访问权限”阶段前</div><div class="line">    <span class="type">NGX_HTTP_PREACCESS_PHASE</span>,</div><div class="line"></div><div class="line">    // 决定访问权阶段，判断该请求是否可以访问<span class="type">Nginx</span>服务器</div><div class="line">    <span class="type">NGX_HTTP_ACCESS_PHASE</span>,</div><div class="line"></div><div class="line">    // 当然请求不被允许访问<span class="type">Nginx</span>服务器时，该阶段负责向用户返回错误响应</div><div class="line">    <span class="type">NGX_HTTP_POST_ACCESS_PHASE</span>,</div><div class="line"></div><div class="line">    // 用try_files配置项。顺序访问多个静态文件资源阶段</div><div class="line">    <span class="type">NGX_HTTP_TRY_FILES_PHASE</span>,</div><div class="line"></div><div class="line">    // 处理<span class="type">HTTP</span>请求内容阶段，这是大部分<span class="type">HTTP</span>模块介入的阶段</div><div class="line">    <span class="type">NGX_HTTP_CONTENT_PHASE</span>,</div><div class="line"></div><div class="line">    // 记录日志阶段</div><div class="line">    <span class="type">NGX_HTTP_LOG_PHASE</span></div><div class="line">&#125; ngx_http_phases;</div></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123;</span><br><span class="line">    // 接收到完整的<span class="type">HTTP</span>头部后处理阶段</span><br><span class="line">    <span class="type">NGX_HTTP_POST_READ_PHASE</span> = 0,</span><br><span class="line"></span><br><span class="line">    // 将请求<span class="type">URI</span>与location表达式匹配前，修改<span class="type">URI</span>，即重定向阶段</span><br><span class="line">    <span class="type">NGX_HTTP_SERVER_REWRITE_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 只能由ngx_http_core_module模块实现，用于根据请求<span class="type">URI</span>寻找location表达式</span><br><span class="line">    <span class="type">NGX_HTTP_FIND_CONFIG_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 上一过程结束后修改<span class="type">URI</span></span><br><span class="line">    <span class="type">NGX_HTTP_REWRITE_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 为了防止rewrite造成死循环（一个请求执行10次会被<span class="type">Nginx</span>认定为死循环）</span><br><span class="line">    <span class="type">NGX_HTTP_POST_REWRITE_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 在“决定请求访问权限”阶段前</span><br><span class="line">    <span class="type">NGX_HTTP_PREACCESS_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 决定访问权阶段，判断该请求是否可以访问<span class="type">Nginx</span>服务器</span><br><span class="line">    <span class="type">NGX_HTTP_ACCESS_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 当然请求不被允许访问<span class="type">Nginx</span>服务器时，该阶段负责向用户返回错误响应</span><br><span class="line">    <span class="type">NGX_HTTP_POST_ACCESS_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 用try_files配置项。顺序访问多个静态文件资源阶段</span><br><span class="line">    <span class="type">NGX_HTTP_TRY_FILES_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 处理<span class="type">HTTP</span>请求内容阶段，这是大部分<span class="type">HTTP</span>模块介入的阶段</span><br><span class="line">    <span class="type">NGX_HTTP_CONTENT_PHASE</span>,</span><br><span class="line"></span><br><span class="line">    // 记录日志阶段</span><br><span class="line">    <span class="type">NGX_HTTP_LOG_PHASE</span></span><br><span class="line">&#125; ngx_http_phases;</span><br></pre></td></tr></table></figure>
 <h2 id="OpenResty-处理-HTTP-请求"><a href="#OpenResty-处理-HTTP-请求" class="headerlink" title="OpenResty 处理 HTTP 请求"></a>OpenResty 处理 HTTP 请求</h2><p><img src="http://7xu3tw.com1.z0.glb.clouddn.com/openresty_phases.png" alt="lua_module"></p>
 <ul>
 <li>init_by_lua*: 初始化 lua</li>
@@ -370,10 +371,10 @@
 <li>content_by_lua*: 内容生成</li>
 <li>header_filter_by_lua*: 响应头部过滤处理(例如添加头部信息)</li>
 <li>body_filter_by_lua*: 响应体过滤处理(例如完成应答内容统一成大写)</li>
-<li>log_by_lua*: 会话完成后本地异步完成日志记录(日志可以记录在本地，还可以同步到其他机器)<br>（此段与图来自于<a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="external">openrestry 最佳实践</a>）</li>
+<li>log_by_lua*: 会话完成后本地异步完成日志记录(日志可以记录在本地，还可以同步到其他机器)<br>（此段与图来自于<a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="noopener">openrestry 最佳实践</a>）</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="external">openrestry 最佳实践</a>）</li>
+<li><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/ngx_lua/phase.html" target="_blank" rel="noopener">openrestry 最佳实践</a>）</li>
 </ul>
 
       
@@ -475,7 +476,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -485,17 +486,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -562,7 +561,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -583,10 +582,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

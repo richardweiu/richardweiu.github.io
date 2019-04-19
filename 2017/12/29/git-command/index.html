@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" Git ," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content=" Git ,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -91,7 +91,8 @@
 <meta property="og:url" content="http://richardweiu.github.io/2017/12/29/git-command/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 com">
-<meta property="og:updated_time" content="2018-02-19T13:46:16.058Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-08T02:31:45.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 常用用法">
 <meta name="twitter:description" content="前言 　零散的记录一下一些 git 的命令的使用  git 加速这里将提到两种加速方式：  浅下载：所谓的浅下载就是控制项目的大小来变向的加速我们的下载 代理下载：通过设置代理节点从下载速度上解决下载慢的问题  浅下载有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。 有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 com">
@@ -122,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2017/12/29/git-command/"/>
+  <link rel="canonical" href="http://richardweiu.github.io/2017/12/29/git-command/">
 
 
 
@@ -131,7 +132,7 @@
   <title> git 常用用法 | Richardwei Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -158,12 +159,12 @@
 
 	<div class="headband"></div>
 	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Richardwei Blog</span>
       <span class="logo-line-after"><i></i></span>
@@ -190,7 +191,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -200,7 +201,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -210,7 +211,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -220,7 +221,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -254,18 +255,18 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/12/29/git-command/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.png">
   </span>
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Richardwei Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
       <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
     </span>
   </span>
@@ -303,14 +304,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Git/" itemprop="url" rel="index">
                     <span itemprop="name"> Git </span>
                   </a>
@@ -364,15 +365,15 @@
 <h3 id="浅下载"><a href="#浅下载" class="headerlink" title="浅下载"></a>浅下载</h3><p>有时候我们 clone 项目非常的慢是因为我们的项目太大了，所以导致我们需要下载很久，这个时候我们会考虑到浅下载。</p>
 <p>有时候项目大不仅仅是因为项目的内容很大，还有可能是因为 commit 与 branch 很多所导致的，这个时候们就会用到 <code>--depth</code> 的参数。</p>
 <p>通过 <code>--depth</code> 参数我们可以指定我们要下载 commit 的数量，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只下载 linux 项目中的一个 commit</span></div><div class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/torvalds/linux.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只下载 linux 项目中的一个 commit</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/torvalds/linux.git</span><br></pre></td></tr></table></figure>
 <p>在使用 <code>--depth</code> 参数的时候也就意味默认使用了 <code>--single-branch</code> 参数（只会下载一个分支，除非使用 <code>--no-single-branch</code> 参数来指明需要下载所有的分支）。</p>
 <p>还需要注意的是若是我们的项目中有一些子项目也同时需要 clone 下来的话需要使用 <code>--shallow-submodules</code> 参数。</p>
 <p>若是项目成功下载之后发现我们还是需要完成的 commit 信息的话，我们可以通过这样的命令来下载完整版：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch --unshallow</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch --unshallow</span><br></pre></td></tr></table></figure>
 <p>当然相关的参数还有很多，例如 <code>--shallow-since</code> 可以指定下载从什么时间段开始的 commit，这里就在了解了，用到的情况很少了。</p>
 <h3 id="代理下载"><a href="#代理下载" class="headerlink" title="代理下载"></a>代理下载</h3><p>若是我们的网络差到 <code>1 kb/s</code> 速度下载的话，上面的方式也不会起到什么实质上的作用，这个时候我们考虑设置 git 的代理，通过代理来提高我们的下载速度。</p>
 <p>例如我们在本地使用的 ss 做代理，我们可以使用这样的命令来设置 git 的代理：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy <span class="string">'socks5://127.0.0.1:1080'</span></div><div class="line">git config --global https.proxy <span class="string">'socks5://127.0.0.1:1080'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy <span class="string">'socks5://127.0.0.1:1080'</span></span><br><span class="line">git config --global https.proxy <span class="string">'socks5://127.0.0.1:1080'</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：</p>
 <ul>
@@ -384,22 +385,22 @@
 </blockquote>
 <h2 id="git-重现"><a href="#git-重现" class="headerlink" title="git 重现"></a>git 重现</h2><p>所谓的 git 重现便是将其他分支中的 commit 修改应用在当前的分支中，例如当前的分支与其他的分支相差较大时，此时我们想将其他分支中的某一段修改应用在当前分支的时候我们就会用这种方式。</p>
 <p>所谓的重现是我根据其作用起的名字，主要用到的是 <code>cherry-pick</code> 命令，其用法是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 老得 commit hash 值在前，新的在后</span></div><div class="line">git cherry-pick old-commit-hash..new-commit-hash</div><div class="line"></div><div class="line"><span class="comment"># 也可以直接使用分支名指定 head 的前几个 commit，这就是前两个到 head 的所有 commit</span></div><div class="line">git cherry-pick <span class="built_in">test</span>-b~2..test-b</div><div class="line"></div><div class="line"><span class="comment"># 若只是某一个 commit 的话，同样可以用 hash 和 branch-test 两种方式</span></div><div class="line">git cherry-pick <span class="built_in">hash</span></div><div class="line"></div><div class="line"><span class="comment"># 若是需要多个 commit 的话就指定多个即可</span></div><div class="line">git cherry-pick <span class="built_in">hash</span> <span class="built_in">hash</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 老得 commit hash 值在前，新的在后</span></span><br><span class="line">git cherry-pick old-commit-hash..new-commit-hash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以直接使用分支名指定 head 的前几个 commit，这就是前两个到 head 的所有 commit</span></span><br><span class="line">git cherry-pick <span class="built_in">test</span>-b~2..test-b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若只是某一个 commit 的话，同样可以用 hash 和 branch-test 两种方式</span></span><br><span class="line">git cherry-pick <span class="built_in">hash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若是需要多个 commit 的话就指定多个即可</span></span><br><span class="line">git cherry-pick <span class="built_in">hash</span> <span class="built_in">hash</span></span><br></pre></td></tr></table></figure>
 <p>这就是重现，以前才开始用 pull request 方式提交 bug 的时候很常用。</p>
 <h2 id="git-暂存"><a href="#git-暂存" class="headerlink" title="git 暂存"></a>git 暂存</h2><p>有时候写代码突然需要切换分支，这个时候需要将工作区清空，否则当前做的修改会应用到其他的分支中去，但是我们这些修改都是不可丢弃的，此时我们就会用暂存。</p>
 <p>暂存就是帮当前的所有修改、删除都保存起来，但是新建的文件并不会暂存起来，因为他没有历史版本。</p>
 <p>暂存的命令主要是用 <code>stash</code>，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 暂存当前的所有修改</span></div><div class="line">git stash</div><div class="line"></div><div class="line"><span class="comment"># 将暂存的内容都应用</span></div><div class="line">git stash pop</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂存当前的所有修改</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将暂存的内容都应用</span></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
 <p>当然还有一些相关的命令例如 <code>show</code>、<code>list</code>、<code>clear</code>、<code>drop</code> 等等。</p>
 <h2 id="git-忽略"><a href="#git-忽略" class="headerlink" title="git 忽略"></a>git 忽略</h2><p>我们在提交文件的时候有时候会有所选择，有时候一些缓存或者编译文件等一些没有必要上传的文件我们会让 git 忽略它，不用检查其版本问题或者修改例如 <code>.pyc</code>。</p>
 <p>让 git 忽略一些特定的文件，主要是通过在项目根目录中创建 <code>.gitignore</code> 文件来实现。</p>
 <p>书写该文件的规则是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 忽略所有 .pyc 结尾的文件</span></div><div class="line">*.pyc     </div><div class="line"></div><div class="line"><span class="comment"># 但 lib.pyc 除外</span></div><div class="line">!lib.pyc    </div><div class="line"></div><div class="line"><span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></div><div class="line">/TODO</div><div class="line"></div><div class="line"><span class="comment"># 忽略 build/ 目录下的所有文件</span></div><div class="line">build/    </div><div class="line"></div><div class="line"><span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></div><div class="line">doc/*.txt</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽略所有 .pyc 结尾的文件</span></span><br><span class="line">*.pyc     </span><br><span class="line"></span><br><span class="line"><span class="comment"># 但 lib.pyc 除外</span></span><br><span class="line">!lib.pyc    </span><br><span class="line"></span><br><span class="line"><span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">build/    </span><br><span class="line"></span><br><span class="line"><span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br></pre></td></tr></table></figure>
 <p>主要就是这样的五种情况，规则很简单，但是有时候在项目开发过程中，突然想把某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，原因是 <code>.gitignore</code> 只能忽略那些原来没有被 track 的文件，如果某些文件已经被纳入了版本管理中，则修改 <code>.gitignore</code> 是无效的。</p>
 <p>那么解决方法就是先把本地缓存删除（改变其成未 track 状态），然后再提交：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'update .gitignore'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update .gitignore'</span></span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://stackoverflow.com/questions/128035/how-do-i-pull-from-a-git-repository-through-an-http-proxy" target="_blank" rel="external">stackoverflow</a></li>
+<li><a href="https://stackoverflow.com/questions/128035/how-do-i-pull-from-a-git-repository-through-an-http-proxy" target="_blank" rel="noopener">stackoverflow</a></li>
 </ul>
 
       
@@ -501,7 +502,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -511,17 +512,15 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="Richardwei" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
           <p class="site-author-name" itemprop="name">Richardwei</p>
           <p class="site-description motion-element" itemprop="description">updata self everyday</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -588,7 +587,7 @@
             <!-- <h3 class="widget-title">Tag Cloud</h3> -->
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -609,10 +608,10 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
