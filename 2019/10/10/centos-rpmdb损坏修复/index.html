@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(12) from d">
+<meta name="description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况(文章转载自参考)  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(1">
 <meta name="keywords" content=" Linux ,Centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos rpmdb 损坏修复">
 <meta property="og:url" content="http://richardweiu.github.io/2019/10/10/centos-rpmdb损坏修复/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(12) from d">
+<meta property="og:description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况(文章转载自参考)  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(1">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-10T02:08:46.066Z">
+<meta property="og:updated_time" content="2019-10-10T02:11:52.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos rpmdb 损坏修复">
-<meta name="twitter:description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(12) from d">
+<meta name="twitter:description" content="前言 　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况(文章转载自参考)  问题修复进行任何rpm操作时提示： 123456789rpm -qa|grep openssl|grep openssl-1.0.1e|wc -lerror: db3 error(12) from dbenv-&amp;gt;open: Cannot allocate memoryerror: db3 error(1">
 
 
 
@@ -355,7 +355,7 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况</p>
+<p><strong> 前言 </strong><br>　在处理老机器的时候遇到 rpmdb 损坏导致不可用的情况(文章转载自参考)</p>
 </blockquote>
 <h1 id="问题修复"><a href="#问题修复" class="headerlink" title="问题修复"></a>问题修复</h1><p>进行任何rpm操作时提示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep openssl|grep openssl-1.0.1e|wc -l</span><br><span class="line"></span><br><span class="line">error: db3 error(12) from dbenv-&gt;open: Cannot allocate memory</span><br><span class="line">error: db3 error(12) from dbenv-&gt;close: Cannot allocate memory</span><br><span class="line">error: cannot open Packages index using db3 - Cannot allocate memory (12)</span><br><span class="line">error: cannot open Packages database <span class="keyword">in</span> /var/lib/rpm</span><br><span class="line">error: db3 error(12) from dbenv-&gt;open: Cannot allocate memory</span><br><span class="line">error: db3 error(12) from dbenv-&gt;close: Cannot allocate memory</span><br><span class="line">error: cannot open Packages database <span class="keyword">in</span> /var/lib/rpm</span><br></pre></td></tr></table></figure>
@@ -363,7 +363,10 @@
 <p>解决办法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/rpm/__db*</span><br><span class="line">rpm --rebuilddb</span><br></pre></td></tr></table></figure>
 <p>将rpm数据库文件删除再重建，以root来运行上面的两条命令，问题解决。`</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.51niux.com/?id=181" target="_blank" rel="noopener">http://www.51niux.com/?id=181</a></li>
+</ul>
+
       
     </div>
 
