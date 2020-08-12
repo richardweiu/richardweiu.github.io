@@ -5,9 +5,8 @@ tags: [ 'Django', 'Python' ]
 categories: "Python"
 ---
 
-> ** 前言 **
+> **前言**
 　因为 Jenkins 的没有办法满足我们的优化场景，所以我们自己写了一个平台来处理 gitlab 的 webhook 然后 build image，为了快速上线不写前端我们用的 django admin 来做，正因为偷懒就踩了这个坑，第一次遇到幻读。
-
 
 ## 背景
 

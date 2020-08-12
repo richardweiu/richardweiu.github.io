@@ -5,7 +5,7 @@ tags:  " Nginx "
 categories: " 运维 "
 ---
 
-> ** 前言 **
+> **前言**
 　虽然利用 openrestry 加载 Lua 模块实现了动态域名的转发，但是回过头来发现自己对 Nginx 与 Lua 一点都不了解，下载来的深入理解 nginx 的书也没有非常仔细的去查阅，这里先记录一下 nginx 处理 http 请求的 11 个阶段与 Lua 执行的 8 个阶段，回头开始啃书。
 
 ## Nginx 处理 HTTP 请求

@@ -5,14 +5,14 @@ tags: [" Python ", " elasticsearch " ]
 categories: " Python "
 ---
 
-> ** 前言 **
+> **前言**
 　在使用 elasticsearch 库 scan 数据的时候遇到 too long frame exception 记录一下
 
 ## 问题解决
 
 在 python3.7 的环境使用 而 elastisearch scan 过滤数据的时候触发了这样的报错：
 
-```
+```bash
 elasticsearch.exceptions.RequestError: RequestError(400, 'too_long_frame_exception', 'An HTTP line is larger than 4096 bytes.')
 ```
 

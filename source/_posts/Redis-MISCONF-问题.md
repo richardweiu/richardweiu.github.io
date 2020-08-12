@@ -5,7 +5,7 @@ tags: ["Python", "Celery", "Redis"]
 categories: "Python"
 ---
 
-> ** 前言 **
+> **前言**
 　redis 因为大量数据导致的保存数据库快照出错，使得 redis 的无法在执行所有的命令
 
 ## 问题

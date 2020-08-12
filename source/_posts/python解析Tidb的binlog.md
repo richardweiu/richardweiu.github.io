@@ -5,12 +5,10 @@ tags: [" Python ", " Tidb ", " Protobuf "]
 categories: " Python "
 ---
 
-> ** 前言 **
+> **前言**
 　数据原来是存在 mysql 中，并通过 binlog 同步至 elasticsearch 中，最近将存储切换到 Tidb 中，所以需要通过 Tidb 的 binlog 来同步数据
 
 ## python 解析 tidb 的 binlog
-
-
 
 - 首先 tidb 的 binlog 可以直接发送到 kafka 中,所以我们只需要直接从 kafka 中获取数据
 - 其次 tidb 的 binlog 数据是以 protobuf 的协议去封装的,所以需要通过 protobuf 来解析数据
