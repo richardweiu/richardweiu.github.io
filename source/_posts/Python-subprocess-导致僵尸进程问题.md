@@ -208,3 +208,5 @@ def _execute_child(self, args, executable, preexec_fn, close_fds,
 ## 参考
 
 - [僵尸/孤儿进程知识点](https://zhuanlan.zhihu.com/p/96098130)
+- [centos7 gdb python](https://blog.csdn.net/github_40094105/article/details/81287572)
+- [找到指定版本的 python debug 包](http://debuginfo.centos.org/7/x86_64/)
