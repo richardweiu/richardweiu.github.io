@@ -200,6 +200,7 @@ def cancel(self):
   - 信号当前的进程树接会收到，也就是说，不仅当前进程会收到信号，它的子进程也会收到（[来源](https://blog.csdn.net/alibo2008/article/details/6162970),实践证明是，但是没有找到官方说明）
 - SIGKILL: 
   - 用于立即终止程序，它不能被处理或忽略，也不可能阻塞该信号，如果杀死失败的话估计已经产生操作系统级别错误了
+  - 如同 SIGTERM 一般，只会作用于当前进程，不会影响其子进程
   - 等同于 `kill -9`
 
 ### Python 中 subprocess.popen
