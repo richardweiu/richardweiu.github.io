@@ -1,0 +1,754 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content=" Nagios ,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言 　这几天因为各种扩展不同的节点忙的不可开胶，增加了新的节点也就意味着需要增加监控，因为各种特殊的原因导致以前的镜像不可用（因为内核版本的更替，架构的更替，还有一些定制化的需求），所以在新节点中增加 check_disk 监控时出现问题了。  问题在增加监控的时候其他没有什么问题，但是在 check_disk 在运行的时候确实出现这样的报错： 1var/lib/ureadahead/deb">
+<meta name="keywords" content=" Nagios ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nagios check_disk error">
+<meta property="og:url" content="http://richardweiu.github.io/2017/10/19/Nagios-check-disk-error/index.html">
+<meta property="og:site_name" content="Richardwei Blog">
+<meta property="og:description" content="前言 　这几天因为各种扩展不同的节点忙的不可开胶，增加了新的节点也就意味着需要增加监控，因为各种特殊的原因导致以前的镜像不可用（因为内核版本的更替，架构的更替，还有一些定制化的需求），所以在新节点中增加 check_disk 监控时出现问题了。  问题在增加监控的时候其他没有什么问题，但是在 check_disk 在运行的时候确实出现这样的报错： 1var/lib/ureadahead/deb">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-08-12T06:58:06.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nagios check_disk error">
+<meta name="twitter:description" content="前言 　这几天因为各种扩展不同的节点忙的不可开胶，增加了新的节点也就意味着需要增加监控，因为各种特殊的原因导致以前的镜像不可用（因为内核版本的更替，架构的更替，还有一些定制化的需求），所以在新节点中增加 check_disk 监控时出现问题了。  问题在增加监控的时候其他没有什么问题，但是在 check_disk 在运行的时候确实出现这样的报错： 1var/lib/ureadahead/deb">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://richardweiu.github.io/2017/10/19/Nagios-check-disk-error/">
+
+
+
+
+
+  <title> Nagios check_disk error | Richardwei Blog </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div id="particles-js" style="position: fixed; width: 100%; height:100%">
+		<canvas width="1354" height="113" class="particles-js-canvas-el" style="width: 100%; height: 100%;">
+		</canvas>
+  </div>
+  
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+
+	<div class="headband"></div>
+	
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Richardwei Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>	
+	
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2017/10/19/Nagios-check-disk-error/">
+
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Richardwei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Richardwei Blog">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Nagios check_disk error
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-19T15:15:15+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name"> 运维 </span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/10/19/Nagios-check-disk-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/19/Nagios-check-disk-error/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong> 前言 </strong><br>　这几天因为各种扩展不同的节点忙的不可开胶，增加了新的节点也就意味着需要增加监控，因为各种特殊的原因导致以前的镜像不可用（因为内核版本的更替，架构的更替，还有一些定制化的需求），所以在新节点中增加 check_disk 监控时出现问题了。</p>
+</blockquote>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在增加监控的时候其他没有什么问题，但是在 check_disk 在运行的时候确实出现这样的报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var/lib/ureadahead/debugfs/tracing is not accessible: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>一脸蒙啊，从来没有去看过 nagios 自带的这个 check_disk 的源码，自然也就不知道其原理是什么，也就是不知道爆出这样的错误是为什么。</p>
+<p><code>ureadahead</code> 是个什么东西也不知道。</p>
+<p>第一反应是手动执行该脚本看是否有相同的问题，在自定义的用户同样的问题，修改 <code>/etc/passwd</code> 是 nagios 可以登陆，以 nagios 用户执行也是相同的问题，而当我切换至 root 账户来执行时却没有相关的问题，那可以定位这是一个权限的问题。</p>
+<p>那么接下来的思路就应该是：</p>
+<ul>
+<li>如何给 nagios 增加相关的权限</li>
+<li>ureadahead 是什么？有什么？</li>
+</ul>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>google 了一下，查看到 <a href="http://ubuntuguide.net/howto-fix-ureadahead-problem-after-upgrading-to-ubuntu-10-04" target="_blank" rel="noopener">Ubuntu Sharing</a> 的文章解释的非常的全面，同时也给出了相应的解释。</p>
+<p>我可以通过这样的一个命令可以将 ureadahead 关闭：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /etc/init/ureadahead<span class="selector-class">.conf</span> /etc/init/ureadahead<span class="selector-class">.conf</span><span class="selector-class">.disable</span></span><br></pre></td></tr></table></figure>
+<p>关闭之后重启机器，切换至 nagios 用户，运行之前的命令，发现一切正常了。</p>
+<p>那么 ureadahead 到底是一个什么东西呢？是否可以关闭？</p>
+<p>文章中这一段解释的非常的清楚：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">What does ureadahead <span class="keyword">do</span>?</span><br><span class="line"></span><br><span class="line"><span class="keyword">In</span> <span class="keyword">order</span> <span class="keyword">to</span> boot Ubuntu, we need <span class="keyword">to</span> <span class="keyword">read</span> somewhere <span class="keyword">between</span> <span class="number">100</span>MB <span class="keyword">and</span> <span class="number">200</span>MB <span class="keyword">of</span> <span class="keyword">data</span> <span class="keyword">from</span> the disk <span class="keyword">and</span> <span class="keyword">into</span> memory. Unfortunately the slowest part <span class="keyword">of</span> your otherwise awesome machine <span class="keyword">is</span> its hard disk — that’s why we want this <span class="keyword">data</span> <span class="keyword">into</span> <span class="keyword">memory</span> <span class="keyword">in</span> the <span class="keyword">first</span> place.</span><br><span class="line"></span><br><span class="line">Hard disks aren’t just slow <span class="keyword">to</span> <span class="keyword">read</span> <span class="keyword">data</span>, they’re slow <span class="keyword">to</span> find it <span class="keyword">as</span> well! So we can lose a <span class="built_in">time</span> <span class="keyword">of</span> <span class="built_in">time</span> during boot just waiting <span class="keyword">for</span> the hard disk <span class="keyword">to</span> find the <span class="keyword">data</span> we need, <span class="keyword">and</span> <span class="keyword">then</span> <span class="keyword">read</span> it <span class="keyword">into</span> memory.</span><br><span class="line"></span><br><span class="line">What ureadahead does <span class="keyword">is</span> figure <span class="keyword">out</span> what pieces <span class="keyword">of</span> which files we actually need, <span class="keyword">and</span> <span class="keyword">read</span> everything <span class="keyword">from</span> the disk <span class="keyword">into</span> <span class="keyword">memory</span> <span class="keyword">in</span> one go. <span class="keyword">By</span> doing it <span class="keyword">at</span> once we don’t need <span class="keyword">to</span> spend so much <span class="built_in">time</span> finding everything, <span class="keyword">and</span> because it’s already <span class="keyword">in</span> <span class="keyword">memory</span>, we don’t waste anywhere near <span class="keyword">as</span> much <span class="built_in">time</span> during boot.</span><br></pre></td></tr></table></figure>
+<p>也就是说它可以帮助我们快速的找到那些文件需要在启动的时候读入到内存中，从而大大的减少开机所需要的时间，若是关闭掉它的话造成的影响就是我们的开机就会变慢。</p>
+<p>同时我也发现了这样的一个 <a href="https://bugs.launchpad.net/ubuntu/+source/mountall/+bug/736512" target="_blank" rel="noopener">bug 描述</a>，也就是说 moutall 的一个 bug 导致在启动之后还存在与 <code>df</code> 查看信息中。但是这个 bug 早就修复了呀。</p>
+<p>我也在 launchpad 中看到与我遇到的同样的<a href="https://bugs.launchpad.net/ubuntu/+source/nagios-plugins/+bug/1516451" target="_blank" rel="noopener">问题描述</a>,给出的解决方式是在 check_disk 命令后面增加这样的一些参数：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">--exclude-type</span>=tracefs <span class="attribute">--exclude-type</span>=cgroup <span class="attribute">--exclude_device</span>=/run/lxcfs/controllers</span><br></pre></td></tr></table></figure>
+<p>这个方式我也不知道有没有用，因为看到这个问题描述的时候我已经解决了问题，问题没法复现了，除非重新启动一个机器。</p>
+<p>我解决问题的方式除了上面所说的修改配置文件，还有一个阴差阳错的办法，因为这个方式是用在需要挂载其他硬盘的方式，我在挂载之后 check_disk 没法运行，然后我就将 <code>/etc/fstab</code> 相关的配置项删除之后，重启发现就没有问题了，然后我把相关的磁盘挂载配置项改回去重启，依然没有问题，从而解决了，而用之前的方式是因为我没有外界硬盘，这个系统只有根目录那个磁盘挂载，所以只有另辟蹊径。</p>
+<p>因为之前出问题的时候也没有在意去看 <code>df -all</code> 或者 <code>/etc/mtab</code> 中是否有 <code>/var/lib/ureadahead/debugfs</code> 的信息存在，所以也不知道是不是 mount 的问题。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://ubuntuguide.net/howto-fix-ureadahead-problem-after-upgrading-to-ubuntu-10-04" target="_blank" rel="noopener">Ubuntu Sharing</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nagios/" rel="tag">#  Nagios </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/SSH-本地配置文件/" rel="next" title="SSH 本地配置文件">
+                <i class="fa fa-chevron-left"></i> SSH 本地配置文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/Jenkins-的折腾/" rel="prev" title="Jenkins 的折腾">
+                Jenkins 的折腾 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+					
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
+          <p class="site-author-name" itemprop="name">Richardwei</p>
+          <p class="site-description motion-element" itemprop="description">updata self everyday</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+        
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <!-- <h3 class="widget-title">Tag Cloud</h3> -->
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/"> Protobuf </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/"> Python </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tidb/"> Tidb </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/"> elasticsearch </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Celery/">Celery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos7/">Centos7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemd/">systemd</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+        
+
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+	  
+
+    </main>
+	
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Richardwei</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+	
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'richardweiu';
+      var disqus_identifier = '2017/10/19/Nagios-check-disk-error/';
+
+      var disqus_title = "Nagios check_disk error";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	<script src="/js/src/particles.js"></script>
+	<script src="/js/src/app.js"></script>
+</body>
+  
+</html>
+

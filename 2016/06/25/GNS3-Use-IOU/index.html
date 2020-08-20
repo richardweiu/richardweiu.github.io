@@ -1,0 +1,768 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="GNS3,Cisco,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言 　　因为毕业毕业的事情耽误了不少的时间，当然还有自己很懒了。自律性还是不够。感觉再不把自己做毕业设计时自学的东西记录下来就要忘记了。　　本文的主要记录下当时做该项目时的一个工具的选择,以及其的使用  项目背景　　当时做选择这个毕业设计自己还是有些懵，网络规划。既然做了就得尽自己最大的努力来做这个，所以给自己定了一个较大的网络题目——大型数字化医院的网络规划与设计（当然可以做的更好，毕竟时">
+<meta name="keywords" content="GNS3,Cisco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNS3 Use IOU">
+<meta property="og:url" content="http://richardweiu.github.io/2016/06/25/GNS3-Use-IOU/index.html">
+<meta property="og:site_name" content="Richardwei Blog">
+<meta property="og:description" content="前言 　　因为毕业毕业的事情耽误了不少的时间，当然还有自己很懒了。自律性还是不够。感觉再不把自己做毕业设计时自学的东西记录下来就要忘记了。　　本文的主要记录下当时做该项目时的一个工具的选择,以及其的使用  项目背景　　当时做选择这个毕业设计自己还是有些懵，网络规划。既然做了就得尽自己最大的努力来做这个，所以给自己定了一个较大的网络题目——大型数字化医院的网络规划与设计（当然可以做的更好，毕竟时">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3.jpg">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/import_gns3_vm.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_vmstart.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_information.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/import_lisence.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_running_license.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_running_license1.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_gns3_pre_iou.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou_pre.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou_pre1.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices1.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_choose1.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_sure.png">
+<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_attention.png">
+<meta property="og:updated_time" content="2020-08-12T06:58:06.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GNS3 Use IOU">
+<meta name="twitter:description" content="前言 　　因为毕业毕业的事情耽误了不少的时间，当然还有自己很懒了。自律性还是不够。感觉再不把自己做毕业设计时自学的东西记录下来就要忘记了。　　本文的主要记录下当时做该项目时的一个工具的选择,以及其的使用  项目背景　　当时做选择这个毕业设计自己还是有些懵，网络规划。既然做了就得尽自己最大的努力来做这个，所以给自己定了一个较大的网络题目——大型数字化医院的网络规划与设计（当然可以做的更好，毕竟时">
+<meta name="twitter:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/gns3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://richardweiu.github.io/2016/06/25/GNS3-Use-IOU/">
+
+
+
+
+
+  <title> GNS3 Use IOU | Richardwei Blog </title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div id="particles-js" style="position: fixed; width: 100%; height:100%">
+		<canvas width="1354" height="113" class="particles-js-canvas-el" style="width: 100%; height: 100%;">
+		</canvas>
+  </div>
+  
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+
+	<div class="headband"></div>
+	
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Richardwei Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>	
+	
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/25/GNS3-Use-IOU/">
+
+  <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Richardwei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Richardwei Blog">
+    <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Richardwei Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                GNS3 Use IOU
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-25T12:03:01+08:00">
+                2016-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cisco/" itemprop="url" rel="index">
+                    <span itemprop="name">Cisco</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/25/GNS3-Use-IOU/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/25/GNS3-Use-IOU/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong> 前言 </strong><br>　　因为毕业毕业的事情耽误了不少的时间，当然还有自己很懒了。自律性还是不够。感觉再不把自己做毕业设计时自学的东西记录下来就要忘记了。<br>　　本文的主要记录下当时做该项目时的一个工具的选择,以及其的使用</p>
+</blockquote>
+<h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>　　当时做选择这个毕业设计自己还是有些懵，网络规划。既然做了就得尽自己最大的努力来做这个，所以给自己定了一个较大的网络题目——大型数字化医院的网络规划与设计（当然可以做的更好，毕竟时间有限加上自己的效率问题）</p>
+<h3 id="项目工具"><a href="#项目工具" class="headerlink" title="项目工具"></a>项目工具</h3><h4 id="品牌的选择"><a href="#品牌的选择" class="headerlink" title="品牌的选择"></a>品牌的选择</h4><p>　　首先网络规划无非就是对整个网络的大体设计与交换机、路由器的功能性配置，所以我们需要对品牌做出选择（在实际的工作中可能会因为资金的一些问题误会选择单一的品牌，但是我们现在做的是仿真环境，所以是单一的品牌）</p>
+<blockquote>
+<p>这样的网络设备的品牌有不少：<br>　　(1)行业老大哥：思科Cisco<br>　　(2)历史背景复杂的：华三<br>　　(3)坚强独立的：华为，还有锐捷等等。<br>　　思科属于这个行业的领头人了，有许多自己研发出来的协议和专利，设备相当的稳定，但是有个很大问题就是价格很高。<br>　　华三占据了大半的中国市场（不论是企业级还是政府级），这个曾经华为与3com工具联合的产物相当的成功后来被惠普这个第三者全盘收购而去，而在14年更是差点被国企背景的中国电子收购，只是最后失败了，在15年由于紫光集团搅上。真是背景复杂<br>　　华为，当年在华三出了大力气当然不会就此销声匿迹，还是蛮优秀的，也有不小得市场</p>
+</blockquote>
+<p>　　最终我还是选择了Cisco，因为第一相对来说Cisco的设备更加的稳定效果不错，第二Cisco这样的老牌当年有不少的人选择它学习他所以不管是资料的查找，学习起来感觉方便不少。第三Cisco有自己思科认证（CCNA，CCNP，CCIE）不同的认证而且有许多模拟工具可以选择，如CCNA时其官网提供的Packet Tracer便非常的好用,不仅有PC端还有移动端。</p>
+<h4 id="工具的选择"><a href="#工具的选择" class="headerlink" title="工具的选择"></a>工具的选择</h4><p>　　既然定下了品牌，那么就需要工具的选择了。<br>　　Packet tracer是其官网出的一款非常强大的工具，可以网络拓扑设计，Cisco相关设备模拟使用，还可以做到实时装包，看协议完成的每个步骤，并且用在OSI模型的那一层中显示出来。而且不仅仅有PC端居然还有移动端确实很牛了。但是有很多高级的实验和不属于其自己的协议无法模拟如vrrp等<br>　　Web IOU很厉害，在国外学习CCNP，CCIE的人很多都使用这个工具，解决了很多实验无法模拟的情况，而且轻量，不会占用太多的系统资源。但是操作起来非常的麻烦了，在PT中网络拓扑结构只需要鼠标的简单拖动即可完成，而Web IOU就必须用Visio或者其他的工具先将拓扑图设计好然后上传，在配置等等操作，很繁复(当时更需要效率也就排除了)<br>　　GNS3是一款使用Python+QT写的一个开源的仿真工具，相对于PT来说更多的路由实验可以实现，相对于Web IOU来说操作更加的简便。当然他也不是完美的，它消耗的系统资源太吓人了。但是综合来说还是蛮不错的，所以最后还是选择了他。<br>　　当然还有其他的工具NS2，NS3，omnet++，opnet，mininet。这些相对来说更加的学术一些，当然上手的话也相对难一些，我还没来得及研究也不好过多的评价。</p>
+<h4 id="工具的安装"><a href="#工具的安装" class="headerlink" title="工具的安装"></a>工具的安装</h4><p>　　GNS3的<a href="https://gns3.com/" target="_blank" rel="noopener">官网</a>可能被墙，不用担心可以去github中下载<a href="https://github.com/GNS3/gns3-gui/releases" target="_blank" rel="noopener">https://github.com/GNS3/gns3-gui/releases</a><br>　　简单的安装这里不做过多的介绍了，GNS3在安装的时候要注意的是集成了wireshark，SolarWinds Response Time Viewer这样的装包工具和包分析工具，而这些工具在all-in-one安装包里面的下载地址是国外的，所以安装的时候可能会出错，解决方法就是安装的时候翻墙，或者提前将其下好，单独安装好，到时候再配置进去即可。</p>
+<h4 id="工具的使用"><a href="#工具的使用" class="headerlink" title="工具的使用"></a>工具的使用</h4><p>　　GNS3的简单操作不做过多的解释，内容不少，稍微查查英文的解释便没有什么问题了，只是说并没有自带的设备，需要自己查找你所需要的设备的IOS镜像导入即可，一般3640最受欢迎，因为其即可模拟交换又可以模拟路由的实验，所以一般是不错的选择。(还是给一个详细的文档给小白看看<a href="https://yunpan.cn/cRD3ItVtLULUV" target="_blank" rel="noopener">https://yunpan.cn/cRD3ItVtLULUV</a>  访问密码 6fe4)<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3.jpg" alt="GNS3"><br>　　但是IOS只能做一些一般的实验，一些高级应用的实验还是做不了，比如Zone based Firewall等等，所以这个时候我们需要使用IOU(IOS on Unix)，因为Router与Switch其系统本就在Linux系统下运行，所以我们启动一台虚拟机(装着Linux系统)让镜像尽可能在真实的运行环境中运行，这样尽可能的将不依靠硬件只需要软件实现的功能都实现出来。<br>　　那么搭建好IOU的必要条件有GNS3、虚拟机(VMware推荐、virtualbox)</p>
+<h5 id="导入镜像"><a href="#导入镜像" class="headerlink" title="导入镜像"></a>导入镜像</h5><p>　　有了GNS3，有了VMware，我们就需要导入<a href="https://github.com/GNS3/gns3-vm/releases" target="_blank" rel="noopener">官网</a>为我们准备好的GNS3的IOU系统镜像<a href="https://github.com/GNS3/gns3-vm/releases" target="_blank" rel="noopener">https://github.com/GNS3/gns3-vm/releases</a><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/import_gns3_vm.png" alt="导入GNS3镜像"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_vmstart.png" alt="GNS3启动"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_information.png" alt="GNS3信息"><br>　　从图中我们看到了它所获得的ip地址，一般不会变化，但是为了保险我们可以在系统中为其配置静态ip地址，该系统是以Ubuntu修改而来的，所以命令的使用以Ubuntu为主</p>
+<h5 id="导入认证"><a href="#导入认证" class="headerlink" title="导入认证"></a>导入认证</h5><p>　　导入许可文件，CiscoIOUKeygen.py。在浏览器中输入刚刚虚拟机的ip:8000/upload。然后倒入上传即可<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/import_lisence.png" alt="导入许可文件"></p>
+<h5 id="运行认证"><a href="#运行认证" class="headerlink" title="运行认证"></a>运行认证</h5><p>　　导入许可文件之后，在虚拟机中运行该程序，为我们生成认证信息。<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/opt/g</span>ns3<span class="regexp">/images/</span>IOU</span><br><span class="line">python3 CiscoIOUKeygen.py</span><br><span class="line"><span class="comment">#运行之后会有许可信息生成，复制下来</span></span><br><span class="line"><span class="comment">#在本地新建一个iourc.txt文件，并将信息粘贴至其中</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_running_license.png" alt="gns3_iou_running_license"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_iou_running_license1.png" alt="gns3_iou_running_license1"></p>
+<h5 id="使用认证"><a href="#使用认证" class="headerlink" title="使用认证"></a>使用认证</h5><p>　　打开gns3的edit-&gt;preference-&gt;IOS on UNIX-&gt;any server选择许可文件<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_gns3_pre_iou.png" alt="添加配置"></p>
+<h5 id="添加server"><a href="#添加server" class="headerlink" title="添加server"></a>添加server</h5><p>　　再到edit-&gt;preference-&gt;server-&gt;remote server中添加虚拟机的ip地址<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou_pre.png" alt="修改配置"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou_pre1.png" alt="修改配置"></p>
+<h5 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h5><p>　　接下来我们主需要在刚刚的上传页面中倒入我们所需要的路由器或者交换机的镜像，如第二步中的图像所示<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_gns3_iou.png" alt="add_gns3_iou"></p>
+<h5 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h5><p>　　然后在gns3中添加设备一步一步操作即可edit-&gt;preference-&gt;IOS Devices-&gt;new<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices1.png" alt="gns3_add_iou_devices"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_choose1.png" alt="gns3_add_iou_devices_choose"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_sure.png" alt="gns3_add_iou_devices_sure"><br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/gns3_add_iou_devices_attention.png" alt="gns3_add_iou_devices_attention"><br>　　这样我们就成功的搭建好了我们的IOU环境，添加了IOU设备，可以运行更多的实验了，截图中的我导入的L3与L2的设备都是5月份最新的设备，相对来说bug修复了不少。
+　　
+　　
+　　
+　　
+　　
+　　　　</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GNS3/" rel="tag"># GNS3</a>
+          
+            <a href="/tags/Cisco/" rel="tag"># Cisco</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/13/Postgresql-backup/" rel="next" title="Postgresql backup">
+                <i class="fa fa-chevron-left"></i> Postgresql backup
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/25/GNS-Top/" rel="prev" title="Graduation Design Topology by GNS3">
+                Graduation Design Topology by GNS3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+					
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
+          <p class="site-author-name" itemprop="name">Richardwei</p>
+          <p class="site-description motion-element" itemprop="description">updata self everyday</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目背景"><span class="nav-number">1.</span> <span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目工具"><span class="nav-number">2.</span> <span class="nav-text">项目工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#品牌的选择"><span class="nav-number">2.1.</span> <span class="nav-text">品牌的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具的选择"><span class="nav-number">2.2.</span> <span class="nav-text">工具的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具的安装"><span class="nav-number">2.3.</span> <span class="nav-text">工具的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具的使用"><span class="nav-number">2.4.</span> <span class="nav-text">工具的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#导入镜像"><span class="nav-number">2.4.1.</span> <span class="nav-text">导入镜像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入认证"><span class="nav-number">2.4.2.</span> <span class="nav-text">导入认证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行认证"><span class="nav-number">2.4.3.</span> <span class="nav-text">运行认证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用认证"><span class="nav-number">2.4.4.</span> <span class="nav-text">使用认证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加server"><span class="nav-number">2.4.5.</span> <span class="nav-text">添加server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传镜像"><span class="nav-number">2.4.6.</span> <span class="nav-text">上传镜像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加设备"><span class="nav-number">2.4.7.</span> <span class="nav-text">添加设备</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+        
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <!-- <h3 class="widget-title">Tag Cloud</h3> -->
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/"> Bash </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/"> Protobuf </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/"> Python </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tidb/"> Tidb </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/"> elasticsearch </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Celery/">Celery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos7/">Centos7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemd/">systemd</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+        
+
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+	  
+
+    </main>
+	
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Richardwei</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+	
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'richardweiu';
+      var disqus_identifier = '2016/06/25/GNS3-Use-IOU/';
+
+      var disqus_title = "GNS3 Use IOU";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	<script src="/js/src/particles.js"></script>
+	<script src="/js/src/app.js"></script>
+</body>
+  
+</html>
+
