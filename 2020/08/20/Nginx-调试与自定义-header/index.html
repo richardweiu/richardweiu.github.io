@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content=" Linux ,">
+  <meta name="keywords" content=" Nginx ,">
 
 
 
@@ -84,28 +84,18 @@
 
 
 
-<meta name="description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta name="keywords" content=" Linux ">
+<meta name="description" content="前言　记录之前提供一个简单代理的小工具时所用的调试方法与自定义 header 的使用注意  需求 请求参数中带访问地址，在 Nginx 中增加 header(header 中带秘钥不对外透露)，并访问参数中的地址 前端增加自定义的 header 用作判断访问的跳转条件  Nginx 的 Debug主要是需要对参数中的内容做正则获取、判断等操作，在我们不确定我们截取、判断等操作是否正确的时候可以通">
+<meta name="keywords" content=" Nginx ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Add hotspot on Ubuntu">
-<meta property="og:url" content="http://richardweiu.github.io/2016/06/08/hotspot/index.html">
+<meta property="og:title" content="Nginx 调试与自定义 header">
+<meta property="og:url" content="http://richardweiu.github.io/2020/08/20/Nginx-调试与自定义-header/index.html">
 <meta property="og:site_name" content="Richardwei Blog">
-<meta property="og:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
+<meta property="og:description" content="前言　记录之前提供一个简单代理的小工具时所用的调试方法与自定义 header 的使用注意  需求 请求参数中带访问地址，在 Nginx 中增加 header(header 中带秘钥不对外透露)，并访问参数中的地址 前端增加自定义的 header 用作判断访问的跳转条件  Nginx 的 Debug主要是需要对参数中的内容做正则获取、判断等操作，在我们不确定我们截取、判断等操作是否正确的时候可以通">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png">
-<meta property="og:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg">
-<meta property="og:updated_time" content="2020-08-12T06:58:06.500Z">
+<meta property="og:updated_time" content="2020-08-21T03:37:27.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Add hotspot on Ubuntu">
-<meta name="twitter:description" content="前言 　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.  在windows中　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网. 在ubunt">
-<meta name="twitter:image" content="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png">
+<meta name="twitter:title" content="Nginx 调试与自定义 header">
+<meta name="twitter:description" content="前言　记录之前提供一个简单代理的小工具时所用的调试方法与自定义 header 的使用注意  需求 请求参数中带访问地址，在 Nginx 中增加 header(header 中带秘钥不对外透露)，并访问参数中的地址 前端增加自定义的 header 用作判断访问的跳转条件  Nginx 的 Debug主要是需要对参数中的内容做正则获取、判断等操作，在我们不确定我们截取、判断等操作是否正确的时候可以通">
 
 
 
@@ -133,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://richardweiu.github.io/2016/06/08/hotspot/">
+  <link rel="canonical" href="http://richardweiu.github.io/2020/08/20/Nginx-调试与自定义-header/">
 
 
 
 
 
-  <title> Add hotspot on Ubuntu | Richardwei Blog </title>
+  <title> Nginx 调试与自定义 header | Richardwei Blog </title>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
@@ -266,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2016/06/08/hotspot/">
+  <link itemprop="mainEntityOfPage" href="http://richardweiu.github.io/2020/08/20/Nginx-调试与自定义-header/">
 
   <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Richardwei">
@@ -290,7 +280,7 @@
             
             
               
-                Add hotspot on Ubuntu
+                Nginx 调试与自定义 header
               
             
           </h1>
@@ -303,8 +293,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-08T22:56:08+08:00">
-                2016-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-20T10:00:29+08:00">
+                2020-08-20
               </time>
             
 
@@ -337,8 +327,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/06/08/hotspot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/08/hotspot/" itemprop="commentCount"></span>
+                <a href="/2020/08/20/Nginx-调试与自定义-header/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/20/Nginx-调试与自定义-header/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,15 +355,67 @@
 
       
         <blockquote>
-<p><strong> 前言 </strong><br>　总有机会我们会遇到这样的窘境,你的电脑可以上网,但是你的手机却没有办法,而其实你需要的是你的手机能够上网.这个时候我们将会让我们的电脑提供个热点,让我们能以此为跳板而成功的上网.</p>
+<p><strong>前言</strong><br>　记录之前提供一个简单代理的小工具时所用的调试方法与自定义 header 的使用注意</p>
 </blockquote>
-<h3 id="在windows中"><a href="#在windows中" class="headerlink" title="在windows中"></a>在windows中</h3><p>　这个根本就没有必要说了,方法太多了.如腾讯管家中的wifi工具,如360中的wifi工具等等.可以轻轻松松的用你的电脑提供一个热点让你的移动端或者说是其他的设备成功的上网.</p>
-<h3 id="在ubuntu中"><a href="#在ubuntu中" class="headerlink" title="在ubuntu中"></a>在ubuntu中</h3><p>　这才是我们的重点.其实让我们的ubuntu提供一个热点其实并不难,最主要的问题在于ubuntu提供的热点其他的windows设备可以搜到并且成功的连接、其他的IOS设备可以搜到并连接上。但是我们的安卓机,却要装一下了,搜不到添加隐藏网络也无法成功。最主要的问题我们的安卓机并不支持在添加热点设置中的mode模式。所以它无法识别，无法搜索到。<br>　而要让安卓机能够成功的识别,能够成功的搜索到并连接上有两种方法.</p>
-<h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><p>　1.首先设置我们网络的连接信息,点击屏幕右上角的wifi信号标志(连接的是wifi的话)或者是上下箭头的数据传输标志(连接的是网线)，然后进入设置窗口,如图所示<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/pushwifi.png" alt="push_wifi_sigin"><br>　然后会出现如下的menu,编辑网络连接<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_menu.png" alt="modify_menu"><br>　之后会弹出这样的一个编辑窗口我们点击添加也就是add<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_button.png" alt="add"><br>　2.接下来我们将选择添加网络连接的用途，我们选择wifi<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/choose.png" alt="choose"><br>　3.然后我们为我们的网络连接设置一个名字以及ssid还有模式的选择<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/create_1.png" alt="create_1"><br>　4.为我们的wifi设置一个密码以及加密的方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/add_pwd.png" alt="add_pwd"><br>　5.选择共享方式<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/share_mode.png" alt="share_mode"><br>　6.完成之后我们点击save,这样我们就初步完成了热点的创建,windows与iphone连接一点问题的没有.我们开始为安卓机服务的准备。我们需要kde下的一款网络包，kde-nm-connection-editor，打开ubuntu-software-center,在搜索一栏搜索 network，找到 kde-nm-connection-editor，安装<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/install_kde.png" alt="install_kde"><br>　7.安装完成之后我们使用终端开开启该应用,在终端中输入该软件名称.<br>　8.在弹出的窗口中点击之前我们所创建的热点,然后编辑它。<br>　9.在接下来的窗口中我们修改wifi的模式从ad-hoc修改为access point,然后点击OK就可以了(这里我盗了一个图，呵呵)<br><img src="http://7xu3tw.com1.z0.glb.clouddn.com/modify_mode_acc.jpg" alt="modify_mode"><br>　10.最后一步了。马上就成功啦！接下来只需要电脑在有线联网的情况下激活刚才创建的wifi热点即可，同前，右上角打开　网络设置，选择　创建新的wifi网络(Create New Wi-Fi Network)，弹出窗口，连接(Connection)一栏中选择刚才创建的wifi热点名称,其他选项系统自动设置完成，单机OK,等待片刻后，你的android设备就可顺利搜索到你的wifi网络并连接了～～!!</p>
-<h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><p>　这种方法使用的是ap-hotspot,这里参考<a href="http://www.cnblogs.com/csulennon/p/4418734.html" target="_blank" rel="noopener">http://www.cnblogs.com/csulennon/p/4418734.html</a>d<br>  1.安装ap-hotspot<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo<span class="built_in"> add-apt-repository </span>ppa:nilarimogard/webupd8</span><br><span class="line"></span><br><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install hostapd</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install ap-hotspot</span><br></pre></td></tr></table></figure></p>
-<p>　2.配置ap-hotspot<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ap-hotspot configure</span><br><span class="line"></span><br><span class="line">Detecting configuration...</span><br><span class="line">Detected eth0 <span class="keyword">as</span> <span class="keyword">the</span> network interface connected <span class="built_in">to</span> <span class="keyword">the</span> Internet. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface below (e.g.- eth0, ppp0 etc.):</span><br><span class="line"><span class="comment">	// 回车确认</span></span><br><span class="line"></span><br><span class="line">Detected wlan0 <span class="keyword">as</span> your WiFi interface. Press ENTER <span class="keyword">if</span> this is correct <span class="keyword">or</span> enter <span class="keyword">the</span> desired interface (e.g.- wlan1):</span><br><span class="line"><span class="comment">	// 回车确认</span></span><br><span class="line"></span><br><span class="line">Enter <span class="keyword">the</span> desired Access Point name <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (myhotspot):</span><br><span class="line"><span class="comment">	// 输入wifi的名字</span></span><br><span class="line"></span><br><span class="line">Enter <span class="keyword">the</span> desired WPA Passphrase below <span class="keyword">or</span> press ENTER <span class="built_in">to</span> use <span class="keyword">the</span> default <span class="literal">one</span> (qwerty0987):</span><br><span class="line"><span class="comment">	// 输入wifi的密码</span></span><br></pre></td></tr></table></figure></p>
-<p>　3.启动wifi<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ap-hotspot <span class="literal">start</span></span><br></pre></td></tr></table></figure></p>
-<p>这样就搞定了</p>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ul>
+<li>请求参数中带访问地址，在 Nginx 中增加 header(header 中带秘钥不对外透露)，并访问参数中的地址</li>
+<li>前端增加自定义的 header 用作判断访问的跳转条件</li>
+</ul>
+<h3 id="Nginx-的-Debug"><a href="#Nginx-的-Debug" class="headerlink" title="Nginx 的 Debug"></a>Nginx 的 Debug</h3><p>主要是需要对参数中的内容做正则获取、判断等操作，在我们不确定我们截取、判断等操作是否正确的时候可以通过以下两种方式做 Debug:</p>
+<ul>
+<li>通过指定 txt 为返回类型 <code>default_type text/html;</code> 与 return 相关的字符串即可</li>
+<li>通过 echo 模块与 <code>default_type text/plain</code> 方式也可以做到获取相关的字符串达到 Debug 的目的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过 map 模块来获取 get 参数中 url 参数里面的文件名</span></span><br><span class="line">map <span class="variable">$arg_url</span> <span class="variable">$file_name</span> &#123;</span><br><span class="line">    ~/(?&lt;captured_request_basename&gt;[^/?]*)(?:\?|$) <span class="variable">$captured_request_basename</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  xxxx;</span><br><span class="line">    access_log /var/<span class="built_in">log</span>/nginx/<span class="built_in">test</span>/access.log main;</span><br><span class="line">    error_log /var/<span class="built_in">log</span>/nginx/<span class="built_in">test</span>/error.log;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    <span class="comment"># proxy_pass 的地址若是线上的域名或是公网域名必须带 resolver 否则 nginx 会报解析不了</span></span><br><span class="line">    resolver 10.100.100.100;</span><br><span class="line"></span><br><span class="line">    location /proxy &#123;</span><br><span class="line">        <span class="comment"># 设置返回的类型为 text 的形式</span></span><br><span class="line">        default_type text/html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 通过正则获取参数中的 url 的 uri 部分</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$arg_url</span> ~*  ^(.*)http://data.xxxx.xxx.com(.*)$)&#123;</span><br><span class="line">            <span class="built_in">set</span> <span class="variable">$target</span> <span class="variable">$2</span>;</span><br><span class="line">            <span class="comment"># 返回状态码与相关的 txt 内容，这样 response 内容就会是 $2 的 txt content</span></span><br><span class="line">            <span class="built_in">return</span> 200 <span class="variable">$2</span>;</span><br><span class="line">            <span class="comment"># 指定下载文件名否则文件名为初始 uri</span></span><br><span class="line">            add_header Content-Disposition <span class="string">"attachment; filename=<span class="variable">$file_name</span>"</span>;</span><br><span class="line">            <span class="comment"># 带上鉴权的 header</span></span><br><span class="line">            add_header x-CDN-Agent <span class="string">"xxx-xxx"</span>;</span><br><span class="line">            proxy_pass http://xxx.xxx.domain<span class="variable">$2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需注意的事项:</p>
+<ul>
+<li>以上功能没有使用的 rewrite 的方式实现是因为 rewrite 通过 301 或 302 转发是不会带请求中的 header 的</li>
+<li>若是 rewrite 的方式可以通过 <code>rewrite_log on</code> 的方式打开 Debug 日志</li>
+</ul>
+<h3 id="Nginx-自定义-Header"><a href="#Nginx-自定义-Header" class="headerlink" title="Nginx 自定义 Header"></a>Nginx 自定义 Header</h3><p>线上有时候会通过自定义的 Header 来作为判断依据从而反向代理到不同的地址，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name xxx.domain;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 若是 header 中存在下划线必须打开该配置</span></span><br><span class="line">    underscores_in_headers on;</span><br><span class="line">    access_log /var/<span class="built_in">log</span>/nginx/msg.access.log;</span><br><span class="line">    error_log /var/<span class="built_in">log</span>/nginx/msg.error.log;</span><br><span class="line"></span><br><span class="line">    location ~* .(agg|v1|admin) &#123;</span><br><span class="line">        <span class="comment">#proxy_set_header Host $host;</span></span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 判断名为 search_env 的 header 值</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$http_search_env</span> = <span class="string">"mainland"</span>) &#123;</span><br><span class="line">            proxy_pass http://report.xxx.domain;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$http_search_env</span> = <span class="string">"international"</span>) &#123;</span><br><span class="line">            proxy_pass http://report-inter.xxx.com;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># 若是以上都不匹配的默认转发地址</span></span><br><span class="line">        proxy_pass http://report.xxx.domain;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需注意的事项:</p>
+<ul>
+<li>当增加自定义的 Header 时且 Header 中带下划线时，需要打开 <code>underscores_in_headers</code> 的配置项，否则 nginx 不识别且不转发</li>
+<li>自定义的 Header 可以通过 <code>http_变量名</code> 的方式访问</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>rewrite 跳转是不能传递原来请求与自己增加的 Header</li>
+<li>通过 <code>$arg_变量名</code> 可以获取 GET 中的参数值</li>
+<li>自定义的 Header 且 Header 中带下划线时，需要打开 <code>underscores_in_headers</code> 配置项</li>
+<li>proxy_pass Debug 的方式有两种：<ul>
+<li>通过 <code>default_type text/html;</code> 与 return 相关的字符串</li>
+<li>通过 echo 模块与 <code>default_type text/plain</code> 方式</li>
+</ul>
+</li>
+<li>proxy_pass 的需要注意的细节<ul>
+<li>proxy_pass url 中根路径带 ‘/‘ 反向代理的时候会忽略 uri <ul>
+<li>proxy_pass <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a></li>
+<li>‘<a href="http://localhost/proxy/index.html&#39;" target="_blank" rel="noopener">http://localhost/proxy/index.html&#39;</a> –&gt; ‘<a href="http://localhost/index.html&#39;" target="_blank" rel="noopener">http://localhost/index.html&#39;</a></li>
+</ul>
+</li>
+<li>proxy_pass url 中根路径未带 ‘/‘ 反向代理的时候会加上原有的 uri<ul>
+<li>proxy_pass <a href="http://localhost" target="_blank" rel="noopener">http://localhost</a>;</li>
+<li>‘<a href="http://localhost/proxy/index.html&#39;" target="_blank" rel="noopener">http://localhost/proxy/index.html&#39;</a> –&gt; ‘<a href="http://localhost/proxy/index.html&#39;" target="_blank" rel="noopener">http://localhost/proxy/index.html&#39;</a></li>
+</ul>
+</li>
+<li>proxy_pass url 中非根路径带 ‘/‘ 反向代理的时候会<ul>
+<li>proxy_pass <a href="http://localhost/richard/" target="_blank" rel="noopener">http://localhost/richard/</a>;</li>
+<li>‘<a href="http://localhost/proxy/index.html&#39;" target="_blank" rel="noopener">http://localhost/proxy/index.html&#39;</a> –&gt; ‘<a href="http://localhost/richard/index.html&#39;" target="_blank" rel="noopener">http://localhost/richard/index.html&#39;</a></li>
+</ul>
+</li>
+<li>proxy_pass url 中非根路径未带 ‘/‘ 反向代理的时候会<ul>
+<li>proxy_pass <a href="http://localhost/richard" target="_blank" rel="noopener">http://localhost/richard</a>;</li>
+<li>‘<a href="http://localhost/proxy/index.html&#39;" target="_blank" rel="noopener">http://localhost/proxy/index.html&#39;</a> –&gt; ‘<a href="http://localhost/richardindex.html&#39;" target="_blank" rel="noopener">http://localhost/richardindex.html&#39;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://serverfault.com/questions/381545/how-to-extract-only-the-file-name-from-the-request-uri" target="_blank" rel="noopener">map 匹配文件名</a></li>
+<li><a href="http://www.ttlsa.com/nginx/using-nginx-map-method/" target="_blank" rel="noopener">map 使用</a></li>
+</ul>
 
       
     </div>
@@ -397,7 +439,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag">#  Linux </a>
+            <a href="/tags/Nginx/" rel="tag">#  Nginx </a>
           
         </div>
       
@@ -406,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/03/Ubuntu/" rel="next" title="Ubuntu 杂记">
-                <i class="fa fa-chevron-left"></i> Ubuntu 杂记
+              <a href="/2020/08/12/Python-subprocess-导致僵尸进程问题/" rel="next" title="Python subprocess 导致僵尸进程问题">
+                <i class="fa fa-chevron-left"></i> Python subprocess 导致僵尸进程问题
               </a>
             
           </div>
@@ -415,10 +457,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/09/Nginx+thinkphp/" rel="prev" title="Nginx 遇 Thinkphp 的水土不服">
-                Nginx 遇 Thinkphp 的水土不服 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在windows中"><span class="nav-number">1.</span> <span class="nav-text">在windows中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在ubuntu中"><span class="nav-number">2.</span> <span class="nav-text">在ubuntu中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方法"><span class="nav-number">2.1.</span> <span class="nav-text">第一种方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方法"><span class="nav-number">2.2.</span> <span class="nav-text">第二种方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx-的-Debug"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx 的 Debug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx-自定义-Header"><span class="nav-number">1.2.</span> <span class="nav-text">Nginx 自定义 Header</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -694,9 +732,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'richardweiu';
-      var disqus_identifier = '2016/06/08/hotspot/';
+      var disqus_identifier = '2020/08/20/Nginx-调试与自定义-header/';
 
-      var disqus_title = "Add hotspot on Ubuntu";
+      var disqus_title = "Nginx 调试与自定义 header";
 
 
       function run_disqus_script(disqus_script) {
