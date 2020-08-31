@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Richardwei Blog">
 <meta property="og:description" content="前言　记一次针对线上发现僵尸进程的问题  问题 现象: 生产环境中发现 worker 被 hangs 并且同时存在僵尸进程与孤儿进程的情况 环境: 产生问题的环境描述: 运行环境： 在 docker 的 container 中 调用逻辑：  worker 通过死循环从 mq 中获取任务（任务信息中包含执行的 Command） worker 通过 subprocess popen 的方式调用 Co">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-20T01:47:04.441Z">
+<meta property="og:updated_time" content="2020-08-31T09:53:08.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python subprocess 导致僵尸进程问题">
 <meta name="twitter:description" content="前言　记一次针对线上发现僵尸进程的问题  问题 现象: 生产环境中发现 worker 被 hangs 并且同时存在僵尸进程与孤儿进程的情况 环境: 产生问题的环境描述: 运行环境： 在 docker 的 container 中 调用逻辑：  worker 通过死循环从 mq 中获取任务（任务信息中包含执行的 Command） worker 通过 subprocess popen 的方式调用 Co">
@@ -395,29 +395,29 @@
 <li>通过 gdb python 查看 268142 进程发现主要卡在这么一句无用的语句上：<ul>
 <li>无用的判断来自于：<ul>
 <li>error_info 在上下文中并没有用到</li>
-<li><code>logging.StreamHandler()</code> 默认输出至 <code>sys.stderr</code>，而日志相关的内容本来就会落盘上传</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">popen = subprocess.Popen(cmd, stdin=DEVNULL, stdout=DEVNULL, stderr=subprocess.PIPE, shell=<span class="keyword">True</span>, close_fds=<span class="keyword">False</span>)</span><br><span class="line">error_info = popen.stderr.read()  <span class="comment"># 卡主的位置</span></span><br></pre></td></tr></table></figure>
-<p>而卡主的可能原因（来自python <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.communicate" target="_blank" rel="noopener">官方文档</a>）：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">警告 使用 communicate() 而非 .stdin.write， .stdout.read 或者 .stderr.read 来避免由于任意其他 OS 管道缓冲区被子进程填满阻塞而导致的死锁。</span><br></pre></td></tr></table></figure>
-<p>所以在删掉该语句之后发现解决了僵尸进程的问题，但是孤儿还在，所以还有问题还未得到答案:</p>
+<p>在尝试删掉该语句之后发现解决了当前僵尸进程的问题，但是孤儿还在，所以还有问题还未得到答案:</p>
 <ul>
 <li>为什么会存在孤儿？</li>
-<li>为什么会导致 <code>popen.stderr.read()</code> hangs， 即使替换成 <code>communicate</code> 也会 hangs，并不能解决问题呢？</li>
+<li>为什么会导致 <code>popen.stderr.read()</code> hangs？</li>
 </ul>
 <h3 id="分析僵尸、孤儿进程存在原因"><a href="#分析僵尸、孤儿进程存在原因" class="headerlink" title="分析僵尸、孤儿进程存在原因"></a>分析僵尸、孤儿进程存在原因</h3><p>代码中 <code>Popen</code> 初始化时 <code>stderr =subprocess.PIPE</code>,通过 python 的源码中可以看到当参数 <code>stderr == PIPE</code> 时的操作是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 源码位置：https://github.com/python/cpython/blob/2.7/Lib/subprocess.py 第 817 行</span></span><br><span class="line"><span class="keyword">elif</span> stdout == PIPE:</span><br><span class="line">    c2pread, c2pwrite = self.pipe_cloexec()</span><br><span class="line">    to_close.update((c2pread, c2pwrite))</span><br></pre></td></tr></table></figure>
 <p>根据这个线索我们通过 <code>lsof</code> 看到主进程 268142、其子进程以及残留孤儿进程都在对着这个管道（stderr PIPE）读或写，而孤儿进程连接着 <code>stderr</code> 应该是写日志导致的</p>
-<p>同时只要将孤儿进程 <code>kill</code>, 就会发现主进程就不会被 hangs，就能够成功结束就 <code>stderr</code> 的读取，程序继续往下走，看来主要问题不在 <code>stderr</code> 死锁而是 <code>popen.stderr.read()</code> 一直在等 <code>EOF</code> 表示文件结束输入关闭的标示，所以僵尸、孤儿进程存在原因：</p>
+<p>同时只要将孤儿进程 <code>kill</code>, 就会发现主进程就不会被 hangs，就能够成功结束 <code>stderr</code> 的读取，程序继续往下走，看来主要问题不在 <code>stderr</code> 死锁而是 <code>popen.stderr.read()</code> 一直在等 <code>EOF</code> 表示文件结束输入关闭的标示，所以僵尸、孤儿进程存在原因：</p>
 <ul>
 <li>执行 cmd 的进程（268201）在终止了其子进程，但是其孙子中的一个进程并没有处理信号，依然在运行中，所以孙子变成孤儿</li>
 <li>因为孤儿还在以 write 的身份开着管道，所以启动 cmd 的进程认为写入还没有结束所以导致卡主</li>
 <li>而启动 cmd 的进程卡在了 <code>stderr.read</code> 上所以没有处理执行 cmd 的进程退出信号，所以僵尸进程出现</li>
 </ul>
+<p>而 <code>popen.stderr.read()</code> 的主要作用是（来自python <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.communicate" target="_blank" rel="noopener">官方文档</a>）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">警告 使用 communicate() 而非 .stdin.write， .stdout.read 或者 .stderr.read 来避免由于任意其他 OS 管道缓冲区被子进程填满阻塞而导致的死锁。</span><br></pre></td></tr></table></figure>
+<p>也就是说若是往 <code>stderr.read</code> 传入过多信息但是没有读的话会导致死锁，子进程与父进程都卡死（尝试了一下事实确实如此，若是往其中写入过多但不读取之后会导致死锁）</p>
 <p>追究根本原因的处理应该是：</p>
 <ul>
 <li>父进程在 terminate 子进程之后要确保所有进程都成功杀死结束退出。</li>
@@ -459,6 +459,11 @@
 </ul>
 </li>
 </ul>
+<h3 id="管道的大小"><a href="#管道的大小" class="headerlink" title="管道的大小"></a>管道的大小</h3><p>上文中我们了解到若是管道写满没有读取的话会导致卡死，而在不同的系统中管道的大小是不同的，如果系统页面为 4 KiB，则默认大小只有 64 KiB</p>
+<p>管道的最大限制大小可以通过 <code>/proc/sys/fs/pipe-max-size</code> 来修改（默认为 1 mb）</p>
+<p>而在 Python 中修改使用大小可用通过 <code>fcntl.F_SETPIPE_SZ</code> 与 <code>fcntl.fcntl(fd, fcntl.F_SETPIPE_SZ, size)</code></p>
+<p>在查询的过程中发现一个有趣的描述（摘录<a href="https://blog.csdn.net/origin_lee/article/details/41576975" target="_blank" rel="noopener">stderr和stdout详细解说</a>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1，我们知道，标准输出和标准错误默认都是将信息输出到终端上，那么他们有什么区别呢？让我们来看个题目：</span><br><span class="line"></span><br><span class="line">问题：下面程序的输出是什么？（intel笔试2011）</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">fprintf(stdout,<span class="string">"Hello "</span>);</span><br><span class="line">fprintf(stderr,<span class="string">"World!"</span>);</span><br><span class="line">return0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">解答：这段代码的输出是什么呢？你可以快速的将代码敲入你电脑上（当然，拷贝更快），然后发现输出是</span><br><span class="line"></span><br><span class="line">World!Hello</span><br><span class="line"></span><br><span class="line">这是为什么呢？在默认情况下，stdout是行缓冲的，他的输出会放在一个buffer里面，只有到换行的时候，才会输出到屏幕。而stderr是无缓冲的，会直接输出，举例来说就是<span class="built_in">printf</span>(stdout, <span class="string">"xxxx"</span>) 和 <span class="built_in">printf</span>(stdout, <span class="string">"xxxx\n"</span>)，前者会憋住，直到遇到新行才会一起输出。而<span class="built_in">printf</span>(stderr, <span class="string">"xxxxx"</span>)，不管有么有\n，都输出。</span><br></pre></td></tr></table></figure>
 <h3 id="Python-中-subprocess-popen"><a href="#Python-中-subprocess-popen" class="headerlink" title="Python 中 subprocess.popen"></a>Python 中 subprocess.popen</h3><ul>
 <li>communicate 避免死锁的处理方式是在读取 PIPE 的外套一层捕获异常：</li>
 </ul>
@@ -480,6 +485,10 @@
 <li><a href="https://blog.csdn.net/github_40094105/article/details/81287572" target="_blank" rel="noopener">centos7 gdb python</a></li>
 <li><a href="http://debuginfo.centos.org/7/x86_64/" target="_blank" rel="noopener">找到指定版本的 python debug 包</a></li>
 <li><a href="https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html" target="_blank" rel="noopener">GUN signal 说明</a></li>
+<li><a href="https://unix.stackexchange.com/questions/11946/how-big-is-the-pipe-buffer" target="_blank" rel="noopener">pipe size</a></li>
+<li><a href="https://mozillazg.com/2017/11/python-how-to-set-pipe-buffer-size-on-linux.html" target="_blank" rel="noopener">python change pipe size</a></li>
+<li><a href="https://blog.csdn.net/weixin_44731100/article/details/88642269" target="_blank" rel="noopener">python sys stderr use</a></li>
+<li><a href="https://blog.csdn.net/origin_lee/article/details/41576975" target="_blank" rel="noopener">stderr stdout diff</a></li>
 </ul>
 
       
@@ -651,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析祖先进程卡主原因"><span class="nav-number">2.1.</span> <span class="nav-text">分析祖先进程卡主原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析僵尸、孤儿进程存在原因"><span class="nav-number">2.2.</span> <span class="nav-text">分析僵尸、孤儿进程存在原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析子进程没有杀死原因"><span class="nav-number">2.3.</span> <span class="nav-text">分析子进程没有杀死原因</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb-python-的调试方式"><span class="nav-number">3.1.</span> <span class="nav-text">gdb python 的调试方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#巩固僵尸进程与孤儿进程的知识点"><span class="nav-number">3.2.</span> <span class="nav-text">巩固僵尸进程与孤儿进程的知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止信号量"><span class="nav-number">3.3.</span> <span class="nav-text">终止信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-中-subprocess-popen"><span class="nav-number">3.4.</span> <span class="nav-text">Python 中 subprocess.popen</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析祖先进程卡主原因"><span class="nav-number">2.1.</span> <span class="nav-text">分析祖先进程卡主原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析僵尸、孤儿进程存在原因"><span class="nav-number">2.2.</span> <span class="nav-text">分析僵尸、孤儿进程存在原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析子进程没有杀死原因"><span class="nav-number">2.3.</span> <span class="nav-text">分析子进程没有杀死原因</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb-python-的调试方式"><span class="nav-number">3.1.</span> <span class="nav-text">gdb python 的调试方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#巩固僵尸进程与孤儿进程的知识点"><span class="nav-number">3.2.</span> <span class="nav-text">巩固僵尸进程与孤儿进程的知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止信号量"><span class="nav-number">3.3.</span> <span class="nav-text">终止信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道的大小"><span class="nav-number">3.4.</span> <span class="nav-text">管道的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-中-subprocess-popen"><span class="nav-number">3.5.</span> <span class="nav-text">Python 中 subprocess.popen</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
