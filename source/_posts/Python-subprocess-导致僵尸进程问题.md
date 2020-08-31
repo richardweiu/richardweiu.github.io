@@ -81,23 +81,16 @@ categories: "Python"
 - 通过 gdb python 查看 268142 进程发现主要卡在这么一句无用的语句上：
   - 无用的判断来自于：
     - error_info 在上下文中并没有用到
-    - `logging.StreamHandler()` 默认输出至 `sys.stderr`，而日志相关的内容本来就会落盘上传
 
 ```python
 popen = subprocess.Popen(cmd, stdin=DEVNULL, stdout=DEVNULL, stderr=subprocess.PIPE, shell=True, close_fds=False)
 error_info = popen.stderr.read()  # 卡主的位置
 ```
 
-而卡主的可能原因（来自python [官方文档](https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.communicate)）：
-
-```shell
-警告 使用 communicate() 而非 .stdin.write， .stdout.read 或者 .stderr.read 来避免由于任意其他 OS 管道缓冲区被子进程填满阻塞而导致的死锁。
-```
-
-所以在删掉该语句之后发现解决了僵尸进程的问题，但是孤儿还在，所以还有问题还未得到答案:
+在尝试删掉该语句之后发现解决了当前僵尸进程的问题，但是孤儿还在，所以还有问题还未得到答案:
 
 - 为什么会存在孤儿？
-- 为什么会导致 `popen.stderr.read()` hangs， 即使替换成 `communicate` 也会 hangs，并不能解决问题呢？
+- 为什么会导致 `popen.stderr.read()` hangs？
 
 ### 分析僵尸、孤儿进程存在原因
 
@@ -112,11 +105,19 @@ elif stdout == PIPE:
 
 根据这个线索我们通过 `lsof` 看到主进程 268142、其子进程以及残留孤儿进程都在对着这个管道（stderr PIPE）读或写，而孤儿进程连接着 `stderr` 应该是写日志导致的
 
-同时只要将孤儿进程 `kill`, 就会发现主进程就不会被 hangs，就能够成功结束就 `stderr` 的读取，程序继续往下走，看来主要问题不在 `stderr` 死锁而是 `popen.stderr.read()` 一直在等 `EOF` 表示文件结束输入关闭的标示，所以僵尸、孤儿进程存在原因：
+同时只要将孤儿进程 `kill`, 就会发现主进程就不会被 hangs，就能够成功结束 `stderr` 的读取，程序继续往下走，看来主要问题不在 `stderr` 死锁而是 `popen.stderr.read()` 一直在等 `EOF` 表示文件结束输入关闭的标示，所以僵尸、孤儿进程存在原因：
 
 - 执行 cmd 的进程（268201）在终止了其子进程，但是其孙子中的一个进程并没有处理信号，依然在运行中，所以孙子变成孤儿
 - 因为孤儿还在以 write 的身份开着管道，所以启动 cmd 的进程认为写入还没有结束所以导致卡主
 - 而启动 cmd 的进程卡在了 `stderr.read` 上所以没有处理执行 cmd 的进程退出信号，所以僵尸进程出现
+
+而 `popen.stderr.read()` 的主要作用是（来自python [官方文档](https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.communicate)）：
+
+```shell
+警告 使用 communicate() 而非 .stdin.write， .stdout.read 或者 .stderr.read 来避免由于任意其他 OS 管道缓冲区被子进程填满阻塞而导致的死锁。
+```
+
+也就是说若是往 `stderr.read` 传入过多信息但是没有读的话会导致死锁，子进程与父进程都卡死（尝试了一下事实确实如此，若是往其中写入过多但不读取之后会导致死锁）
 
 追究根本原因的处理应该是：
 
@@ -202,6 +203,34 @@ def cancel(self):
   - 用于立即终止程序，它不能被处理或忽略，也不可能阻塞该信号，如果杀死失败的话估计已经产生操作系统级别错误了
   - 如同 SIGTERM 一般，只会作用于当前进程，不会影响其子进程
   - 等同于 `kill -9`
+
+### 管道的大小
+
+上文中我们了解到若是管道写满没有读取的话会导致卡死，而在不同的系统中管道的大小是不同的，如果系统页面为 4 KiB，则默认大小只有 64 KiB
+
+管道的最大限制大小可以通过 `/proc/sys/fs/pipe-max-size` 来修改（默认为 1 mb）
+
+而在 Python 中修改使用大小可用通过 `fcntl.F_SETPIPE_SZ` 与 `fcntl.fcntl(fd, fcntl.F_SETPIPE_SZ, size)`
+
+在查询的过程中发现一个有趣的描述（摘录[stderr和stdout详细解说](https://blog.csdn.net/origin_lee/article/details/41576975)）
+
+```bash
+1，我们知道，标准输出和标准错误默认都是将信息输出到终端上，那么他们有什么区别呢？让我们来看个题目：
+
+问题：下面程序的输出是什么？（intel笔试2011）
+
+int main(){
+fprintf(stdout,"Hello ");
+fprintf(stderr,"World!");
+return0;
+}
+
+解答：这段代码的输出是什么呢？你可以快速的将代码敲入你电脑上（当然，拷贝更快），然后发现输出是
+
+World!Hello
+
+这是为什么呢？在默认情况下，stdout是行缓冲的，他的输出会放在一个buffer里面，只有到换行的时候，才会输出到屏幕。而stderr是无缓冲的，会直接输出，举例来说就是printf(stdout, "xxxx") 和 printf(stdout, "xxxx\n")，前者会憋住，直到遇到新行才会一起输出。而printf(stderr, "xxxxx")，不管有么有\n，都输出。
+```
 
 ### Python 中 subprocess.popen
 
@@ -361,3 +390,7 @@ def _execute_child(self, args, executable, preexec_fn, close_fds,
 - [centos7 gdb python](https://blog.csdn.net/github_40094105/article/details/81287572)
 - [找到指定版本的 python debug 包](http://debuginfo.centos.org/7/x86_64/)
 - [GUN signal 说明](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html)
+- [pipe size](https://unix.stackexchange.com/questions/11946/how-big-is-the-pipe-buffer)
+- [python change pipe size](https://mozillazg.com/2017/11/python-how-to-set-pipe-buffer-size-on-linux.html)
+- [python sys stderr use](https://blog.csdn.net/weixin_44731100/article/details/88642269)
+- [stderr stdout diff](https://blog.csdn.net/origin_lee/article/details/41576975)
