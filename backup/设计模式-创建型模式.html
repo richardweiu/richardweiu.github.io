@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content=",,,,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言　开始设计模式的复习总结，今天的主题是创建者模式，其中相关模式模块中大部分结论都是摘录与书中或者文章中，暂未在结合使用中自我感受到相关的益处  工厂方法模式说明最开始创建一个对象:  给他分配一点的内存空间 然后做类型的转换 然后初始化其数据结构  才能使用该对象，所以创建一个对象并不简单，所以在后来的演进过程中，出现了构造函数 但是对于复杂的业务逻辑构造函数依然不够用，我们可能需要在创建之">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="website">
+<meta property="og:title" content="设计模式-创建型模式(上)">
+<meta property="og:url" content="http://richardweiu.github.io/backup/设计模式-创建型模式.html">
+<meta property="og:site_name" content="Richardwei Blog">
+<meta property="og:description" content="前言　开始设计模式的复习总结，今天的主题是创建者模式，其中相关模式模块中大部分结论都是摘录与书中或者文章中，暂未在结合使用中自我感受到相关的益处  工厂方法模式说明最开始创建一个对象:  给他分配一点的内存空间 然后做类型的转换 然后初始化其数据结构  才能使用该对象，所以创建一个对象并不简单，所以在后来的演进过程中，出现了构造函数 但是对于复杂的业务逻辑构造函数依然不够用，我们可能需要在创建之">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://richardweiu.github.io/images/design-pattern-abstract-factory-struct.png">
+<meta property="og:image" content="http://richardweiu.github.io/images/design-pattern-simple-factory-struct.png">
+<meta property="og:image" content="http://richardweiu.github.io/images/design-pattern-builder-struct.png">
+<meta property="og:updated_time" content="2021-01-04T01:19:27.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式-创建型模式(上)">
+<meta name="twitter:description" content="前言　开始设计模式的复习总结，今天的主题是创建者模式，其中相关模式模块中大部分结论都是摘录与书中或者文章中，暂未在结合使用中自我感受到相关的益处  工厂方法模式说明最开始创建一个对象:  给他分配一点的内存空间 然后做类型的转换 然后初始化其数据结构  才能使用该对象，所以创建一个对象并不简单，所以在后来的演进过程中，出现了构造函数 但是对于复杂的业务逻辑构造函数依然不够用，我们可能需要在创建之">
+<meta name="twitter:image" content="http://richardweiu.github.io/images/design-pattern-abstract-factory-struct.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://richardweiu.github.io/backup/设计模式-创建型模式.html">
+
+
+
+
+
+  <title>
+  
+
+  
+    设计模式-创建型模式(上) | Richardwei Blog
+  
+</title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div id="particles-js" style="position: fixed; width: 100%; height:100%">
+		<canvas width="1354" height="113" class="particles-js-canvas-el" style="width: 100%; height: 100%;">
+		</canvas>
+  </div>
+  
+  <div class="container one-collumn sidebar-position-left  ">
+
+	<div class="headband"></div>
+	
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Richardwei Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>	
+	
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">设计模式-创建型模式(上)</h2>
+
+
+
+</header>
+
+    
+    
+      <blockquote>
+<p><strong>前言</strong><br>　开始设计模式的复习总结，今天的主题是创建者模式，其中相关模式模块中大部分结论都是摘录与书中或者文章中，暂未在结合使用中自我感受到相关的益处</p>
+</blockquote>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>最开始创建一个对象:</p>
+<ul>
+<li>给他分配一点的内存空间</li>
+<li>然后做类型的转换</li>
+<li>然后初始化其数据结构</li>
+</ul>
+<p>才能使用该对象，所以创建一个对象并不简单，所以在后来的演进过程中，出现了构造函数</p>
+<p>但是对于复杂的业务逻辑构造函数依然不够用，我们可能需要在创建之前做一下参数的逻辑判断，类型的选择，类型的转换，或者构造其他的对象作为参数来辅助另外一个对象的构造等等，为了整理我们会把这些代码都剥离出来成一个函数或者一个类，这应该就是最开始的工厂方法模式把</p>
+<p>由此可以看出 Factory Method 的核心目的是：隐藏创建对象的复杂过程</p>
+<p>因为实际使用中的总结的一些基本原则，如面向接口编程</p>
+<blockquote>
+<p>面向接口编程:<code>Program to an interface, not an implementation</code> 带来的好处:对外暴露出稳定的使用接口，将稳定的接口与不稳定的实现分离，使用者不会因为实现细节的变动而改动，以此来降低耦合性，提高扩展性</p>
+</blockquote>
+<p>所以 Factory Method 的目标便是：</p>
+<blockquote>
+<p>Define an interface for creating an object, but let subclasses decide which class<br>to instantiate. Factory Method lets a class defer instantiation to subclasses(引用自 《Design Patterns》)</p>
+</blockquote>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="/images/design-pattern-abstract-factory-struct.png" alt="design-pattern-abstract-factory-struct"></p>
+<ul>
+<li>AbstractFactory (抽象工厂)<ul>
+<li>用于声明接口，该接口用于描述创建抽象产品对象的操作</li>
+</ul>
+</li>
+<li>ConcreteFactory (具体工厂)<ul>
+<li>实现抽象工厂</li>
+</ul>
+</li>
+<li>AbstractProduct (抽象产品)<ul>
+<li>用于声明抽象产品相关的接口</li>
+</ul>
+</li>
+<li>ConcreteProduct<ul>
+<li>产品的具体实现</li>
+</ul>
+</li>
+<li>Client(客户端)<ul>
+<li>使用工厂与产品的接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>Python 版本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta,abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span>:</span></span><br><span class="line">    __metaclass = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span><span class="params">(Shape)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Square'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span><span class="params">(Shape)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Circle'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span>:</span></span><br><span class="line">    __metaclass = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_shape</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SquareFactory</span><span class="params">(Factory)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_shape</span><span class="params">()</span>:</span> <span class="keyword">return</span> Square()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CircleFactory</span><span class="params">(Factory)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_shape</span><span class="params">()</span>:</span> <span class="keyword">return</span> Circle()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">circle = CircleFactory.create_shape()</span><br><span class="line">circle.draw()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Golang 版本</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Shape interface</span></span><br><span class="line"><span class="keyword">type</span> Shape <span class="keyword">interface</span> &#123;</span><br><span class="line">	Draw()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Circle struct</span></span><br><span class="line"><span class="keyword">type</span> Circle <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Draw for Circle</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Circle)</span> <span class="title">Draw</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"draw the circle"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Square struct</span></span><br><span class="line"><span class="keyword">type</span> Square <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Draw for Square</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Square)</span> <span class="title">Draw</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"draw the square"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Factory interface</span></span><br><span class="line"><span class="keyword">type</span> Factory <span class="keyword">interface</span> &#123;</span><br><span class="line">	CreateShape() Shape</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CircleFactory struct</span></span><br><span class="line"><span class="keyword">type</span> CircleFactory <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateShape for cf</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(cf *CircleFactory)</span> <span class="title">CreateShape</span><span class="params">()</span> <span class="title">Shape</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">new</span>(Circle)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SquareFactory struct</span></span><br><span class="line"><span class="keyword">type</span> SquareFactory <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CreateShape for sf</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sf *SquareFactory)</span> <span class="title">CreateShape</span><span class="params">()</span> <span class="title">Shape</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;Square&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	cf := CircleFactory&#123;&#125;</span><br><span class="line">	c := cf.CreateShape()</span><br><span class="line">	c.Draw()</span><br><span class="line"></span><br><span class="line">	sf := SquareFactory&#123;&#125;</span><br><span class="line">	s := sf.CreateShape()</span><br><span class="line">	s.Draw()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>优势<ul>
+<li>Factory 角色有的接口，每个 product 都有自己的 Factory，这样当 product 创建的逻辑变化了也不会相互影响，符合开闭原则，，具有很强的的扩展性、弹性和可维护性</li>
+<li>符合依赖反转原则</li>
+</ul>
+</li>
+<li>劣势<ul>
+<li>product 增加时也需要增加对应的工厂类，使得类非常多</li>
+<li>product 有各自的 Factory，这样会导致使用者需要知道各 Factory 类名<ul>
+<li>当然我们可以在工厂之上再套一个可以创建所有类型的工厂，通过参数判断的方式来，从而规避该问题（Parameterized factory methods）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关模式"><a href="#相关模式" class="headerlink" title="相关模式"></a>相关模式</h3><p>相关模式完全借鉴于书中前人使用的检验之谈，实际使用是只要掌握了各个模式解决的问题与应用的场景无需参考，自然会结合使用</p>
+<ul>
+<li>抽象工厂模式：抽象工厂模式的实现时常会伴随着工厂模式</li>
+<li>模板模式：工厂模式经常会在模板模式中使用</li>
+</ul>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>在 GoF 中并没有显示的提出简单工厂的概念，后来《Effective Java》作者在该书中将简单工厂模式单独提了出来</p>
+<p>个人认为简单工厂只是结合 Parameterized factory methods 与 Java 中的方式而提出简化版工厂模式。</p>
+<p>其中最容易被人记住的是通过参数使用 if-else 或者 switch 选择产品类（但这只是 Parameterized factory methods 的一种形式），但是个人当前的理解认为重点可能是简化了工厂类与流程和静态方法（不然为什么又叫做静态工厂呢？）</p>
+<ul>
+<li>简化类：一个简单的方法便可以创建产品对象，无需多余的工厂接口与各个产品对应的具体类</li>
+<li>简化流程：无需对产品的工厂类实例化，简化了步骤，通过参数便可选择类型，隐藏更多上层不关心的细节（具体类名与类型）</li>
+<li>静态方法: <ul>
+<li>将工厂方法封装进一个实现类中，在 Java 中使用静态方便可以在不初始化的情况下使用</li>
+<li>静态方法初始化对象也是对构造方法的一种扩展，让语义表达更加清晰，例如对于一个点的描述，可以通过笛卡尔坐标系与极坐标系两种方式(参数类型也相同)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cartesian</span><span class="params">(cls, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> cls(x, y)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">polar</span><span class="params">(cls, r, theta)</span>:</span></span><br><span class="line">        <span class="comment"># theta 表示的是弧度，不是角度，1°= pi/180 弧度</span></span><br><span class="line">        <span class="keyword">return</span> cls(r * math.cos(theta), r * math.sin(theta))</span><br><span class="line"></span><br><span class="line">p1 = Point.cartesian(<span class="number">12</span>, <span class="number">5</span>)</span><br><span class="line">p2 = Point.polar(<span class="number">13</span>, math.pi*<span class="number">22.6</span>/<span class="number">180</span>)</span><br></pre></td></tr></table></figure>
+<p>其实工厂方法的核心便是将构造对象的方式封装出来，无论简单还是复杂，通过该方法就可以获取到我们需要的对象，简单场景我们就用简化、简单的，复杂的场景我们就用复杂的。</p>
+<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><p><img src="/images/design-pattern-simple-factory-struct.png" alt="design-pattern-simple-factory-struct"></p>
+<ul>
+<li>ConcreteFactory (具体工厂)<ul>
+<li>实现抽象工厂</li>
+</ul>
+</li>
+<li>AbstractProduct (抽象产品)<ul>
+<li>用于声明抽象产品相关的接口</li>
+</ul>
+</li>
+<li>ConcreteProduct<ul>
+<li>产品的具体实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta,abstractmethod</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span><span class="params">(Shape)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Square'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span><span class="params">(Shape)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Circle'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_shape</span><span class="params">(shape)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> shape == <span class="string">'circle'</span>: <span class="keyword">return</span> Circle()</span><br><span class="line">        <span class="keyword">elif</span> shape == <span class="string">'square'</span>: <span class="keyword">return</span> Square()</span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">return</span> Circle()</span><br><span class="line"></span><br><span class="line">shape = ShapeFactory.create_shape(<span class="string">'square'</span>)</span><br><span class="line">shape.draw()</span><br></pre></td></tr></table></figure>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>优势<ul>
+<li>在类中相对于构造方法，静态初始化方法可以有明确的方法名，这样更直接、更清晰，语义很明确（静态初始化方法也是对创建、初始化对象的封装，返回所需对象，从某种角度来看也就是一个工厂方法）</li>
+<li>调用工厂的静态方法时并不需要创建工厂对象，使用简单，节省资源</li>
+<li>可以返回产品接口类型的任何子类对象</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>需创建对象的类没有公有或者 protected 的构造方法不能被继承：将构造方法改成 private 可以让使用者明确和强制使用静态方法，但是这样这个类就不能通过继承的方式被扩展了</li>
+<li>不符合开闭原则，每次增加新的类都需要修改工厂类中的判断条件或者 map</li>
+<li>不符合依赖反转原则，依赖具体的产品类而不是接口</li>
+</ul>
+</li>
+</ul>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><h3 id="说明-2"><a href="#说明-2" class="headerlink" title="说明"></a>说明</h3><p>抽象工厂模式的主要目的是：</p>
+<blockquote>
+<p>Provide an interface for creating families of related or dependent objects without specifying their concrete classes</p>
+</blockquote>
+<p>将同类产品簇，一组具有共同主题的对象都通过同一个 Factory 来创建</p>
+<h3 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h3><h3 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Frame</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">frame_function</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwtFrame</span><span class="params">(Frame)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">frame_function</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'awt frame'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SwingFrame</span><span class="params">(Frame)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">frame_function</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'swing frame'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">button_function</span><span class="params">()</span>:</span> <span class="keyword">pass</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwtButton</span><span class="params">(Button)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">button_function</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'awt button'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SwingButton</span><span class="params">(Button)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">button_function</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'swing button'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WidgetFactory</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_frame</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_button</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwtWidgetFactory</span><span class="params">(WidgetFactory)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_frame</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> AwtFrame()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_button</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> AwtButton()</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SwingWidgetFactory</span><span class="params">(WidgetFactory)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_frame</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> SwingFrame()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_button</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> SwingButton()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GUI</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, factory)</span>:</span></span><br><span class="line">        self.factory = factory</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_frame</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.frame = self.factory.create_frame()</span><br><span class="line">        self.frame.frame_function()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_button</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.button = self.factory.create_button()</span><br><span class="line">        self.button.button_function()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    awt_factory = AwtWidgetFactory()</span><br><span class="line">    gui = GUI(awt_factory)</span><br><span class="line">    gui.create_frame()</span><br><span class="line">    gui.create_button()</span><br></pre></td></tr></table></figure>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>抽象工厂的使用场景：</p>
+<p>若是存在多个不同系列的相关产品（例如电脑存在 Mac 系列、Windows 系列，例如衣服存在耐克系列、阿迪达斯系列），并且无法提前获取相关的一些产品信息或者对于规范扩展考虑的情况下考虑使用抽象工厂</p>
+<p>个人认为最初的工厂方法模式中并不含有接口，亦或者说主要描述的只是一个创建类的方法，而抽象工厂是对工厂方法更复杂流程进行的一个抽象，从而整理出接口与规范，让复杂更有规律与秩序</p>
+<blockquote>
+<p>更复杂的流程如创建一系列关联的对象，创建的对象层级更深、关联更多的对象等等</p>
+</blockquote>
+<p>优点:</p>
+<ul>
+<li>可以确保同一工厂生成的产品相互匹配。</li>
+<li>可以避免客户端和具体产品代码的耦合。</li>
+<li>遵循开闭原则，向应用程序中引入新产品变体时， 你无需修改客户端代码。</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>代码结果较为复杂，引入了很多接口和实现类</li>
+</ul>
+<h3 id="相关模式-1"><a href="#相关模式-1" class="headerlink" title="相关模式"></a>相关模式</h3><ul>
+<li>工厂方法模式:大多数的场景初始使用工厂方法模式，当业务变得足够复杂后会演化为抽象工厂模式、建造者模式，很多情况也会用工厂模式来实现抽象工厂模式</li>
+<li>外观模式：当只需对客户端隐藏创建对象方式的复杂性时，其实也可以使用抽象工厂来代替外观模式</li>
+<li>桥接模式： 抽象工厂模式与桥接模式可以组合使用，若是桥接定义的抽象只能与特定实现合作，即可使用抽象工厂可以对这些关系进行封装创建相关的对象使用， 并且对客户端代码隐藏其复杂性</li>
+</ul>
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><h3 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h3><p>对于前面工厂方法模式、抽象工厂模式我们说针对复杂构造对象的情况，可能同类多种产品或者一个产品簇，而当我们遇到因为仅仅受部分参数或者部分构造步骤不同影响导致对象的表现不一致时，我们会选择使用建造者模式。</p>
+<p>也就是说将复杂对象的构造与其表现分离，以便相同的构造流程也能够带来不同的结果</p>
+<ul>
+<li>建造者模式针对的是建造者创建一个产品，只是这个产品的表现上可以非常灵活的做很多微调</li>
+<li>工厂方法模式、抽象工厂模式更多是针对同类型的多个产品</li>
+</ul>
+<h3 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h3><p><img src="/images/design-pattern-builder-struct.png" alt="design-pattern-builder-struct"></p>
+<ul>
+<li>Builder<ul>
+<li>声明用于构建与创建对象的接口</li>
+</ul>
+</li>
+<li>ConcreteBuilder<ul>
+<li>实现 Builder 接口<ul>
+<li>获取产品</li>
+<li>实现构造对象步骤</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Director<ul>
+<li>类似于客户端，通过 builder 获取产品</li>
+</ul>
+</li>
+<li>Product<ul>
+<li>提供定义的产品与实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>Python 版本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct</span><span class="params">(Product)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, p1, p2, p3)</span>:</span></span><br><span class="line">        self.p1 = p1</span><br><span class="line">        self.p2 = p2</span><br><span class="line">        self.p3 = p3</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">' '</span>.join([self.p1, self.p2, self.p3]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Builder</span><span class="params">(object)</span>:</span></span><br><span class="line">    __metaclass__ = ABCMeta</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_one</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_two</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_three</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilder</span><span class="params">(Builder)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.p1 = <span class="string">''</span></span><br><span class="line">        self.p2 = <span class="string">''</span></span><br><span class="line">        self.p3 = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等同于 get_product</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">product</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.p1 <span class="keyword">or</span> <span class="keyword">not</span> self.p2 <span class="keyword">or</span> <span class="keyword">not</span> self.p3: <span class="keyword">raise</span></span><br><span class="line">        <span class="keyword">return</span> ConcreteProduct(self.p1, self.p2, self.p3)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_one</span><span class="params">(self, p1)</span>:</span></span><br><span class="line">        self.p1 = p1</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_two</span><span class="params">(self, p2)</span>:</span></span><br><span class="line">        self.p2 = p2</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_three</span><span class="params">(self, p3)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.p1 == <span class="string">'one'</span> <span class="keyword">and</span> p3 == <span class="string">'two'</span>: <span class="keyword">raise</span></span><br><span class="line">        self.p3 = p3</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, builder)</span>:</span></span><br><span class="line">        self._builder = builder</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">builder</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._builder</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_complex_product</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._builder.build_one(<span class="string">'hello'</span>)</span><br><span class="line">        self._builder.build_two(<span class="string">'richard'</span>)</span><br><span class="line">        self._builder.build_three(<span class="string">'wei'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_simple_product</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._builder.build_one(<span class="string">'1'</span>)</span><br><span class="line">        self._builder.build_two(<span class="string">'2'</span>)</span><br><span class="line">        self._builder.build_three(<span class="string">'3'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    builder = ConcreteBuilder()</span><br><span class="line">    director = Director(builder)</span><br><span class="line">    director.build_complex_product()</span><br><span class="line">    director.builder.product.run()</span><br><span class="line"></span><br><span class="line">    builder = ConcreteBuilder()</span><br><span class="line">    builder.build_one(<span class="string">'my'</span>)</span><br><span class="line">    builder.build_two(<span class="string">'constom'</span>)</span><br><span class="line">    builder.product.run()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Golang 版本<ul>
+<li>实际例子：<a href="https://github.com/go-resty/resty/blob/bcec4e0910e82afff8e1e159e83e734739e9229f/example_test.go" target="_blank" rel="noopener">go-resty Client 构造</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>优势<ul>
+<li>单一职责：将构造函数中的复杂逻辑抽离处理，有 Builder 全力负责，单独处理</li>
+<li>保变原则：找出预计的变化点或不稳定点，分配其职责以便用稳定的接口来包装（摘录自冒号课堂）<ul>
+<li>对于构造函数中参数的复杂限制关系，便是此处的不稳定点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关模式-2"><a href="#相关模式-2" class="headerlink" title="相关模式"></a>相关模式</h3><ul>
+<li>抽象工厂、工厂方法：工厂方法与抽象工厂其实可以与建造者模式相结合使用，工厂方法总体上会对接多个产品，但是细节上构建单个产品是可以结合建造者模式使用</li>
+</ul>
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><h3 id="由来-1"><a href="#由来-1" class="headerlink" title="由来"></a>由来</h3><p>在创建对象的场景中我们还会面临一种场景:我们需要复刻一个已有的对象，在上面做一些自定义或者一些细微的变化，此时我们需要使用原型模式。</p>
+<h3 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h3><ul>
+<li>Prototype (原型接口)</li>
+<li>ConcretePrototype (原型实现)</li>
+<li>Client (客户端)</li>
+</ul>
+<h3 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>Python 版本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">说明：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1.copy.copy 与 copy.deepcopy 的内部实现中，会首先 __copy__ 与 __deepcopy__ 方法若是不存在才会利用 __reduce__ 与 __reduce_ex__ 来构造新的对象</span></span><br><span class="line"><span class="string">2.因为不是所有的属性都在初始化的时候赋值或者修改，所以还是需要通过 __dict__ 把其他的属性也都 copy 到新的对象</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestObject</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    use for copy object</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t_int, t_list, t_object)</span>:</span></span><br><span class="line">        self.t_int = t_int</span><br><span class="line">        self.t_list = t_list</span><br><span class="line">        self.t_object = t_object</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_a</span><span class="params">(self, t_string)</span>:</span></span><br><span class="line">        self.t_string = t_string</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__copy__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        shadow copy</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        t_list = copy.copy(self.t_list)</span><br><span class="line">        t_object = copy.copy(self.t_object)</span><br><span class="line">        new = self.__class__(self.t_int, t_list, t_object)</span><br><span class="line">        new.__dict__.update(self.__dict__)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__deepcopy__</span><span class="params">(self, memo=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        deep copy</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        t_list = copy.deepcopy(self.t_list)</span><br><span class="line">        t_object = copy.deepcopy(self.t_object)</span><br><span class="line">        new = self.__class__(self.t_int, t_list, t_object)</span><br><span class="line">        new.__dict__ = copy.deepcopy(self.__dict__, memo)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">'__main__'</span>:</span><br><span class="line">    t_object = TestObject()</span><br><span class="line">    origin_object = Test(<span class="number">1</span>, [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">1</span>,<span class="number">2</span>]], t_object)</span><br><span class="line">    cop = copy.copy(origin_object)</span><br><span class="line">    d_cop = copy.deepcopy(origin_object)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Golang 版本<ul>
+<li>实际例子： gorm 中 <a href="https://github.com/go-gorm/gorm/blob/1e241aa6455fd821102bfce366d47a646b71161e/statement.go" target="_blank" rel="noopener">Statement 的 clone 实现</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 说明：</span></span><br><span class="line"><span class="comment">// 值得说明的是字典里面套结构体，里面的结构体需要存放指针，否则只能访问不能修改</span></span><br><span class="line"><span class="comment">// 需要构造新的实例，否则会与原来的共用一个</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> iTest <span class="keyword">interface</span> &#123;</span><br><span class="line">    clone()     iTest</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> testStruct <span class="keyword">struct</span> &#123;</span><br><span class="line">    testString    <span class="keyword">string</span></span><br><span class="line">    testInt       <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> test <span class="keyword">struct</span> &#123;</span><br><span class="line">    tString    <span class="keyword">string</span></span><br><span class="line">    tMap       <span class="keyword">map</span>[<span class="keyword">string</span>]*testStruct</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *test)</span> <span class="title">clone</span><span class="params">()</span> *<span class="title">test</span></span> &#123;</span><br><span class="line">    new_test := &amp;test&#123;</span><br><span class="line">        tString: t.tString,</span><br><span class="line">        tMap: <span class="keyword">map</span>[<span class="keyword">string</span>]*testStruct&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k, s := <span class="keyword">range</span> t.tMap &#123;</span><br><span class="line">        new_test.tMap[k] = &amp;testStruct&#123;s.testString, s.testInt&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> new_test</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    tMap := <span class="keyword">map</span>[<span class="keyword">string</span>]*testStruct&#123;<span class="string">"test"</span>: &#123;<span class="string">"pd"</span>, <span class="number">1</span>&#125;&#125;</span><br><span class="line">    test1 := &amp;test&#123;tString: <span class="string">"weizejie"</span>, tMap: tMap&#125;</span><br><span class="line">    test2 := test1.clone()</span><br><span class="line">    fmt.Println(test1.tString, test1.tMap, test1.tMap[<span class="string">"test"</span>].testString)</span><br><span class="line">    fmt.Println(test2.tString, test2.tMap, test2.tMap[<span class="string">"test"</span>].testString)</span><br><span class="line">    test1.tMap[<span class="string">"test"</span>].testString = <span class="string">"weizejie"</span></span><br><span class="line">    fmt.Println(test1.tString, test1.tMap, test1.tMap[<span class="string">"test"</span>].testString)</span><br><span class="line">    fmt.Println(test2.tString, test2.tMap, test2.tMap[<span class="string">"test"</span>].testString)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>优势:<ul>
+<li>可以非常便捷的生成通过复杂流程处理过或者构造出来的对象<ul>
+<li>特别针对 C# 与 Java 这类语言，存在部分 private 的属性也能够一同 clone </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>劣势:<ul>
+<li>面对存在循环引用的复杂对象，处理会比较麻烦</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关模式-3"><a href="#相关模式-3" class="headerlink" title="相关模式"></a>相关模式</h3><ul>
+<li>抽象工厂模式：原型模式可以与抽象工厂模式结合使用</li>
+<li>组合模式、装饰模式：原型模式对于大量使用组合模式、装饰模式的场景有非常大的帮助</li>
+</ul>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="由来-2"><a href="#由来-2" class="headerlink" title="由来"></a>由来</h3><p>当我们需要解决资源访问冲突，亦或者当我们需要全局共享一个对象、一份信息的时候我们会选择使用单例模式来解决问题</p>
+<p>单例模式也就意味着一个类只允许创建一个对象或者实例，这个类也就是单例类</p>
+<h3 id="类图-5"><a href="#类图-5" class="headerlink" title="类图"></a>类图</h3><ul>
+<li>Singleton</li>
+</ul>
+<h3 id="实现-5"><a href="#实现-5" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>Python 版本（查看更多方法参看<a href="https://www.cnblogs.com/huchong/p/8244279.html" target="_blank" rel="noopener">听风。的博客</a>）</li>
+</ul>
+<blockquote>
+<p>说明： Python 中实现单例模式的方法有很多种，此处只是通过 <strong>new</strong> 方式实现的（并且不考虑多线程竞争创建的情况）<br>方法：</p>
+<ul>
+<li>通过模块引入的方式</li>
+<li>通过装饰器的方式</li>
+<li>通过类方法 <code>@classmethod</code> 的方式</li>
+<li>通过 <strong>new</strong> 的方式</li>
+<li>通过元类 metaclass 的方式</li>
+<li>django orm 还有 ABCMeta 都是通过 metaclass 做的限制</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">()</span>:</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(Singleton, <span class="string">"_instance"</span>):</span><br><span class="line">            Singleton._instance = object.__new__(cls)  </span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Golang 版本</li>
+</ul>
+<blockquote>
+<p>说明： Golang 中实现单例模式的方法有很2种<br>方法：</p>
+<ul>
+<li>通过 init 函数是在文件包首次被加载的时候执行，且只执行一次</li>
+<li>通过 sync.Once 是在代码运行中需要的时候执行，且只执行一次(<a href="https://juejin.im/post/6844904018490163213" target="_blank" rel="noopener">sync.Once 的实现解析</a>)</li>
+</ul>
+</blockquote>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.go</span></span><br><span class="line"><span class="keyword">package</span> a</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Test <span class="keyword">struct</span> &#123;</span><br><span class="line">	test <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Wei *Test= &amp;Test&#123;test: <span class="string">"weizejie"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"call a"</span>)</span><br><span class="line">	fmt.Println(Wei.test)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"a"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"weizejie test"</span>)</span><br><span class="line">	fmt.Println(a.Wei)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>单例模式主要就是将类或者结构体构造的对象数量控制在一个，所以在单例模式衍生出来的实现方式方法还有：</p>
+<ul>
+<li>饿汉模式：就是加载包的时候初始化好，需要用的时候就可以直接用（类似于上述的 init 方式）<ul>
+<li>缺点：若是该实例一直未使用则会造成资源的浪费</li>
+</ul>
+</li>
+<li>懒汉模式：就是在需要使用的时候才构造，也就是所谓的支持延迟加载<ul>
+<li>缺点：效率低，因为构造的时候需要保证线程安全，所以需要加锁</li>
+</ul>
+</li>
+<li>双重检测模式：优化懒汉模式，在构造之前判断是否存在，若存在直接返回已有，反之拿到锁，然后再判断一次然后在决定返回已有还是新构造</li>
+<li>静态内部类：这种方法主要用于 Java 中，由 JVM 来保证 instance 的唯一性、创建过程的线程安全性</li>
+</ul>
+<p>当然我们在单例模式的实现的时也会发现其存在一些弊端:</p>
+<ul>
+<li>单例对 OOP 特性的支持是不友好的</li>
+<li>单例会隐藏类之间的依赖关系</li>
+<li>单例会造成扩展性、可测试性性不好</li>
+</ul>
+<p>所以是否使用，如何使用还是要看当前的场景是否适用</p>
+<h3 id="相关模式-4"><a href="#相关模式-4" class="headerlink" title="相关模式"></a>相关模式</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>《Design Patterns - Elements of Reusable Object-Oriented Software》</li>
+<li><a href="https://stackoverflow.com/questions/8147163/instance-factory-methods-vs-static-factory-methods" target="_blank" rel="noopener">static factory method vs factory method</a></li>
+<li><a href="https://www.cnblogs.com/appsucc/p/13034479.html" target="_blank" rel="noopener">面向接口编程原理</a></li>
+<li><a href="https://www.zhihu.com/question/42975862" target="_blank" rel="noopener">引入工厂模式的本质</a></li>
+<li><a href="https://refactoringguru.cn/design-patterns/abstract-factory" target="_blank" rel="noopener">refactoringguru 抽象工厂</a></li>
+<li><a href="https://blog.csdn.net/sjtu_huang/article/details/6669722" target="_blank" rel="noopener">设计模式关联</a></li>
+</ul>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+					
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Richardwei">
+          <p class="site-author-name" itemprop="name">Richardwei</p>
+          <p class="site-description motion-element" itemprop="description">updata self everyday</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+        
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <!-- <h3 class="widget-title">Tag Cloud</h3> -->
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/"> AWS </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/"> Apache </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/"> ELK </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/"> Git </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/"> Jenkins </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"> Linux </a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/"> Mac </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nagios/"> Nagios </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/"> Nginx </a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/"> PHP </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/"> Protobuf </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/"> Python </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/"> SSH </a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tidb/"> Tidb </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/"> Ubuntu </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/"> blog </a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/"> elasticsearch </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntopng/"> ntopng </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptp/"> pptp </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sentry/"> sentry </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/"> zsh </a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Celery/">Celery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos7/">Centos7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco/">Cisco</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GNS3/">GNS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/">awk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemd/">systemd</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+        
+
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+	  
+
+    </main>
+	
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Richardwei</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+	
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'richardweiu';
+      var disqus_identifier = 'backup/设计模式-创建型模式.html';
+
+      var disqus_title = "设计模式-创建型模式(上)";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	<script src="/js/src/particles.js"></script>
+	<script src="/js/src/app.js"></script>
+</body>
+  
+</html>
+
